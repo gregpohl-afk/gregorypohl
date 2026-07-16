@@ -869,3 +869,19 @@
     font-size: 17px;
   }
 }
+/* RED DOT — HOVER ONLY, NO CLICK */
+
+.portrait-link {
+  cursor: default !important;
+}
+
+.portrait-link:hover .red-dot-card {
+  opacity: 1 !important;
+  transform: translate(18px, 0) rotate(.4deg) !important;
+}
+
+@media (max-width: 900px) {
+  .portrait-link:hover .red-dot-card {
+    transform: translateX(-50%) !important;
+  }
+}
