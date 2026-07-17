@@ -1105,3 +1105,184 @@
     top: 4px !important;
   }
 }
+/* =========================================================
+   FINAL AMSTERDAM LAYOUT — RED DOT + BOREDROOM
+   ========================================================= */
+
+/* Give every part enough room */
+.meanwhile {
+  grid-template-columns:
+    170px
+    200px
+    360px
+    260px
+    minmax(260px, 1fr) !important;
+
+  gap: 28px !important;
+  align-items: end !important;
+  min-height: 360px !important;
+  overflow: visible !important;
+}
+
+
+/* -------------------------
+   RED DOT
+   ------------------------- */
+
+.portrait-zone {
+  position: relative !important;
+  min-height: 300px !important;
+  overflow: visible !important;
+  isolation: isolate !important;
+}
+
+.portrait-link {
+  position: absolute !important;
+  inset: 0 !important;
+  overflow: visible !important;
+  cursor: default !important;
+}
+
+/* Portrait remains behind the story card */
+.gregory-portrait {
+  z-index: 3 !important;
+}
+
+/* Solid panel, centered over the lower face/body */
+.red-dot-card {
+  position: absolute !important;
+
+  left: 50% !important;
+  top: 118px !important;
+
+  width: 360px !important;
+  max-width: 360px !important;
+
+  padding: 22px 24px !important;
+
+  background: #f8f0e7 !important;
+  border: 1px solid var(--line) !important;
+  box-shadow: 0 16px 34px rgba(38, 28, 18, .16) !important;
+
+  opacity: 0 !important;
+  z-index: 20 !important;
+  pointer-events: none !important;
+
+  transform: translate(-50%, 4px) scale(.985) !important;
+
+  transition:
+    opacity .22s ease,
+    transform .22s ease !important;
+}
+
+/* Fade in without sliding sideways */
+.portrait-link:hover .red-dot-card {
+  opacity: 1 !important;
+  transform: translate(-50%, 0) scale(1) !important;
+}
+
+.red-dot-card b {
+  display: block !important;
+  margin-bottom: 14px !important;
+}
+
+.red-dot-card p {
+  margin: 0 0 12px !important;
+  font-size: 14px !important;
+  line-height: 1.43 !important;
+}
+
+.red-dot-card p:last-child {
+  margin-bottom: 0 !important;
+}
+
+
+/* -------------------------
+   BOREDROOM
+   ------------------------- */
+
+.boredroom {
+  width: 260px !important;
+  min-width: 260px !important;
+  transform: none !important;
+  overflow: visible !important;
+}
+
+.boredroom h3 {
+  width: 100% !important;
+  margin: 0 !important;
+  font-size: 34px !important;
+  line-height: .9 !important;
+  text-align: center !important;
+}
+
+.boredroom .scribble.micro {
+  width: 145px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Keep explanation card in its own column */
+.chat {
+  width: 100% !important;
+  max-width: 300px !important;
+  justify-self: end !important;
+  align-self: center !important;
+  margin: 0 !important;
+}
+
+
+/* Hide temporary boxed pigeon until clean asset arrives */
+.portrait-zone .pigeon {
+  display: none !important;
+}
+
+
+/* -------------------------
+   MOBILE
+   ------------------------- */
+
+@media (max-width: 900px) {
+  .meanwhile {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .portrait-zone {
+    min-height: 610px !important;
+  }
+
+  .portrait-link {
+    position: relative !important;
+    min-height: 610px !important;
+  }
+
+  /* On phones, show the story permanently beneath the portrait */
+  .red-dot-card {
+    top: 300px !important;
+    left: 50% !important;
+
+    width: min(340px, 92vw) !important;
+    max-width: none !important;
+
+    opacity: 1 !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .portrait-link:hover .red-dot-card {
+    transform: translateX(-50%) !important;
+  }
+
+  .boredroom {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .chat {
+    width: 100% !important;
+    max-width: 340px !important;
+    justify-self: start !important;
+  }
+}
