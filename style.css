@@ -48,3 +48,146 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
 
 @media(max-width:760px){.poster{min-width:760px;transform-origin:top left}body{overflow-x:auto}dialog{width:min(680px,calc(100vw - 22px))}.dialog-inner{padding:28px}.liir-grid{grid-template-columns:1fr}.collected-artifact .artifact-story{max-width:none;width:220px;font-size:12px}.tile::after{width:190px;max-width:none}.tile::before{width:158px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tile::after,.tile::before,.hotspot::after,.artifact-story{transition:none}}
+/* =========================================================
+   COLLECTED — FINAL POLAROID + BRASS PLAQUE SURGICAL FIX
+   Keep the original North Star frames visible underneath.
+   ========================================================= */
+
+.collected-artifact {
+  position: absolute;
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+  cursor: pointer;
+  z-index: 8;
+}
+
+/* New photographs sit only inside the original Polaroid windows */
+.collected-artifact > img {
+  position: absolute;
+  left: 8%;
+  top: 3%;
+  width: 84%;
+  height: 62%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: none;
+  filter: saturate(.9) contrast(.96);
+  z-index: 1;
+}
+
+/* Preserve the original brass border and screws underneath.
+   This covers only the old engraved center text. */
+.collected-artifact .artifact-plaque {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 2%;
+  height: 27%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(190, 151, 77, .98) 0%,
+      rgba(171, 130, 62, .98) 48%,
+      rgba(150, 108, 48, .98) 100%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 -1px 0 rgba(65,42,13,.2);
+  color: #201707;
+  text-align: center;
+  line-height: 1.08;
+  z-index: 2;
+}
+
+/* Date */
+.collected-artifact .artifact-plaque b {
+  display: block;
+  margin: 0 0 4px;
+  font-family: NittiCond, "Arial Narrow", sans-serif;
+  font-size: clamp(8px, .88vw, 13px);
+  font-weight: 800;
+  letter-spacing: .08em;
+  font-style: normal;
+}
+
+/* Location */
+.collected-artifact .artifact-plaque em {
+  display: block;
+  margin: 0;
+  font-family: Nitti, Georgia, serif;
+  font-size: clamp(7px, .72vw, 11px);
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.12;
+}
+
+/* Story remains hidden until hover/focus */
+.collected-artifact .artifact-story {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 12px);
+  width: 240px;
+  max-width: 28vw;
+  padding: 14px 16px;
+  background: #f4eddf;
+  color: #17130e;
+  border: 1px solid rgba(68, 51, 30, .25);
+  box-shadow: 0 12px 28px rgba(24, 18, 10, .24);
+  font-family: Nitti, Georgia, serif;
+  font-size: 13px;
+  line-height: 1.38;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 7px) rotate(-.35deg);
+  transition:
+    opacity 170ms ease,
+    transform 170ms ease,
+    visibility 170ms ease;
+  z-index: 20;
+}
+
+.collected-artifact:hover .artifact-story,
+.collected-artifact:focus-visible .artifact-story {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0) rotate(-.35deg);
+}
+
+/* Prevent any generic hotspot tooltip from appearing as well */
+.collected-artifact::after {
+  display: none !important;
+}
+
+/* Preserve the individual positions already assigned to cards 1–6 */
+.collected-artifact.collected-1,
+.collected-artifact.collected-2,
+.collected-artifact.collected-3,
+.collected-artifact.collected-4,
+.collected-artifact.collected-5,
+.collected-artifact.collected-6 {
+  overflow: visible;
+}
+
+@media (max-width: 760px) {
+  .collected-artifact .artifact-story {
+    width: 210px;
+    max-width: none;
+  }
+}
