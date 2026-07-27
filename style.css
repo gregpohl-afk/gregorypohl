@@ -259,3 +259,19 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
     font-size: 12px;
   }
 }
+/* Unhide the pigeon story card from the generic hotspot span rule */
+.hotspot .pigeon-story-card {
+  display: block;
+  width: 275px;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+
+  position: absolute;
+  right: 8%;
+  left: auto;
+  top: 84%;
+  bottom: auto;
+}
