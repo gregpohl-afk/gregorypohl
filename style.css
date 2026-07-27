@@ -191,3 +191,71 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
     max-width: none;
   }
 }
+/* =========================================================
+   PIGEON EASTER EGG
+   ========================================================= */
+
+.pigeon-story {
+  left: 78%;
+  top: 4%;
+  width: 20%;
+  height: 17%;
+  overflow: visible;
+  z-index: 12;
+}
+
+.pigeon-story-card {
+  position: absolute;
+  right: 8%;
+  top: 84%;
+  width: 275px;
+  padding: 17px 19px;
+  background: #f3ecdf;
+  border: 1px solid rgba(64, 47, 27, .25);
+  box-shadow: 0 13px 30px rgba(32, 23, 13, .22);
+  color: #17130e;
+
+  font-family: Nitti, Georgia, serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.42;
+  text-align: left;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(7px) rotate(.4deg);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    visibility 180ms ease;
+}
+
+.pigeon-story-card strong {
+  display: block;
+  margin-bottom: 8px;
+  font-family: Quinn, Georgia, serif;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.pigeon-story:hover .pigeon-story-card,
+.pigeon-story:focus-visible .pigeon-story-card,
+.pigeon-story:focus .pigeon-story-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) rotate(.4deg);
+}
+
+.pigeon-story::after {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .pigeon-story-card {
+    right: 0;
+    width: 240px;
+    font-size: 12px;
+  }
+}
