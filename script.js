@@ -35,3 +35,27 @@ document.querySelector('.door').addEventListener('click',()=>show('THE BOREDROOM
 dialog.querySelector('.close').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&dialog.open)dialog.close()});
+/* Reliable hero hover cards */
+
+function connectHoverCard(triggerSelector, cardSelector) {
+  const trigger = document.querySelector(triggerSelector);
+  const card = document.querySelector(cardSelector);
+
+  if (!trigger || !card) return;
+
+  const showCard = () => card.classList.add("is-visible");
+  const hideCard = () => card.classList.remove("is-visible");
+
+  trigger.addEventListener("mouseenter", showCard);
+  trigger.addEventListener("mouseleave", hideCard);
+
+  trigger.addEventListener("focus", showCard);
+  trigger.addEventListener("blur", hideCard);
+
+  trigger.addEventListener("click", () => {
+    card.classList.toggle("is-visible");
+  });
+}
+
+connectHoverCard(".pigeon-story", ".pigeon-card");
+connectHoverCard(".portrait-story", ".portrait-card");
