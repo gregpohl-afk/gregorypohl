@@ -504,3 +504,33 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
     right: 45%;
   }
 }
+/* =========================================================
+   DINO EASTER EGG
+   ========================================================= */
+
+.dino-egg {
+  left: 86.1%;
+  top: 73.1%;
+  width: 11.2%;
+  height: 14.2%;
+  z-index: 65;
+}
+
+.dino-egg .dino-card {
+  right: 88%;
+  top: 5%;
+  width: 285px;
+  transform: translateY(8px) rotate(-0.4deg);
+}
+
+.dino-egg:hover .dino-card,
+.dino-egg:focus-within .dino-card {
+  transform: translateY(0) rotate(-0.4deg);
+}
+
+@media (max-width: 760px) {
+  .dino-egg .dino-card {
+    right: 45%;
+    width: 240px;
+  }
+}
