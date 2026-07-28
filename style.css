@@ -275,3 +275,82 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
   top: 84%;
   bottom: auto;
 }
+/* =========================================================
+   PORTRAIT EASTER EGG — WHAT I SEE
+   ========================================================= */
+
+.portrait-story {
+  left: 21%;
+  top: 5%;
+  width: 39%;
+  height: 35%;
+  z-index: 30;
+}
+
+.portrait-card {
+  position: absolute;
+  left: 5.5%;
+  top: 20%;
+  width: 310px;
+  padding: 20px 22px;
+
+  background: #f3ecdf;
+  border: 1px solid rgba(64, 47, 27, .25);
+  box-shadow: 0 13px 30px rgba(32, 23, 13, .22);
+  color: #17130e;
+
+  font-family: Nitti, Georgia, serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.42;
+  text-align: left;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px) rotate(-.35deg);
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    visibility 180ms ease;
+
+  z-index: 50;
+}
+
+.portrait-card strong {
+  display: block;
+  margin-bottom: 11px;
+  font-family: Quinn, Georgia, serif;
+  font-size: 27px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.portrait-card p {
+  margin: 0 0 12px;
+}
+
+.portrait-card p:last-child {
+  margin-bottom: 0;
+}
+
+.portrait-story:hover + .portrait-card,
+.portrait-story:focus + .portrait-card,
+.portrait-story:focus-visible + .portrait-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) rotate(-.35deg);
+}
+
+.portrait-story::after {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .portrait-card {
+    left: 7%;
+    width: 270px;
+    font-size: 12px;
+  }
+}
