@@ -556,3 +556,50 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
   cursor: pointer !important;
   pointer-events: auto !important;
 }
+/* =========================================================
+   NEGRONI EASTER EGG
+   ========================================================= */
+
+.negroni-egg {
+  position: absolute !important;
+  left: 10.5% !important;
+  top: 73.1% !important;
+  width: 13.4% !important;
+  height: 12.9% !important;
+  z-index: 100 !important;
+  pointer-events: auto !important;
+}
+
+.negroni-egg > button {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+.negroni-egg .negroni-card {
+  left: 80%;
+  top: 4%;
+  width: 285px;
+  transform: translateY(8px) rotate(0.35deg);
+}
+
+.negroni-egg:hover .negroni-card,
+.negroni-egg:focus-within .negroni-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) rotate(0.35deg);
+}
+
+@media (max-width: 760px) {
+  .negroni-egg .negroni-card {
+    left: 45%;
+    width: 240px;
+  }
+}
