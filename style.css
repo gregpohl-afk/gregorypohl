@@ -374,3 +374,133 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
 .portrait-story {
   z-index: 40 !important;
 }
+/* =========================================================
+   HERO EASTER EGGS
+   ========================================================= */
+
+.hero-easter-egg {
+  position: absolute;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.hero-easter-egg > button {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.hero-easter-egg > button > span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.hero-story-card {
+  position: absolute;
+  width: 285px;
+  padding: 18px 20px;
+  background: #f3ecdf;
+  border: 1px solid rgba(64, 47, 27, 0.25);
+  box-shadow: 0 13px 30px rgba(32, 23, 13, 0.22);
+  color: #17130e;
+  font-family: Nitti, Georgia, serif;
+  font-size: 13px;
+  line-height: 1.42;
+  text-align: left;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px) rotate(0.4deg);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    visibility 180ms ease;
+}
+
+.hero-story-card strong {
+  display: block;
+  margin-bottom: 9px;
+  font-family: Quinn, Georgia, serif;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.hero-story-card p {
+  margin: 0 0 12px;
+}
+
+.hero-story-card p:last-child {
+  margin-bottom: 0;
+}
+
+.hero-easter-egg:hover .hero-story-card,
+.hero-easter-egg:focus-within .hero-story-card {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Pigeon */
+.pigeon-egg {
+  left: 56%;
+  top: 3%;
+  width: 42%;
+  height: 35%;
+  z-index: 70;
+}
+
+.pigeon-egg .hero-story-card {
+  left: 3%;
+  top: 46%;
+  transform: translateY(8px) rotate(0.4deg);
+}
+
+.pigeon-egg:hover .hero-story-card,
+.pigeon-egg:focus-within .hero-story-card {
+  transform: translateY(0) rotate(0.4deg);
+}
+
+/* Portrait */
+.portrait-egg {
+  left: 24%;
+  top: 5%;
+  width: 24%;
+  height: 34%;
+  z-index: 65;
+}
+
+.portrait-egg .hero-story-card {
+  right: 88%;
+  top: 42%;
+  width: 310px;
+  transform: translateY(8px) rotate(-0.35deg);
+}
+
+.portrait-egg:hover .hero-story-card,
+.portrait-egg:focus-within .hero-story-card {
+  transform: translateY(0) rotate(-0.35deg);
+}
+
+@media (max-width: 760px) {
+  .hero-story-card {
+    width: 240px;
+    font-size: 12px;
+  }
+
+  .portrait-egg .hero-story-card {
+    width: 270px;
+    right: 45%;
+  }
+}
