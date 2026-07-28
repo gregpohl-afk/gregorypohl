@@ -201,7 +201,7 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
   width: 20%;
   height: 17%;
   overflow: visible;
-  z-index: 12;
+  z-index: 60;
 }
 
 .pigeon-story-card {
