@@ -353,3 +353,24 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
     font-size: 12px;
   }
 }
+/* Reliable visible state for hero cards */
+
+.pigeon-card.is-visible,
+.portrait-card.is-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) rotate(.4deg) !important;
+}
+
+.portrait-card.is-visible {
+  transform: translateY(0) rotate(-.35deg) !important;
+}
+
+/* Keep the pigeon hotspot above the portrait hotspot */
+.pigeon-story {
+  z-index: 100 !important;
+}
+
+.portrait-story {
+  z-index: 40 !important;
+}
