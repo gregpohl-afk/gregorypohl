@@ -280,10 +280,10 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
    ========================================================= */
 
 .portrait-story {
-  left: 21%;
-  top: 5%;
-  width: 39%;
-  height: 35%;
+  left: 23%;
+  top: 6%;
+  width: 24%;
+  height: 34%;
   z-index: 30;
 }
 
