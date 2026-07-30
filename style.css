@@ -701,3 +701,6 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
     width: 250px;
   }
 }
+.collected-artifact {
+  cursor: default !important;
+}
