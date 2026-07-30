@@ -791,3 +791,17 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
     width: 245px;
   }
 }
+/* Tighten Red Dot hotspot so QUESTION owns its full word */
+.red-dot-egg {
+  left: 0.25% !important;
+  top: 17.8% !important;
+  width: 3.5% !important;
+  height: 4.6% !important;
+  z-index: 120 !important;
+}
+
+.question-egg {
+  top: 22.6% !important;
+  height: 10.2% !important;
+  z-index: 110 !important;
+}
