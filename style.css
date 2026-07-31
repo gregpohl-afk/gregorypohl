@@ -805,3 +805,20 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
   height: 10.2% !important;
   z-index: 110 !important;
 }
+/* Collected stories: hover on desktop, tap/focus on mobile */
+.collected-artifact:hover .artifact-story,
+.collected-artifact:focus .artifact-story,
+.collected-artifact:focus-within .artifact-story {
+  opacity: 1;
+  visibility: visible;
+}
+
+.collected-artifact {
+  cursor: default;
+  outline: none;
+}
+
+.collected-artifact:focus-visible {
+  outline: 2px solid #b72a22;
+  outline-offset: 3px;
+}
