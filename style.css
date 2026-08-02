@@ -929,10 +929,37 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
   .work-story-card strong {
     font-size: 23px;
   }
+/* SOMEBODY'S UNICORN */
+
+.unicorn-egg{
+    position:absolute;
+    left:36.2%;
+    top:72.4%;
+    width:8.6%;
+    height:13.5%;
+    z-index:115;
+    pointer-events:auto;
 }
-/* TEMPORARY UNICORN DEBUG */
-.unicorn-egg {
-  background: rgba(255, 0, 0, 0.25) !important;
-  outline: 4px solid red !important;
-  z-index: 9999 !important;
+
+.unicorn-cover{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:2px;
+    box-shadow:
+        0 8px 24px rgba(0,0,0,.18),
+        0 2px 6px rgba(0,0,0,.15);
+}
+
+.unicorn-egg button{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    cursor:pointer;
+}
+
+.unicorn-card{
+    width:360px;
 }
