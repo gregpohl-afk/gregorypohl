@@ -59,3 +59,61 @@ function connectHoverCard(triggerSelector, cardSelector) {
 
 connectHoverCard(".pigeon-story", ".pigeon-card");
 connectHoverCard(".portrait-story", ".portrait-card");
+function connectDeskCard(buttonSelector, cardSelector) {
+  const button = document.querySelector(buttonSelector);
+  const card = document.querySelector(cardSelector);
+
+  if (!button || !card) {
+    return;
+  }
+
+  let clickedOpen = false;
+
+  const show = () => {
+    card.classList.add("is-visible");
+    card.setAttribute("aria-hidden", "false");
+  };
+
+  const close = () => {
+    clickedOpen = false;
+    card.classList.remove("is-visible");
+    card.setAttribute("aria-hidden", "true");
+  };
+
+  button.addEventListener("mouseenter", show);
+
+  button.addEventListener("mouseleave", () => {
+    if (!clickedOpen) {
+      close();
+    }
+  });
+
+  button.addEventListener("focus", show);
+
+  button.addEventListener("blur", () => {
+    if (!clickedOpen) {
+      close();
+    }
+  });
+
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (card.classList.contains("is-visible")) {
+      close();
+    } else {
+      clickedOpen = true;
+      show();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!button.contains(event.target) && !card.contains(event.target)) {
+      close();
+    }
+  });
+}
+
+connectDeskCard(".hotspot.notebook", ".notebook-card");
+connectDeskCard(".hotspot.workshop-note", ".workshop-card");
