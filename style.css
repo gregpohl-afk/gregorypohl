@@ -963,3 +963,24 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
 .unicorn-card{
     width:360px;
 }
+.unicorn-egg {
+  position: fixed !important;
+  top: 40px !important;
+  left: 40px !important;
+  width: 220px !important;
+  height: 330px !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 999999 !important;
+  background: red !important;
+}
+
+.unicorn-cover {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
