@@ -933,48 +933,14 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
    THE DESK — RELIABLE HOVER / TAP CARDS
    ========================================================= */
 
-.desk-easter-egg {
-  position: absolute !important;
-  z-index: 160 !important;
-  pointer-events: auto !important;
-}
-
 /* Existing Desk-object locations */
 
-.notebook-egg {
-  left: 42.8% !important;
-  top: 72.2% !important;
-  width: 18.5% !important;
-  height: 13.8% !important;
-}
-
-.workshop-egg {
-  left: 63.2% !important;
-  top: 72.5% !important;
-  width: 18.2% !important;
-  height: 12.5% !important;
-}
 
 /* Invisible interaction surface */
 
-.desk-easter-egg > button {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-
-  display: block !important;
-  padding: 0 !important;
-  border: 0 !important;
-  background: transparent !important;
-
-  cursor: pointer !important;
-  pointer-events: auto !important;
-}
-
 /* Hide the button wording without removing accessibility */
-
-.desk-easter-egg > button > span {
+.hotspot.notebook > span,
+.hotspot.workshop-note > span {
   position: absolute !important;
   width: 1px !important;
   height: 1px !important;
