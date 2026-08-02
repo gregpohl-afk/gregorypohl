@@ -822,3 +822,111 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
   outline: 2px solid #b72a22;
   outline-offset: 3px;
 }
+/* =========================================================
+   WORK — EDITORIAL HOVER CARDS
+   ========================================================= */
+
+/* Remove the old title-only hover generated from data attributes */
+.hotspot.tile::before,
+.hotspot.tile::after {
+  display: none !important;
+}
+
+.work-story-card {
+  position: absolute;
+  top: 34.2%;
+  width: 330px;
+  padding: 18px 21px;
+
+  background: #f3ecdf;
+  border: 1px solid rgba(64, 47, 27, 0.25);
+  box-shadow: 0 13px 30px rgba(32, 23, 13, 0.22);
+  color: #17130e;
+
+  font-family: Nitti, Georgia, serif;
+  font-size: 13px;
+  line-height: 1.45;
+  text-align: left;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px) rotate(-0.25deg);
+  transition:
+    opacity 180ms ease,
+    visibility 180ms ease,
+    transform 180ms ease;
+
+  z-index: 150;
+}
+
+.work-story-card strong {
+  display: block;
+  margin-bottom: 9px;
+  font-family: Quinn, Georgia, serif;
+  font-size: 27px;
+  font-weight: 900;
+  line-height: 1.02;
+}
+
+.work-story-card em {
+  display: block;
+  margin: 0 0 13px;
+  color: #5b544d;
+  font-style: italic;
+}
+
+.work-story-card p {
+  margin: 0;
+}
+
+.work-eyebrow {
+  margin-bottom: 10px;
+  color: #b72a22;
+  font-family: "Nitti Grotesk", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Position each card near its corresponding artifact */
+.work-1-card { left: 12%; }
+.work-2-card { left: 24%; }
+.work-3-card { left: 36%; }
+.work-4-card { left: 47%; }
+.work-5-card { left: 58%; }
+.work-6-card { right: 3%; }
+
+/* Each existing link reveals its later matching sibling */
+.work-1:hover ~ .work-1-card,
+.work-1:focus ~ .work-1-card,
+.work-2:hover ~ .work-2-card,
+.work-2:focus ~ .work-2-card,
+.work-3:hover ~ .work-3-card,
+.work-3:focus ~ .work-3-card,
+.work-4:hover ~ .work-4-card,
+.work-4:focus ~ .work-4-card,
+.work-5:hover ~ .work-5-card,
+.work-5:focus ~ .work-5-card,
+.work-6:hover ~ .work-6-card,
+.work-6:focus ~ .work-6-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) rotate(-0.25deg);
+}
+
+@media (max-width: 760px) {
+  .work-story-card {
+    top: 33%;
+    left: 8% !important;
+    right: auto !important;
+    width: 280px;
+    font-size: 12px;
+  }
+
+  .work-story-card strong {
+    font-size: 23px;
+  }
+}
