@@ -929,3 +929,104 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
   .work-story-card strong {
     font-size: 23px;
   }
+/* =========================================================
+   THE DESK — NOW WHAT? + PROJECTS IN MOTION
+   Existing hotspot positions remain untouched.
+   ========================================================= */
+
+.notebook-card,
+.workshop-card {
+  position: absolute;
+  width: 330px;
+  padding: 20px 22px;
+
+  background: #f3ecdf;
+  border: 1px solid rgba(64, 47, 27, 0.25);
+  box-shadow: 0 14px 32px rgba(32, 23, 13, 0.24);
+
+  color: #17130e;
+  font-family: Nitti, Georgia, serif;
+  font-size: 13px;
+  line-height: 1.48;
+  text-align: left;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateY(8px) rotate(-0.3deg);
+  transition:
+    opacity 180ms ease,
+    visibility 180ms ease,
+    transform 180ms ease;
+
+  z-index: 170;
+}
+
+.notebook-card {
+  left: 42%;
+  top: 68.5%;
+}
+
+.workshop-card {
+  right: 8%;
+  top: 68.5%;
+  transform: translateY(8px) rotate(0.35deg);
+}
+
+.notebook-card strong,
+.workshop-card strong {
+  display: block;
+  margin-bottom: 12px;
+
+  font-family: Quinn, Georgia, serif;
+  font-size: 29px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.notebook-card p,
+.workshop-card p {
+  margin: 0 0 13px;
+}
+
+.notebook-card p:last-child,
+.workshop-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Desktop hover and keyboard focus */
+
+.notebook:hover + .notebook-card,
+.notebook:focus + .notebook-card,
+.notebook:focus-visible + .notebook-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) rotate(-0.3deg);
+}
+
+.workshop-note:hover + .workshop-card,
+.workshop-note:focus + .workshop-card,
+.workshop-note:focus-visible + .workshop-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) rotate(0.35deg);
+}
+
+/* Phone: tapping the existing buttons reveals the cards */
+
+@media (max-width: 760px) {
+  .notebook-card,
+  .workshop-card {
+    left: 8% !important;
+    right: auto !important;
+    top: 67.5%;
+    width: 280px;
+    font-size: 12px;
+  }
+
+  .notebook-card strong,
+  .workshop-card strong {
+    font-size: 25px;
+  }
+}
