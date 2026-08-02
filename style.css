@@ -930,85 +930,89 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
     font-size: 23px;
   }
 /* =========================================================
-   THE DESK — RELIABLE HOVER / TAP CARDS
+   THE DESK — STORY CARDS
+   Uses the original notebook and workshop-note hotspots.
    ========================================================= */
 
-/* Existing Desk-object locations */
+.desk-story-card {
+  position: absolute;
+  width: 330px;
+  padding: 20px 22px;
 
+  background: #f3ecdf;
+  border: 1px solid rgba(64, 47, 27, 0.25);
+  box-shadow: 0 14px 32px rgba(32, 23, 13, 0.24);
 
-/* Invisible interaction surface */
+  color: #17130e;
+  font-family: Nitti, Georgia, serif;
+  font-size: 13px;
+  line-height: 1.48;
+  text-align: left;
 
-/* Hide the button wording without removing accessibility */
-.hotspot.notebook > span,
-.hotspot.workshop-note > span {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-}
-
-/* Cards */
-
-.notebook-card,
-.workshop-card {
-  position: absolute !important;
-  top: -20% !important;
-  width: 330px !important;
-  padding: 20px 22px !important;
-
-  background: #f3ecdf !important;
-  border: 1px solid rgba(64, 47, 27, 0.25) !important;
-  box-shadow: 0 14px 32px rgba(32, 23, 13, 0.24) !important;
-
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
 
   transition:
     opacity 180ms ease,
     visibility 180ms ease,
-    transform 180ms ease !important;
+    transform 180ms ease;
 
-  z-index: 200 !important;
+  z-index: 220;
 }
 
 .notebook-card {
-  left: 78% !important;
-  transform: translateY(8px) rotate(-0.3deg) !important;
+  left: 51%;
+  top: 67%;
+  transform: translateY(8px) rotate(-0.3deg);
 }
 
 .workshop-card {
-  right: 78% !important;
-  transform: translateY(8px) rotate(0.35deg) !important;
+  right: 8%;
+  top: 67%;
+  transform: translateY(8px) rotate(0.35deg);
 }
 
-/* Reveal on hover, keyboard focus, or phone tap */
-
-.notebook-egg:hover .notebook-card,
-.notebook-egg:focus-within .notebook-card {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) rotate(-0.3deg) !important;
+.desk-story-card strong {
+  display: block;
+  margin-bottom: 12px;
+  font-family: Quinn, Georgia, serif;
+  font-size: 29px;
+  font-weight: 900;
+  line-height: 1;
 }
 
-.workshop-egg:hover .workshop-card,
-.workshop-egg:focus-within .workshop-card {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) rotate(0.35deg) !important;
+.desk-story-card p {
+  margin: 0 0 13px;
+}
+
+.desk-story-card p:last-child {
+  margin-bottom: 0;
+}
+
+.desk-story-card.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.notebook-card.is-visible {
+  transform: translateY(0) rotate(-0.3deg);
+}
+
+.workshop-card.is-visible {
+  transform: translateY(0) rotate(0.35deg);
 }
 
 @media (max-width: 760px) {
-  .notebook-card,
-  .workshop-card {
-    position: fixed !important;
+  .desk-story-card {
+    position: fixed;
     left: 7% !important;
     right: auto !important;
     top: 18% !important;
-    width: 78vw !important;
-    max-height: 65vh !important;
-    overflow-y: auto !important;
+    width: 78vw;
+    max-height: 65vh;
+    overflow-y: auto;
   }
 }
