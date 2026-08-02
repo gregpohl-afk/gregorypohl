@@ -930,103 +930,119 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
     font-size: 23px;
   }
 /* =========================================================
-   THE DESK — NOW WHAT? + PROJECTS IN MOTION
-   Existing hotspot positions remain untouched.
+   THE DESK — RELIABLE HOVER / TAP CARDS
    ========================================================= */
+
+.desk-easter-egg {
+  position: absolute !important;
+  z-index: 160 !important;
+  pointer-events: auto !important;
+}
+
+/* Existing Desk-object locations */
+
+.notebook-egg {
+  left: 42.8% !important;
+  top: 72.2% !important;
+  width: 18.5% !important;
+  height: 13.8% !important;
+}
+
+.workshop-egg {
+  left: 63.2% !important;
+  top: 72.5% !important;
+  width: 18.2% !important;
+  height: 12.5% !important;
+}
+
+/* Invisible interaction surface */
+
+.desk-easter-egg > button {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+
+  display: block !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+/* Hide the button wording without removing accessibility */
+
+.desk-easter-egg > button > span {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+}
+
+/* Cards */
 
 .notebook-card,
 .workshop-card {
-  position: absolute;
-  width: 330px;
-  padding: 20px 22px;
+  position: absolute !important;
+  top: -20% !important;
+  width: 330px !important;
+  padding: 20px 22px !important;
 
-  background: #f3ecdf;
-  border: 1px solid rgba(64, 47, 27, 0.25);
-  box-shadow: 0 14px 32px rgba(32, 23, 13, 0.24);
+  background: #f3ecdf !important;
+  border: 1px solid rgba(64, 47, 27, 0.25) !important;
+  box-shadow: 0 14px 32px rgba(32, 23, 13, 0.24) !important;
 
-  color: #17130e;
-  font-family: Nitti, Georgia, serif;
-  font-size: 13px;
-  line-height: 1.48;
-  text-align: left;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-
-  transform: translateY(8px) rotate(-0.3deg);
   transition:
     opacity 180ms ease,
     visibility 180ms ease,
-    transform 180ms ease;
+    transform 180ms ease !important;
 
-  z-index: 170;
+  z-index: 200 !important;
 }
 
 .notebook-card {
-  left: 42%;
-  top: 68.5%;
+  left: 78% !important;
+  transform: translateY(8px) rotate(-0.3deg) !important;
 }
 
 .workshop-card {
-  right: 8%;
-  top: 68.5%;
-  transform: translateY(8px) rotate(0.35deg);
+  right: 78% !important;
+  transform: translateY(8px) rotate(0.35deg) !important;
 }
 
-.notebook-card strong,
-.workshop-card strong {
-  display: block;
-  margin-bottom: 12px;
+/* Reveal on hover, keyboard focus, or phone tap */
 
-  font-family: Quinn, Georgia, serif;
-  font-size: 29px;
-  font-weight: 900;
-  line-height: 1;
+.notebook-egg:hover .notebook-card,
+.notebook-egg:focus-within .notebook-card {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) rotate(-0.3deg) !important;
 }
 
-.notebook-card p,
-.workshop-card p {
-  margin: 0 0 13px;
+.workshop-egg:hover .workshop-card,
+.workshop-egg:focus-within .workshop-card {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) rotate(0.35deg) !important;
 }
-
-.notebook-card p:last-child,
-.workshop-card p:last-child {
-  margin-bottom: 0;
-}
-
-/* Desktop hover and keyboard focus */
-
-.notebook:hover + .notebook-card,
-.notebook:focus + .notebook-card,
-.notebook:focus-visible + .notebook-card {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) rotate(-0.3deg);
-}
-
-.workshop-note:hover + .workshop-card,
-.workshop-note:focus + .workshop-card,
-.workshop-note:focus-visible + .workshop-card {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) rotate(0.35deg);
-}
-
-/* Phone: tapping the existing buttons reveals the cards */
 
 @media (max-width: 760px) {
   .notebook-card,
   .workshop-card {
-    left: 8% !important;
+    position: fixed !important;
+    left: 7% !important;
     right: auto !important;
-    top: 67.5%;
-    width: 280px;
-    font-size: 12px;
-  }
-
-  .notebook-card strong,
-  .workshop-card strong {
-    font-size: 25px;
+    top: 18% !important;
+    width: 78vw !important;
+    max-height: 65vh !important;
+    overflow-y: auto !important;
   }
 }
