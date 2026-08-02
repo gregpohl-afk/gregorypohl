@@ -930,4 +930,9 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
     font-size: 23px;
   }
 }
-src="assets/images/somebodys-unicorn-cover.jpg"
+/* TEMPORARY UNICORN DEBUG */
+.unicorn-egg {
+  background: rgba(255, 0, 0, 0.25) !important;
+  outline: 4px solid red !important;
+  z-index: 9999 !important;
+}
