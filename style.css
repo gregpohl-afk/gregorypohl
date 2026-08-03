@@ -103,26 +103,34 @@ body.artifact-open{overflow:hidden}
 .artifact-cta:hover,.artifact-cta:focus-visible{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--red)}
 
 /* Now What: a ruled spiral-notebook page. */
-.notebook-reveal{width:min(820px,calc(100vw - 48px));max-height:calc(100vh - 48px);overflow:auto;padding:56px 62px 42px 86px;background-color:#f2ead4;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(87,132,168,.25) 32px,transparent 33px);transform:rotate(-.35deg);border:1px solid rgba(74,56,35,.3)}
+.notebook-reveal{width:min(820px,calc(100vw - 48px));max-height:calc(100vh - 48px);overflow:auto;padding:62px 62px 42px 86px;background-color:#eee4ce;background-image:linear-gradient(90deg,rgba(255,255,255,.18),transparent 22%,rgba(89,64,36,.025)),repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(87,132,168,.25) 32px,transparent 33px);transform:rotate(-.55deg);border:1px solid rgba(74,56,35,.3);box-shadow:8px 11px 0 #d5c8aa,14px 18px 45px rgba(0,0,0,.36)}
 .notebook-reveal::before{content:"";position:absolute;left:56px;top:0;bottom:0;width:2px;background:rgba(182,48,42,.34)}
 .notebook-wire{position:absolute;left:-11px;top:20px;bottom:20px;width:28px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 17px,#27231e 18px,#27231e 23px,transparent 24px,transparent 34px);filter:drop-shadow(2px 2px 1px rgba(0,0,0,.2))}
-.pencil-kicker{margin:0;color:#b42c25;font:700 18px/1 Nitti,Arial,sans-serif;transform:rotate(-1deg)}
-.pencil-aside{margin:3px 0 24px;font:700 15px/1.25 Nitti,Arial,sans-serif;color:#5b5248}
+.notebook-tape{position:absolute;right:72px;top:-10px;width:105px;height:31px;background:rgba(204,179,128,.58);transform:rotate(2.5deg)}
+.coffee-ring{position:absolute;right:44px;top:118px;width:116px;height:116px;border:6px solid rgba(118,76,36,.13);border-radius:50%;transform:scaleY(.82) rotate(-13deg);pointer-events:none}
+.pencil-kicker{display:inline-block;margin:0;color:#b42c25;font:700 21px/1 Nitti,Arial,sans-serif;transform:rotate(-1.5deg);border-bottom:2px solid rgba(180,44,37,.55)}
+.pencil-aside{margin:5px 0 25px 13px;font:700 14px/1.25 Nitti,Arial,sans-serif;color:#5b5248;transform:rotate(-.8deg)}
+.pencil-aside span{display:inline-block;margin-right:4px;color:var(--red);font-size:20px}
 .book-boast{max-width:650px;margin:0 0 19px;font:700 17px/1.45 Nitti,Arial,sans-serif}
 .notebook-reveal h2{max-width:700px;margin:0 0 20px;font:900 clamp(36px,5vw,61px)/.98 Quinn,Georgia,serif}
 .notebook-reveal>p:not([class]){max-width:680px;margin:0 0 15px;font-size:16px;line-height:1.5}
-.book-command{margin:18px 0 4px;font-weight:700}
+.book-command{margin:18px 0 8px;font-weight:700}
+.book-receipt{display:inline-flex;flex-direction:column;min-width:265px;margin:12px 0 0;padding:17px 19px 14px;background:#f8f3e8;color:#17130e;border:1px dashed #8c7b65;box-shadow:4px 5px 12px rgba(0,0,0,.16);text-decoration:none;transform:rotate(1.1deg);font-family:Nitti,Arial,sans-serif}
+.book-receipt small{font:800 9px/1 NittiCond,Arial,sans-serif;letter-spacing:.16em}.book-receipt strong{margin:7px 0 10px;font:900 24px/1 Quinn,Georgia,serif}.book-receipt span{color:var(--red);font:800 12px/1 NittiCond,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.book-receipt:hover,.book-receipt:focus-visible{transform:rotate(.2deg) translateY(-2px);box-shadow:6px 8px 15px rgba(0,0,0,.2)}
 .doodle-disclaimer{margin:26px 0 0;color:#5b5147;font:700 12px/1.3 Nitti,Arial,sans-serif;transform:rotate(-.8deg)}
 .doodle-disclaimer span{display:inline-block;margin-right:5px;font-size:22px;transform:rotate(-18deg)}
 
-/* Workshop: four independent cards fanned across the desk. */
-.workshop-reveal{width:min(1060px,calc(100vw - 48px));height:min(720px,calc(100vh - 48px));min-height:600px;background:#d6c6aa url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");overflow:hidden;border:8px solid #b09a76}
-.workshop-heading{position:absolute;left:42px;top:32px}.workshop-heading p{margin:0;color:var(--red);font:800 12px/1 NittiCond,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}.workshop-heading h2{margin:5px 0 0;font:900 50px/1 Quinn,Georgia,serif}
-.concept-card{position:absolute;width:43%;min-height:205px;padding:25px 27px 22px;background:#f1eadc;border:1px solid rgba(73,57,37,.28);box-shadow:0 12px 25px rgba(38,28,17,.2);line-height:1.4}
+/* Workshop: loose pieces on the desk, never a web-card grid. */
+.workshop-reveal{width:min(1100px,calc(100vw - 40px));height:min(760px,calc(100vh - 34px));min-height:640px;background:transparent;overflow:visible;box-shadow:none}
+.workshop-heading{position:absolute;left:18px;top:8px;padding:17px 24px 14px;background:#eee3cf;box-shadow:0 9px 20px rgba(0,0,0,.2);transform:rotate(-1.4deg);z-index:9}.workshop-heading::after{content:"";position:absolute;left:38px;right:38px;top:-9px;height:20px;background:rgba(206,184,139,.62);transform:rotate(1deg)}.workshop-heading p{margin:0;color:var(--red);font:800 11px/1 NittiCond,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}.workshop-heading h2{margin:5px 0 0;font:900 38px/1 Quinn,Georgia,serif}
+.concept-card{position:absolute;width:39%;min-height:205px;padding:25px 27px 22px;background:#f1eadc;border:1px solid rgba(73,57,37,.28);box-shadow:0 13px 28px rgba(20,14,8,.3);line-height:1.4}
 .concept-card::before{content:"";position:absolute;left:0;right:0;top:44px;height:1px;background:rgba(82,125,163,.22);box-shadow:0 28px rgba(82,125,163,.16),0 56px rgba(82,125,163,.16),0 84px rgba(82,125,163,.16),0 112px rgba(82,125,163,.16)}
 .concept-card>*{position:relative;z-index:1}.concept-card span{position:absolute;right:18px;top:14px;color:#a78c62;font:800 12px NittiCond,Arial,sans-serif}.concept-card h3{margin:0 0 14px;font:900 29px/1.02 Quinn,Georgia,serif}.concept-card p{margin:0;font-size:14px;line-height:1.45}
-.concept-one{left:7%;top:22%;transform:rotate(-2.2deg)}.concept-two{right:6%;top:18%;transform:rotate(1.5deg)}.concept-three{left:8%;bottom:8%;transform:rotate(1.2deg)}.concept-four{right:7%;bottom:7%;transform:rotate(-1.4deg)}
-.workshop-scribble{position:absolute;left:50%;top:49%;width:290px;margin:0;padding:10px 14px;background:#f4df77;box-shadow:0 6px 13px rgba(0,0,0,.18);font:700 13px/1.3 Nitti,Arial,sans-serif;transform:translate(-50%,-50%) rotate(-3deg);z-index:8}
+.concept-one{left:4%;top:25%;transform:rotate(-2.5deg)}.concept-two{left:31%;top:18%;transform:rotate(1.7deg)}.concept-three{left:9%;bottom:4%;transform:rotate(1.4deg)}.concept-four{right:5%;bottom:7%;transform:rotate(-1.6deg)}
+.my-house-card{width:35%;min-height:300px;background:#10110f;color:#f2efe5;border-color:#2f302b;padding:24px 27px}.my-house-card::before{display:none}.my-house-card>span{color:#928f75}.my-house-card .my-house-label{margin:0 0 18px;color:#b9b58c;font:700 8px/1 NittiCond,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}.my-house-card h3{margin:0 0 20px;color:#f4f1e8;font:900 47px/.76 NittiCond,Arial,sans-serif;letter-spacing:-.04em}.my-house-card>p:not([class]){margin:0 0 16px;color:#d8d4c8;font-size:13px}.my-house-card .my-house-line{margin:0 0 18px;padding-left:11px;border-left:2px solid #d6c241;color:#fff;font:700 13px/1.35 Nitti,Arial,sans-serif}.my-house-card a{color:#d6c241;font:800 10px/1 NittiCond,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+.advisory-card{position:absolute;right:2%;top:11%;width:245px;padding:20px 21px 17px;background:#e7d6b2;color:#17130e;border:1px solid rgba(72,52,28,.35);box-shadow:0 10px 22px rgba(0,0,0,.25);transform:rotate(3deg);z-index:5}.advisory-card::before{content:"";position:absolute;left:50%;top:-12px;width:75px;height:25px;background:rgba(198,177,134,.66);transform:translateX(-50%) rotate(-2deg)}.advisory-card p{margin:0 0 11px;color:var(--red);font:800 9px/1 NittiCond,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}.advisory-card strong{display:block;margin:0 0 15px;font:700 14px/1.55 Nitti,Arial,sans-serif}.advisory-card a{color:#17130e;font:800 9px/1.25 NittiCond,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.workshop-scribble{position:absolute;left:49%;bottom:3%;width:250px;margin:0;padding:10px 14px;background:#f4df77;box-shadow:0 6px 13px rgba(0,0,0,.18);font:700 12px/1.3 Nitti,Arial,sans-serif;transform:translateX(-50%) rotate(-3deg);z-index:8}
 
 /* Feather: one compact scrap, no explanatory furniture. */
 .feather-reveal{width:min(680px,calc(100vw - 48px));padding:54px 62px 48px;background:#eee4d2;transform:rotate(-1deg);border:1px solid rgba(75,57,35,.35)}
@@ -138,8 +146,9 @@ body.artifact-open{overflow:hidden}
 @media(max-width:760px){
   .artifact-stage{width:calc(100vw - 20px);max-height:calc(100vh - 20px)}
   .notebook-reveal{width:calc(100vw - 24px);padding:48px 28px 34px 54px}.notebook-reveal::before{left:38px}.notebook-reveal h2{font-size:36px}
-  .workshop-reveal{width:calc(100vw - 24px);height:calc(100vh - 24px);min-height:0;overflow:auto;padding:90px 18px 40px}.workshop-heading{left:26px;top:24px}.workshop-heading h2{font-size:38px}
+  .workshop-reveal{width:calc(100vw - 24px);height:calc(100vh - 24px);min-height:0;overflow:auto;padding:110px 18px 40px;background:#cbb997;box-shadow:0 20px 60px rgba(0,0,0,.4)}.workshop-heading{left:26px;top:24px}.workshop-heading h2{font-size:34px}
   .concept-card{position:relative;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:100%;min-height:0;margin:0 0 18px;transform:none!important}.workshop-scribble{position:relative;left:auto;top:auto;width:100%;transform:rotate(-1deg);margin:6px 0 0}
+  .my-house-card{min-height:300px}.advisory-card{position:relative;left:auto;right:auto;top:auto;width:100%;margin:0 0 20px;transform:rotate(1deg)}
   .feather-reveal,.boredroom-reveal{width:calc(100vw - 28px);padding:48px 28px 38px}.feather-question{font-size:38px}.boredroom-reveal h2{font-size:36px}
 }
 
@@ -166,8 +175,8 @@ body.artifact-open{overflow:hidden}
 .portrait-egg .hero-story-card{left:-94%;top:49%;width:355px}
 
 /* Correct the two footer targets to the printed artwork. */
-.say-hello{left:10.25%;top:95.15%;width:17.2%;height:2.25%}
-.linkedin{left:29.45%;top:95.2%;width:10%;height:2.25%}
+.say-hello{left:10.25%;top:95.38%;width:17.2%;height:2.1%}
+.linkedin{left:29.45%;top:95.42%;width:10%;height:2.1%}
 
 /* Mobile Work flow: summary first, paper second. */
 .work-reveal{width:min(620px,calc(100vw - 32px));padding:50px 54px 44px;background:#f1eadf;border:1px solid rgba(67,49,28,.32);transform:rotate(-.25deg)}
@@ -180,11 +189,8 @@ body.artifact-open{overflow:hidden}
   .observe-egg .ruler-card,.question-egg .ruler-card,.patterns-egg .ruler-card,.portrait-egg .hero-story-card{position:fixed;left:7%!important;right:auto!important;top:18%!important;width:78vw}
   .work-reveal{width:calc(100vw - 24px);padding:46px 27px 35px}.work-reveal h2{font-size:39px}
 }
+
 /* Touch devices use the click summary only. */
-@media (hover: none), (pointer: coarse) {
-  .work-story-card,
-  .tile::before,
-  .tile::after {
-    display: none !important;
-  }
+@media (hover:none),(pointer:coarse){
+  .work-story-card,.tile::before,.tile::after{display:none!important}
 }
