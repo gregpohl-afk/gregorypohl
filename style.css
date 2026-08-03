@@ -53,7 +53,7 @@ body{margin:0;background:var(--paper);color:var(--ink)}
 
 /* Dialog-only hotspots. */
 .notebook{left:51.2%;top:72.7%;width:17.4%;height:14.2%}.workshop-note{left:69.1%;top:73.2%;width:16.2%;height:13%}
-.feather{left:45.8%;top:95.4%;width:16%;height:3.2%}.door{left:62.2%;top:84.5%;width:16.5%;height:11.6%}
+.feather{left:45.8%;top:95.4%;width:16%;height:3.2%}.door{left:50.2%;top:84.5%;width:28.5%;height:11.6%}
 .say-hello{left:1.2%;top:95.2%;width:19%;height:3.2%}.linkedin{left:29.5%;top:95.4%;width:10%;height:2.8%}
 .notebook::after,.workshop-note::after,.feather::after,.door::after{content:attr(data-label);position:absolute;left:50%;bottom:calc(100% + 8px);width:max-content;max-width:260px;padding:9px 12px;background:#171612;color:#f4eee4;font:800 12px/1.2 NittiCond,Arial,sans-serif;letter-spacing:.05em;text-transform:uppercase;opacity:0;pointer-events:none;transform:translate(-50%,5px);transition:opacity .18s ease,transform .18s ease;box-shadow:0 8px 24px rgba(0,0,0,.22)}
 .notebook:hover::after,.notebook:focus-visible::after,.workshop-note:hover::after,.workshop-note:focus-visible::after,.feather:hover::after,.feather:focus-visible::after,.door:hover::after,.door:focus-visible::after{opacity:1;transform:translate(-50%,0)}
