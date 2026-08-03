@@ -166,8 +166,8 @@ body.artifact-open{overflow:hidden}
 .portrait-egg .hero-story-card{left:-94%;top:49%;width:355px}
 
 /* Correct the two footer targets to the printed artwork. */
-.say-hello{left:10.35%;top:94.55%;width:16.8%;height:2.35%}
-.linkedin{left:29.2%;top:91.8%;width:9%;height:5.8%}
+.say-hello{left:10.25%;top:95.15%;width:17.2%;height:2.25%}
+.linkedin{left:29.45%;top:95.2%;width:10%;height:2.25%}
 
 /* Mobile Work flow: summary first, paper second. */
 .work-reveal{width:min(620px,calc(100vw - 32px));padding:50px 54px 44px;background:#f1eadf;border:1px solid rgba(67,49,28,.32);transform:rotate(-.25deg)}
