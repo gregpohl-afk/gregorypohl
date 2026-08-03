@@ -112,41 +112,91 @@
     artifactStage.querySelector('.artifact-close')?.focus();
   };
 
-  const mobileWorkQuery = window.matchMedia('(max-width: 900px), (pointer: coarse)');
+  const workLinks = [...document.querySelectorAll('.tile')];
 
-  document.querySelectorAll('.tile').forEach((link, index) => {
+  const getWorkItem = (link, index) => {
+    const card = document.querySelector(`.work-${index + 1}-card`);
+    if (!card) return null;
+
+    return {
+      eyebrow: card.querySelector('.work-eyebrow')?.textContent.trim() || 'PERSPECTIVE',
+      title: card.querySelector('strong')?.textContent.trim() || link.dataset.label,
+      deck: card.querySelector('em')?.textContent.trim() || '',
+      summary: card.querySelector('p')?.textContent.trim() || '',
+      href: link.href,
+      featured: link.dataset.featured === 'true'
+    };
+  };
+
+  const showWorkItem = (link, index) => {
+    const item = getWorkItem(link, index);
+    if (!item) {
+      window.open(link.href, '_blank', 'noopener');
+      return;
+    }
+
+    artifactStage.innerHTML = `
+      <article class="desk-reveal work-reveal${item.featured ? ' featured-work-reveal' : ''}">
+        <button class="artifact-close" type="button" aria-label="Close">×</button>
+        <p class="work-reveal-kicker">${item.featured ? 'Featured Perspective · ' : ''}${item.eyebrow}</p>
+        <h2 id="artifactTitle">${item.title}</h2>
+        ${item.deck ? `<p class="work-reveal-deck">${item.deck}</p>` : ''}
+        <p>${item.summary}</p>
+        <a class="artifact-cta" href="${item.href}" target="_blank" rel="noopener noreferrer">Read on →</a>
+      </article>`;
+    artifactLayer.dataset.artifact = 'work';
+    artifactLayer.classList.add('is-visible');
+    artifactLayer.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('artifact-open');
+    returnFocus = link;
+    artifactStage.querySelector('.artifact-close')?.focus();
+  };
+
+  workLinks.forEach((link, index) => {
     link.addEventListener('click', event => {
-      if (!mobileWorkQuery.matches) return;
       event.preventDefault();
+      showWorkItem(link, index);
+    });
+  });
 
-      const card = document.querySelector(`.work-${index + 1}-card`);
-      if (!card) {
-        window.open(link.href, '_blank', 'noopener');
-        return;
-      }
-
-      const eyebrowText = card.querySelector('.work-eyebrow')?.textContent.trim() || 'WORK';
-      const titleText = card.querySelector('strong')?.textContent.trim() || link.dataset.label;
-      const deckText = card.querySelector('em')?.textContent.trim() || '';
-      const summaryText = card.querySelector('p')?.textContent.trim() || '';
+  const perspectivesIndex = document.querySelector('.perspectives-index');
+  if (perspectivesIndex) {
+    perspectivesIndex.addEventListener('click', () => {
+      const items = workLinks.map(getWorkItem).filter(Boolean);
+      const featured = items.find(item => item.featured) || items[0];
+      const archive = items.filter(item => item !== featured);
 
       artifactStage.innerHTML = `
-        <article class="desk-reveal work-reveal">
+        <section class="desk-reveal perspectives-reveal">
           <button class="artifact-close" type="button" aria-label="Close">×</button>
-          <p class="work-reveal-kicker">${eyebrowText}</p>
-          <h2 id="artifactTitle">${titleText}</h2>
-          ${deckText ? `<p class="work-reveal-deck">${deckText}</p>` : ''}
-          <p>${summaryText}</p>
-          <a class="artifact-cta" href="${link.href}" target="_blank" rel="noopener noreferrer">Read on →</a>
-        </article>`;
-      artifactLayer.dataset.artifact = 'work';
+          <header class="perspectives-heading">
+            <p>Perspectives</p>
+            <h2 id="artifactTitle">Six ways of looking at what everyone else has agreed to call obvious.</h2>
+          </header>
+          <article class="perspectives-feature">
+            <p class="work-reveal-kicker">Start here · ${featured.eyebrow}</p>
+            <h3>${featured.title}</h3>
+            <p class="perspectives-deck">${featured.deck}</p>
+            <p>${featured.summary}</p>
+            <a class="artifact-cta" href="${featured.href}" target="_blank" rel="noopener noreferrer">Read the Perspective →</a>
+          </article>
+          <div class="perspectives-archive" aria-label="More Perspectives">
+            ${archive.map(item => `
+              <a href="${item.href}" target="_blank" rel="noopener noreferrer">
+                <span>${item.eyebrow}</span>
+                <strong>${item.title}</strong>
+                <em>${item.deck}</em>
+              </a>`).join('')}
+          </div>
+        </section>`;
+      artifactLayer.dataset.artifact = 'perspectives';
       artifactLayer.classList.add('is-visible');
       artifactLayer.setAttribute('aria-hidden', 'false');
       document.body.classList.add('artifact-open');
-      returnFocus = link;
+      returnFocus = perspectivesIndex;
       artifactStage.querySelector('.artifact-close')?.focus();
     });
-  });
+  }
 
   const bindArtifact = (selector, name) => {
     const trigger = document.querySelector(selector);
