@@ -103,6 +103,42 @@
     artifactStage.querySelector('.artifact-close')?.focus();
   };
 
+  const mobileWorkQuery = window.matchMedia('(max-width: 900px), (pointer: coarse)');
+
+  document.querySelectorAll('.tile').forEach((link, index) => {
+    link.addEventListener('click', event => {
+      if (!mobileWorkQuery.matches) return;
+      event.preventDefault();
+
+      const card = document.querySelector(`.work-${index + 1}-card`);
+      if (!card) {
+        window.open(link.href, '_blank', 'noopener');
+        return;
+      }
+
+      const eyebrowText = card.querySelector('.work-eyebrow')?.textContent.trim() || 'WORK';
+      const titleText = card.querySelector('strong')?.textContent.trim() || link.dataset.label;
+      const deckText = card.querySelector('em')?.textContent.trim() || '';
+      const summaryText = card.querySelector('p')?.textContent.trim() || '';
+
+      artifactStage.innerHTML = `
+        <article class="desk-reveal work-reveal">
+          <button class="artifact-close" type="button" aria-label="Close">×</button>
+          <p class="work-reveal-kicker">${eyebrowText}</p>
+          <h2 id="artifactTitle">${titleText}</h2>
+          ${deckText ? `<p class="work-reveal-deck">${deckText}</p>` : ''}
+          <p>${summaryText}</p>
+          <a class="artifact-cta" href="${link.href}" target="_blank" rel="noopener noreferrer">Read on →</a>
+        </article>`;
+      artifactLayer.dataset.artifact = 'work';
+      artifactLayer.classList.add('is-visible');
+      artifactLayer.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('artifact-open');
+      returnFocus = link;
+      artifactStage.querySelector('.artifact-close')?.focus();
+    });
+  });
+
   const bindArtifact = (selector, name) => {
     const trigger = document.querySelector(selector);
     if (trigger) trigger.addEventListener('click', () => openArtifact(name, trigger));
