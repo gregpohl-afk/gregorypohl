@@ -87,3 +87,60 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
   .hero-story-card,.liir-card,.red-dot-card,.negroni-card,.dino-card,.pigeon-egg .hero-story-card,.portrait-egg .hero-story-card,.ruler-card{position:fixed;left:7%!important;right:auto!important;top:18%!important;bottom:auto!important;width:78vw;max-height:65vh;overflow-y:auto}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.work-story-card,.artifact-story,.hero-story-card,.hotspot::after{transition:none}}
+
+/* =========================================================
+   THE DESK / FEATHER / BOREDROOM — PHYSICAL REVEALS
+   ========================================================= */
+body.artifact-open{overflow:hidden}
+.artifact-layer{position:fixed;inset:0;display:grid;place-items:center;z-index:1000;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility .2s ease}
+.artifact-layer.is-visible{opacity:1;visibility:visible;pointer-events:auto}
+.artifact-backdrop{position:absolute;inset:0;background:rgba(22,17,11,.64);backdrop-filter:blur(3px)}
+.artifact-stage{position:relative;width:min(1120px,calc(100vw - 40px));max-height:calc(100vh - 40px);display:grid;place-items:center;z-index:1}
+.desk-reveal{position:relative;color:#17130e;font-family:Nitti,Arial,sans-serif;line-height:1.45;box-shadow:0 26px 80px rgba(0,0,0,.38)}
+.artifact-close{position:absolute;right:16px;top:12px;width:42px;height:42px;margin:0;padding:0;border:0;border-radius:50%;background:rgba(243,238,229,.88);color:#17130e;font:300 34px/1 Nitti,Arial,sans-serif;cursor:pointer;z-index:20}
+.artifact-close:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.artifact-cta{display:inline-block;margin-top:10px;padding:12px 17px;background:#17130e;color:#f6efe3;text-decoration:none;font:800 13px/1 NittiCond,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;box-shadow:4px 4px 0 var(--red);transition:transform .15s ease,box-shadow .15s ease}
+.artifact-cta:hover,.artifact-cta:focus-visible{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--red)}
+
+/* Now What: a ruled spiral-notebook page. */
+.notebook-reveal{width:min(820px,calc(100vw - 48px));max-height:calc(100vh - 48px);overflow:auto;padding:56px 62px 42px 86px;background-color:#f2ead4;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(87,132,168,.25) 32px,transparent 33px);transform:rotate(-.35deg);border:1px solid rgba(74,56,35,.3)}
+.notebook-reveal::before{content:"";position:absolute;left:56px;top:0;bottom:0;width:2px;background:rgba(182,48,42,.34)}
+.notebook-wire{position:absolute;left:-11px;top:20px;bottom:20px;width:28px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 17px,#27231e 18px,#27231e 23px,transparent 24px,transparent 34px);filter:drop-shadow(2px 2px 1px rgba(0,0,0,.2))}
+.pencil-kicker{margin:0;color:#b42c25;font:700 18px/1 Nitti,Arial,sans-serif;transform:rotate(-1deg)}
+.pencil-aside{margin:3px 0 24px;font:700 15px/1.25 Nitti,Arial,sans-serif;color:#5b5248}
+.book-boast{max-width:650px;margin:0 0 19px;font:700 17px/1.45 Nitti,Arial,sans-serif}
+.notebook-reveal h2{max-width:700px;margin:0 0 20px;font:900 clamp(36px,5vw,61px)/.98 Quinn,Georgia,serif}
+.notebook-reveal>p:not([class]){max-width:680px;margin:0 0 15px;font-size:16px;line-height:1.5}
+.book-command{margin:18px 0 4px;font-weight:700}
+.doodle-disclaimer{margin:26px 0 0;color:#5b5147;font:700 12px/1.3 Nitti,Arial,sans-serif;transform:rotate(-.8deg)}
+.doodle-disclaimer span{display:inline-block;margin-right:5px;font-size:22px;transform:rotate(-18deg)}
+
+/* Workshop: four independent cards fanned across the desk. */
+.workshop-reveal{width:min(1060px,calc(100vw - 48px));height:min(720px,calc(100vh - 48px));min-height:600px;background:#d6c6aa url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");overflow:hidden;border:8px solid #b09a76}
+.workshop-heading{position:absolute;left:42px;top:32px}.workshop-heading p{margin:0;color:var(--red);font:800 12px/1 NittiCond,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}.workshop-heading h2{margin:5px 0 0;font:900 50px/1 Quinn,Georgia,serif}
+.concept-card{position:absolute;width:43%;min-height:205px;padding:25px 27px 22px;background:#f1eadc;border:1px solid rgba(73,57,37,.28);box-shadow:0 12px 25px rgba(38,28,17,.2);line-height:1.4}
+.concept-card::before{content:"";position:absolute;left:0;right:0;top:44px;height:1px;background:rgba(82,125,163,.22);box-shadow:0 28px rgba(82,125,163,.16),0 56px rgba(82,125,163,.16),0 84px rgba(82,125,163,.16),0 112px rgba(82,125,163,.16)}
+.concept-card>*{position:relative;z-index:1}.concept-card span{position:absolute;right:18px;top:14px;color:#a78c62;font:800 12px NittiCond,Arial,sans-serif}.concept-card h3{margin:0 0 14px;font:900 29px/1.02 Quinn,Georgia,serif}.concept-card p{margin:0;font-size:14px;line-height:1.45}
+.concept-one{left:7%;top:22%;transform:rotate(-2.2deg)}.concept-two{right:6%;top:18%;transform:rotate(1.5deg)}.concept-three{left:8%;bottom:8%;transform:rotate(1.2deg)}.concept-four{right:7%;bottom:7%;transform:rotate(-1.4deg)}
+.workshop-scribble{position:absolute;left:50%;top:49%;width:290px;margin:0;padding:10px 14px;background:#f4df77;box-shadow:0 6px 13px rgba(0,0,0,.18);font:700 13px/1.3 Nitti,Arial,sans-serif;transform:translate(-50%,-50%) rotate(-3deg);z-index:8}
+
+/* Feather: one compact scrap, no explanatory furniture. */
+.feather-reveal{width:min(680px,calc(100vw - 48px));padding:54px 62px 48px;background:#eee4d2;transform:rotate(-1deg);border:1px solid rgba(75,57,35,.35)}
+.feather-reveal::after{content:"";position:absolute;left:28px;right:28px;bottom:-12px;height:22px;background:#eee4d2;clip-path:polygon(0 0,4% 42%,9% 10%,14% 60%,20% 18%,27% 74%,33% 15%,40% 63%,47% 8%,54% 75%,61% 18%,68% 62%,75% 7%,82% 72%,89% 16%,95% 59%,100% 0)}
+.feather-question{margin:0;font:900 clamp(36px,5.2vw,64px)/1 Quinn,Georgia,serif}.feather-answer{margin:25px 0 0;color:var(--red);font:800 16px/1 NittiCond,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+
+/* Boredroom: a note attached to the door, opening to a real conversation. */
+.boredroom-reveal{width:min(590px,calc(100vw - 48px));padding:52px 58px 44px;background:#f0e9dc;border:1px solid rgba(58,44,29,.38);transform:rotate(.3deg)}
+.boredroom-reveal::before{content:"";position:absolute;top:-16px;left:50%;width:120px;height:32px;background:rgba(201,181,142,.65);transform:translateX(-50%) rotate(-2deg)}
+.boredroom-kicker{margin:0 0 11px;color:var(--red);font:800 12px/1 NittiCond,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.boredroom-reveal h2{margin:0 0 22px;font:900 clamp(34px,5vw,53px)/1 Quinn,Georgia,serif}.boredroom-reveal>p:not([class]){margin:0 0 16px;font-size:16px;line-height:1.5}.whatsapp-cta{margin-top:7px}.boredroom-status{margin:25px 0 0;color:#62584d;font:700 12px/1.3 Nitti,Arial,sans-serif;transform:rotate(-.5deg)}
+
+@media(max-width:760px){
+  .artifact-stage{width:calc(100vw - 20px);max-height:calc(100vh - 20px)}
+  .notebook-reveal{width:calc(100vw - 24px);padding:48px 28px 34px 54px}.notebook-reveal::before{left:38px}.notebook-reveal h2{font-size:36px}
+  .workshop-reveal{width:calc(100vw - 24px);height:calc(100vh - 24px);min-height:0;overflow:auto;padding:90px 18px 40px}.workshop-heading{left:26px;top:24px}.workshop-heading h2{font-size:38px}
+  .concept-card{position:relative;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:100%;min-height:0;margin:0 0 18px;transform:none!important}.workshop-scribble{position:relative;left:auto;top:auto;width:100%;transform:rotate(-1deg);margin:6px 0 0}
+  .feather-reveal,.boredroom-reveal{width:calc(100vw - 28px);padding:48px 28px 38px}.feather-question{font-size:38px}.boredroom-reveal h2{font-size:36px}
+}
+
+@media(prefers-reduced-motion:reduce){.artifact-layer,.artifact-cta{transition:none}}
