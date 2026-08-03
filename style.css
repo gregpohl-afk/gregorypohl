@@ -180,3 +180,11 @@ body.artifact-open{overflow:hidden}
   .observe-egg .ruler-card,.question-egg .ruler-card,.patterns-egg .ruler-card,.portrait-egg .hero-story-card{position:fixed;left:7%!important;right:auto!important;top:18%!important;width:78vw}
   .work-reveal{width:calc(100vw - 24px);padding:46px 27px 35px}.work-reveal h2{font-size:39px}
 }
+/* Touch devices use the click summary only. */
+@media (hover: none), (pointer: coarse) {
+  .work-story-card,
+  .tile::before,
+  .tile::after {
+    display: none !important;
+  }
+}
