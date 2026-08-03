@@ -149,27 +149,25 @@ body.artifact-open{overflow:hidden}
    HOTSPOT GEOMETRY — MATCH THE NORTH STAR ARTWORK
    ========================================================= */
 
-/* The three ruler words run vertically down the left edge. */
-.observe-egg{left:0;top:0;width:4.7%;height:16.5%}
-.question-egg{left:0;top:46.2%;width:4.7%;height:17.5%}
-.patterns-egg{left:0;top:73.5%;width:4.7%;height:17%}
+/* Exact ruler coordinates from the original North Star interaction layer. */
+.observe-egg,.question-egg,.patterns-egg{left:0;width:4.4%;z-index:105;pointer-events:auto}
+.observe-egg{top:.5%;height:14.5%}
+.question-egg{top:22.6%;height:10.2%;z-index:110}
+.patterns-egg{top:32.8%;height:11.8%}
 
-/* Their cards enter from the ruler instead of the old horizontal positions. */
-.observe-egg .ruler-card{left:105%;top:26%;width:325px}
-.question-egg .ruler-card{left:105%;top:8%;width:325px}
-.patterns-egg .ruler-card{left:105%;top:-40%;width:325px}
+/* Cards enter beside the ruler and remain inside the hero. */
+.observe-egg .ruler-card,.question-egg .ruler-card,.patterns-egg .ruler-card{left:112%;width:310px}
+.observe-egg .ruler-card{top:20%}
+.question-egg .ruler-card{top:-55%}
+.patterns-egg .ruler-card{top:-35%}
 
 /* Portrait trigger lives on Gregory—not across the headline and margins. */
 .portrait-egg{left:27.5%;top:10.5%;width:22%;height:29%}
 .portrait-egg .hero-story-card{left:-94%;top:49%;width:355px}
 
 /* Correct the two footer targets to the printed artwork. */
-.say-hello{left:10.2%;top:91.5%;width:17%;height:6%;overflow:visible}
+.say-hello{left:10.2%;top:91.5%;width:17%;height:6%}
 .linkedin{left:29.2%;top:91.8%;width:9%;height:5.8%}
-
-/* The North Star image contains the old address; this paper label is the correction. */
-.say-hello .email-correction{position:absolute;display:flex;align-items:center;justify-content:center;left:0;top:17%;width:100%;height:54%;padding:4px 9px;overflow:visible;clip:auto;white-space:nowrap;background:#f0df9d;color:#17130e;border:1px solid rgba(86,66,35,.28);box-shadow:0 4px 8px rgba(43,31,17,.16);font:700 clamp(8px,.86vw,14px)/1 Nitti,Arial,sans-serif;transform:rotate(-1.2deg);z-index:3}
-.say-hello:hover .email-correction,.say-hello:focus-visible .email-correction{transform:rotate(-1.2deg) translateY(-2px);box-shadow:0 7px 12px rgba(43,31,17,.22)}
 
 /* Mobile Work flow: summary first, paper second. */
 .work-reveal{width:min(620px,calc(100vw - 32px));padding:50px 54px 44px;background:#f1eadf;border:1px solid rgba(67,49,28,.32);transform:rotate(-.25deg)}
@@ -180,6 +178,5 @@ body.artifact-open{overflow:hidden}
 
 @media(max-width:760px){
   .observe-egg .ruler-card,.question-egg .ruler-card,.patterns-egg .ruler-card,.portrait-egg .hero-story-card{position:fixed;left:7%!important;right:auto!important;top:18%!important;width:78vw}
-  .say-hello .email-correction{font-size:9px}
   .work-reveal{width:calc(100vw - 24px);padding:46px 27px 35px}.work-reveal h2{font-size:39px}
 }
