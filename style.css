@@ -194,3 +194,46 @@ body.artifact-open{overflow:hidden}
 @media (hover:none),(pointer:coarse){
   .work-story-card,.tile::before,.tile::after{display:none!important}
 }
+
+/* =========================================================
+   FINAL EDITORIAL REVEALS
+   Restraint beats an imitation of the raster North Star artwork.
+   ========================================================= */
+.notebook-reveal{width:min(760px,calc(100vw - 40px));max-height:calc(100vh - 40px);padding:50px 54px 42px;background:#f3ecdf;background-image:none;border:1px solid rgba(67,49,28,.28);box-shadow:0 24px 70px rgba(0,0,0,.36);transform:none}
+.notebook-reveal::before,.notebook-wire,.notebook-tape,.coffee-ring{display:none}
+.notebook-reveal .pencil-kicker{display:block;margin:0 0 8px;color:var(--red);border:0;font:800 11px/1 NittiCond,Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase;transform:none}
+.notebook-reveal .pencil-aside{margin:0 0 25px;color:#5d554b;font:700 16px/1.35 Nitti,Arial,sans-serif;transform:none}
+.notebook-reveal .pencil-aside span{display:none}
+.notebook-reveal .book-boast{max-width:620px;margin:0 0 18px;font:700 16px/1.45 Nitti,Arial,sans-serif}
+.notebook-reveal h2{max-width:650px;margin:0 0 22px;font:900 clamp(42px,5vw,58px)/.98 Quinn,Georgia,serif}
+.notebook-reveal>p:not([class]){max-width:650px;margin:0 0 15px;font:300 16px/1.52 Nitti,Arial,sans-serif}
+.notebook-reveal .book-command{margin:20px 0 8px;font:700 16px/1.4 Nitti,Arial,sans-serif}
+.notebook-reveal .doodle-disclaimer{margin:25px 0 0;color:#6a6156;font:300 11px/1.35 Nitti,Arial,sans-serif;transform:none}
+.notebook-reveal .doodle-disclaimer span{display:none}
+
+.workshop-reveal{display:block;width:min(860px,calc(100vw - 40px));height:auto;min-height:0;max-height:calc(100vh - 40px);padding:51px 56px 42px;overflow:auto;background:#f3ecdf;border:1px solid rgba(67,49,28,.28);box-shadow:0 24px 70px rgba(0,0,0,.36)}
+.workshop-heading{position:static;margin:0 0 20px;padding:0;background:transparent;box-shadow:none;transform:none}
+.workshop-heading::after{display:none}
+.workshop-heading p{margin:0 0 7px;color:var(--red);font:800 11px/1 NittiCond,Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase}
+.workshop-heading h2{margin:0;font:900 clamp(42px,5vw,58px)/.98 Quinn,Georgia,serif}
+.workshop-reveal .concept-card{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:100%;min-height:0;margin:0;padding:22px 0 21px 48px;background:transparent;color:#17130e;border:0;border-top:1px solid rgba(84,68,49,.25);box-shadow:none;transform:none}
+.workshop-reveal .concept-card::before{display:none}
+.workshop-reveal .concept-card>span{position:absolute;left:0;right:auto;top:25px;color:var(--red);font:800 10px/1 NittiCond,Arial,sans-serif;letter-spacing:.08em}
+.workshop-reveal .concept-card h3,.workshop-reveal .my-house-card h3{margin:0 0 7px;color:#17130e;font:900 28px/1 Quinn,Georgia,serif;letter-spacing:0}
+.workshop-reveal .concept-card>p:not([class]){max-width:650px;margin:0;color:#29241e;font:300 14px/1.5 Nitti,Arial,sans-serif}
+.workshop-reveal .my-house-card{min-height:0;background:transparent;border-top:1px solid rgba(84,68,49,.25)}
+.workshop-reveal .my-house-label{display:none}
+.workshop-reveal .my-house-line{margin:10px 0 13px;padding:0;border:0;color:#4e473e;font:700 13px/1.4 Nitti,Arial,sans-serif}
+.workshop-reveal .my-house-card a{color:var(--red);font:800 10px/1 NittiCond,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+.workshop-reveal .advisory-card{position:relative;left:auto;right:auto;top:auto;width:100%;margin:0;padding:22px 0 0 48px;background:transparent;color:#17130e;border:0;border-top:1px solid rgba(84,68,49,.25);box-shadow:none;transform:none}
+.workshop-reveal .advisory-card::before{display:none}
+.workshop-reveal .advisory-card p{position:absolute;left:0;top:25px;margin:0;color:var(--red);font:800 10px/1 NittiCond,Arial,sans-serif;letter-spacing:.08em}
+.workshop-reveal .advisory-card strong{display:block;margin:0 0 12px;font:700 14px/1.5 Nitti,Arial,sans-serif}
+.workshop-reveal .advisory-card a{color:#17130e;font:800 10px/1.3 NittiCond,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.workshop-scribble{display:none}
+
+@media(max-width:760px){
+  .notebook-reveal,.workshop-reveal{width:calc(100vw - 24px);height:auto;max-height:calc(100vh - 24px);padding:46px 27px 35px;background:#f3ecdf}
+  .notebook-reveal h2,.workshop-heading h2{font-size:39px}
+  .workshop-reveal .concept-card,.workshop-reveal .advisory-card{padding-left:38px}
+}

@@ -39,7 +39,7 @@
         <p><em>Somebody’s Unicorn</em> is a sharp, zero-fluff field guide for cross-domain thinkers whose intelligence, speed, and capacity keep breaking the containers they’re handed.</p>
         <p>It gives you language for what you are, explains why the available categories have always felt too small, and helps you find—or build—the terrain where your speed is essential.</p>
         <p class="book-command">Stop hedging. Leave the wrong dictionary behind. Go build.</p>
-        <a class="book-receipt" href="https://www.amazon.com/dp/B0H3877HZP" target="_blank" rel="noopener noreferrer"><small>GREGORY’S BOOKS</small><strong>Somebody’s Unicorn</strong><span>Read it →</span></a>
+        <a class="artifact-cta" href="https://www.amazon.com/dp/B0H3877HZP" target="_blank" rel="noopener noreferrer">Read Somebody’s Unicorn →</a>
         <p class="doodle-disclaimer"><span aria-hidden="true">♘</span> *Greatest-known-to-mankind designation has not been independently verified.</p>
       </article>`,
     workshop: `
@@ -47,7 +47,7 @@
         <button class="artifact-close" type="button" aria-label="Close">×</button>
         <header class="workshop-heading">
           <p>The Workshop</p>
-          <h2 id="artifactTitle">Things still changing shape.</h2>
+          <h2 id="artifactTitle">Work in progress.</h2>
         </header>
         <article class="concept-card concept-one">
           <span>01</span><h3>Nothing To See Here</h3>
@@ -62,7 +62,7 @@
           <p>The ordinary gift bag as cultural artifact. A city archive disguised as wrapping paper.</p>
         </article>
         <article class="concept-card concept-four my-house-card">
-          <span>04</span><p class="my-house-label">Concept · Confidential · 2026</p><h3>MY<br>HOUSE</h3>
+          <span>04</span><p class="my-house-label">Concept · 2026</p><h3>My House</h3>
           <p>A global ranking system for football talent—built before the infrastructure exists.</p>
           <p class="my-house-line">The board is the infrastructure. Rank is the product.</p>
           <a href="assets/perspectives/my-house-july-2026.pdf" target="_blank" rel="noopener">View the concept →</a>
