@@ -67,11 +67,6 @@
   <h3>My House</h3>
   <p>A new system for seeing football talent before consensus catches up.</p>
 </article>          
-<span>04</span><p class="my-house-label">Concept · 2026</p><h3>My House</h3>
-          <p>A global ranking system for football talent—built before the infrastructure exists.</p>
-          <p class="my-house-line">The board is the infrastructure. Rank is the product.</p>
-          <a href="assets/perspectives/my-house-july-2026.pdf" target="_blank" rel="noopener">View the concept →</a>
-        </article>
         <aside class="advisory-card">
           <p>Currently in the room</p>
           <strong>Pharmaceuticals<br>Technology<br>Individual Leadership 3rd Eye</strong>
