@@ -61,15 +61,20 @@
           <span>03</span><h3>City Local</h3>
           <p>The ordinary gift bag as cultural artifact. A city archive disguised as wrapping paper.</p>
         </article>
-        <article class="concept-card concept-four my-house-card">
-          <span>04</span><p class="my-house-label">Concept · 2026</p><h3>My House</h3>
+<article class="concept-card concept-four my-house-card">
+  <span>04</span>
+  <p class="my-house-label">Concept · 2026</p>
+  <h3>My House</h3>
+  <p>A new system for seeing football talent before consensus catches up.</p>
+</article>          
+<span>04</span><p class="my-house-label">Concept · 2026</p><h3>My House</h3>
           <p>A global ranking system for football talent—built before the infrastructure exists.</p>
           <p class="my-house-line">The board is the infrastructure. Rank is the product.</p>
           <a href="assets/perspectives/my-house-july-2026.pdf" target="_blank" rel="noopener">View the concept →</a>
         </article>
         <aside class="advisory-card">
           <p>Currently in the room</p>
-          <strong>Pharmaceuticals<br>Technology<br>Fashion &amp; culture<br>Individual leadership</strong>
+          <strong>Pharmaceuticals<br>Technology<br>Individual Leadership 3rd Eye</strong>
           <a href="https://wa.me/13235724418?text=Hi%20Greg%E2%80%94I%27d%20like%20to%20learn%20more%20about%20your%20current%20advisory%20work." target="_blank" rel="noopener noreferrer">References available when useful →</a>
         </aside>
         <p class="workshop-scribble">Please don’t make me put dates on these.</p>
