@@ -28,11 +28,8 @@
     nowwhat: `
       <article class="desk-reveal notebook-reveal">
         <button class="artifact-close" type="button" aria-label="Close">×</button>
-        <div class="notebook-wire" aria-hidden="true"></div>
-        <span class="notebook-tape" aria-hidden="true"></span>
-        <span class="coffee-ring" aria-hidden="true"></span>
         <p class="pencil-kicker">Now what?</p>
-        <p class="pencil-aside"><span aria-hidden="true">↳</span> The only question you always need an answer to.</p>
+        <p class="pencil-aside">The only question you always need an answer to.</p>
         <p class="book-boast">Apparently, my answer was to write the greatest business-life field guide known to mankind.<sup>*</sup></p>
         <h2 id="artifactTitle">The org chart ran out of language before you ran out of ability.</h2>
         <p>Rigid job descriptions, padded timelines, and the corporate theater of belonging can make extraordinary range look like a failure to focus.</p>
@@ -40,7 +37,7 @@
         <p>It gives you language for what you are, explains why the available categories have always felt too small, and helps you find—or build—the terrain where your speed is essential.</p>
         <p class="book-command">Stop hedging. Leave the wrong dictionary behind. Go build.</p>
         <a class="artifact-cta" href="https://www.amazon.com/dp/B0H3877HZP" target="_blank" rel="noopener noreferrer">Read Somebody’s Unicorn →</a>
-        <p class="doodle-disclaimer"><span aria-hidden="true">♘</span> *Greatest-known-to-mankind designation has not been independently verified.</p>
+        <p class="doodle-disclaimer">*Greatest-known-to-mankind designation has not been independently verified.</p>
       </article>`,
     workshop: `
       <section class="desk-reveal workshop-reveal">
@@ -74,12 +71,6 @@
         </aside>
         <p class="workshop-scribble">Please don’t make me put dates on these.</p>
       </section>`,
-    feather: `
-      <article class="desk-reveal feather-reveal">
-        <button class="artifact-close" type="button" aria-label="Close">×</button>
-        <p class="feather-question" id="artifactTitle">If your company had to be run out of a garage, who is in that garage with you?</p>
-        <p class="feather-answer">That’s your company.</p>
-      </article>`,
     boredroom: `
       <article class="desk-reveal boredroom-reveal">
         <button class="artifact-close" type="button" aria-label="Close">×</button>
@@ -89,7 +80,7 @@
         <p>Less “How may I help?”<br>More “Tell me what’s actually going on.”</p>
         <p>Sometimes I’ll answer immediately. Sometimes after school pickup. Sometimes after staring out a window pretending to work.</p>
         <p>Either way—I’ll answer.</p>
-        <a class="artifact-cta whatsapp-cta" href="https://wa.me/13235724418?text=Hi%20Greg%E2%80%94I%20knocked.%20Here%E2%80%99s%20what%E2%80%99s%20actually%20going%20on%3A" target="_blank" rel="noopener noreferrer">Come in →</a>
+        <a class="artifact-cta boredroom-cta" href="mailto:greg@gregorypohl.com?subject=I%20knocked&body=Here%27s%20what%27s%20actually%20going%20on%3A%0D%0A%0D%0A">Come in →</a>
         <p class="boredroom-status">Status: meetings are exhausting. This isn’t one.</p>
       </article>`
   };
@@ -205,7 +196,6 @@
 
   bindArtifact('.notebook', 'nowwhat');
   bindArtifact('.workshop-note', 'workshop');
-  bindArtifact('.feather', 'feather');
   bindArtifact('.door', 'boredroom');
 
   artifactLayer.addEventListener('click', event => {
@@ -241,6 +231,24 @@
   document.addEventListener('click', event => {
     if (!event.target.closest('.hero-easter-egg')) {
       document.querySelectorAll('.hero-easter-egg.is-open').forEach(item => item.classList.remove('is-open'));
+    }
+  });
+
+  /* Collected artifacts already reveal on hover/focus via CSS. This adds an
+     explicit tap-to-toggle so the story is guaranteed to open on touch
+     devices, regardless of a given browser's focus-on-tap behavior. */
+  document.querySelectorAll('.collected-artifact').forEach(artifact => {
+    artifact.addEventListener('click', event => {
+      event.preventDefault();
+      const opening = !artifact.classList.contains('is-open');
+      document.querySelectorAll('.collected-artifact.is-open').forEach(item => item.classList.remove('is-open'));
+      artifact.classList.toggle('is-open', opening);
+    });
+  });
+
+  document.addEventListener('click', event => {
+    if (!event.target.closest('.collected-artifact')) {
+      document.querySelectorAll('.collected-artifact.is-open').forEach(item => item.classList.remove('is-open'));
     }
   });
 })();

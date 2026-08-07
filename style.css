@@ -36,7 +36,6 @@ body{margin:0;background:var(--paper);color:var(--ink)}
 .work-6{left:71.6%;top:41%;width:10.2%;height:15.4%}
 .perspectives-index{left:1.05%;top:53.25%;width:8.6%;height:2.1%}
 .work-1::before{content:"START HERE";position:absolute;left:7%;top:-13%;padding:6px 8px 5px;background:var(--red);color:#f6efe3;font:800 10px/1 NittiCond,Arial,sans-serif;letter-spacing:.1em;white-space:nowrap;transform:rotate(-2deg);box-shadow:2px 3px 0 rgba(40,27,17,.22)}
-.work-1::after{content:"";position:absolute;left:10%;right:10%;bottom:4%;height:3px;background:var(--red);transform:rotate(-1deg);opacity:.9}
 .work-story-card{position:absolute;top:34.2%;width:330px;padding:18px 21px;background:#f3ecdf;border:1px solid rgba(64,47,27,.25);box-shadow:0 13px 30px rgba(32,23,13,.22);color:#17130e;font:300 13px/1.45 Nitti,Georgia,serif;text-align:left;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(8px) rotate(-.25deg);transition:opacity .18s ease,visibility .18s ease,transform .18s ease;z-index:150;line-height:1.45}
 .work-story-card strong{display:block;margin-bottom:9px;font:900 27px/1.02 Quinn,Georgia,serif}
 .work-story-card em{display:block;margin:0 0 13px;color:#5b544d;font-style:italic}
@@ -46,17 +45,16 @@ body{margin:0;background:var(--paper);color:var(--ink)}
 
 /* Collected artifacts: artwork stays in the poster; only the story floats above. */
 .collected-artifact{position:absolute;display:block;margin:0;padding:0;border:0;background:transparent;overflow:visible;cursor:pointer;z-index:18;color:#17130e;line-height:1.15;text-align:left}
+.collected-artifact:hover,.collected-artifact:focus-within,.collected-artifact.is-open{z-index:60}
 .collected-1{left:13.2%;top:58.75%;width:11.15%;height:11.05%}.collected-2{left:24.75%;top:58.75%;width:11.1%;height:11.05%}.collected-3{left:36.3%;top:58.75%;width:11.1%;height:11.05%}.collected-4{left:48%;top:58.75%;width:11.1%;height:11.05%}.collected-5{left:59.7%;top:58.75%;width:11.1%;height:11.05%}.collected-6{left:71.35%;top:58.75%;width:11.1%;height:11.05%}
 .artifact-story{position:absolute;left:50%;bottom:103%;width:280px;max-width:24vw;padding:16px 17px;background:#f5ede0;border:1px solid rgba(93,72,45,.38);box-shadow:0 12px 30px rgba(0,0,0,.25);color:#17130e;font:300 clamp(11px,.86vw,15px)/1.43 Nitti,Arial,sans-serif;white-space:normal;opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,8px) rotate(-.45deg);transition:opacity .18s ease,visibility .18s ease,transform .18s ease;z-index:200}
-.collected-artifact:hover .artifact-story,.collected-artifact:focus .artifact-story{opacity:1;visibility:visible;transform:translate(-50%,0) rotate(-.45deg)}
+.collected-artifact:hover .artifact-story,.collected-artifact:focus .artifact-story,.collected-artifact.is-open .artifact-story{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0) rotate(-.45deg)}
 .collected-artifact:focus-visible{outline:3px solid var(--red);outline-offset:3px}
 
 /* Dialog-only hotspots. */
 .notebook{left:51.2%;top:72.7%;width:17.4%;height:14.2%}.workshop-note{left:69.1%;top:73.2%;width:16.2%;height:13%}
-.feather{left:45.8%;top:95.4%;width:16%;height:3.2%}.door{left:50.2%;top:84.5%;width:28.5%;height:11.6%}
+.door{left:50.2%;top:84.5%;width:28.5%;height:11.6%}
 .say-hello{left:1.2%;top:95.2%;width:19%;height:3.2%}.linkedin{left:29.5%;top:95.4%;width:10%;height:2.8%}
-.notebook::after,.workshop-note::after,.feather::after,.door::after{content:attr(data-label);position:absolute;left:50%;bottom:calc(100% + 8px);width:max-content;max-width:260px;padding:9px 12px;background:#171612;color:#f4eee4;font:800 12px/1.2 NittiCond,Arial,sans-serif;letter-spacing:.05em;text-transform:uppercase;opacity:0;pointer-events:none;transform:translate(-50%,5px);transition:opacity .18s ease,transform .18s ease;box-shadow:0 8px 24px rgba(0,0,0,.22)}
-.notebook:hover::after,.notebook:focus-visible::after,.workshop-note:hover::after,.workshop-note:focus-visible::after,.feather:hover::after,.feather:focus-visible::after,.door:hover::after,.door:focus-visible::after{opacity:1;transform:translate(-50%,0)}
 
 /* Embedded editorial discovery cards. */
 .hero-easter-egg{z-index:30;line-height:1.45}
@@ -72,6 +70,14 @@ body{margin:0;background:var(--paper);color:var(--ink)}
 .portrait-egg{left:1.5%;top:5.2%;width:31%;height:31%}.portrait-egg .hero-story-card{left:72%;top:42%;width:355px}
 .observe-egg{left:5.2%;top:31.5%;width:10.2%;height:5.6%}.question-egg{left:15.5%;top:31.5%;width:10.2%;height:5.6%}.patterns-egg{left:25.8%;top:31.5%;width:10.2%;height:5.6%}
 .ruler-card{left:0;top:108%;width:325px}.question-card{left:-60px}.patterns-card{left:-120px}
+
+/* A note left behind: the feather, revealed on hover/focus like the other
+   discovery cards instead of requiring a click into the big modal. */
+.feather-egg{left:45.8%;top:95.4%;width:16%;height:3.2%}
+.feather-egg .hero-story-card{left:50%;bottom:135%;width:320px;transform:translateX(-50%) translateY(8px) rotate(-.4deg)}
+.feather-egg:hover .hero-story-card,.feather-egg:focus-within .hero-story-card,.feather-egg.is-open .hero-story-card{transform:translateX(-50%) translateY(0) rotate(-.4deg)}
+.feather-card .feather-question{margin:0 0 12px;font:900 24px/1.15 Quinn,Georgia,serif}
+.feather-card .feather-answer{margin:0;color:var(--red);font:800 12px/1 NittiCond,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
 
 /* Modal stories for Desk, Feather, and Boredroom. */
 dialog{width:min(780px,calc(100vw - 30px));border:0;padding:0;background:#f7f0e5;color:#111;box-shadow:0 24px 80px rgba(0,0,0,.32);font-family:Nitti,Arial,sans-serif;line-height:1.45;overflow:visible}
@@ -105,54 +111,15 @@ body.artifact-open{overflow:hidden}
 .artifact-cta{display:inline-block;margin-top:10px;padding:12px 17px;background:#17130e;color:#f6efe3;text-decoration:none;font:800 13px/1 NittiCond,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;box-shadow:4px 4px 0 var(--red);transition:transform .15s ease,box-shadow .15s ease}
 .artifact-cta:hover,.artifact-cta:focus-visible{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--red)}
 
-/* Now What: a ruled spiral-notebook page. */
-.notebook-reveal{width:min(820px,calc(100vw - 48px));max-height:calc(100vh - 48px);overflow:auto;padding:62px 62px 42px 86px;background-color:#eee4ce;background-image:linear-gradient(90deg,rgba(255,255,255,.18),transparent 22%,rgba(89,64,36,.025)),repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(87,132,168,.25) 32px,transparent 33px);transform:rotate(-.55deg);border:1px solid rgba(74,56,35,.3);box-shadow:8px 11px 0 #d5c8aa,14px 18px 45px rgba(0,0,0,.36)}
-.notebook-reveal::before{content:"";position:absolute;left:56px;top:0;bottom:0;width:2px;background:rgba(182,48,42,.34)}
-.notebook-wire{position:absolute;left:-11px;top:20px;bottom:20px;width:28px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 17px,#27231e 18px,#27231e 23px,transparent 24px,transparent 34px);filter:drop-shadow(2px 2px 1px rgba(0,0,0,.2))}
-.notebook-tape{position:absolute;right:72px;top:-10px;width:105px;height:31px;background:rgba(204,179,128,.58);transform:rotate(2.5deg)}
-.coffee-ring{position:absolute;right:44px;top:118px;width:116px;height:116px;border:6px solid rgba(118,76,36,.13);border-radius:50%;transform:scaleY(.82) rotate(-13deg);pointer-events:none}
-.pencil-kicker{display:inline-block;margin:0;color:#b42c25;font:700 21px/1 Nitti,Arial,sans-serif;transform:rotate(-1.5deg);border-bottom:2px solid rgba(180,44,37,.55)}
-.pencil-aside{margin:5px 0 25px 13px;font:700 14px/1.25 Nitti,Arial,sans-serif;color:#5b5248;transform:rotate(-.8deg)}
-.pencil-aside span{display:inline-block;margin-right:4px;color:var(--red);font-size:20px}
-.book-boast{max-width:650px;margin:0 0 19px;font:700 17px/1.45 Nitti,Arial,sans-serif}
-.notebook-reveal h2{max-width:700px;margin:0 0 20px;font:900 clamp(36px,5vw,61px)/.98 Quinn,Georgia,serif}
-.notebook-reveal>p:not([class]){max-width:680px;margin:0 0 15px;font-size:16px;line-height:1.5}
-.book-command{margin:18px 0 8px;font-weight:700}
-.book-receipt{display:inline-flex;flex-direction:column;min-width:265px;margin:12px 0 0;padding:17px 19px 14px;background:#f8f3e8;color:#17130e;border:1px dashed #8c7b65;box-shadow:4px 5px 12px rgba(0,0,0,.16);text-decoration:none;transform:rotate(1.1deg);font-family:Nitti,Arial,sans-serif}
-.book-receipt small{font:800 9px/1 NittiCond,Arial,sans-serif;letter-spacing:.16em}.book-receipt strong{margin:7px 0 10px;font:900 24px/1 Quinn,Georgia,serif}.book-receipt span{color:var(--red);font:800 12px/1 NittiCond,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
-.book-receipt:hover,.book-receipt:focus-visible{transform:rotate(.2deg) translateY(-2px);box-shadow:6px 8px 15px rgba(0,0,0,.2)}
-.doodle-disclaimer{margin:26px 0 0;color:#5b5147;font:700 12px/1.3 Nitti,Arial,sans-serif;transform:rotate(-.8deg)}
-.doodle-disclaimer span{display:inline-block;margin-right:5px;font-size:22px;transform:rotate(-18deg)}
-
-/* Workshop: loose pieces on the desk, never a web-card grid. */
-.workshop-reveal{width:min(1100px,calc(100vw - 40px));height:min(760px,calc(100vh - 34px));min-height:640px;background:transparent;overflow:visible;box-shadow:none}
-.workshop-heading{position:absolute;left:18px;top:8px;padding:17px 24px 14px;background:#eee3cf;box-shadow:0 9px 20px rgba(0,0,0,.2);transform:rotate(-1.4deg);z-index:9}.workshop-heading::after{content:"";position:absolute;left:38px;right:38px;top:-9px;height:20px;background:rgba(206,184,139,.62);transform:rotate(1deg)}.workshop-heading p{margin:0;color:var(--red);font:800 11px/1 NittiCond,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}.workshop-heading h2{margin:5px 0 0;font:900 38px/1 Quinn,Georgia,serif}
-.concept-card{position:absolute;width:39%;min-height:205px;padding:25px 27px 22px;background:#f1eadc;border:1px solid rgba(73,57,37,.28);box-shadow:0 13px 28px rgba(20,14,8,.3);line-height:1.4}
-.concept-card::before{content:"";position:absolute;left:0;right:0;top:44px;height:1px;background:rgba(82,125,163,.22);box-shadow:0 28px rgba(82,125,163,.16),0 56px rgba(82,125,163,.16),0 84px rgba(82,125,163,.16),0 112px rgba(82,125,163,.16)}
-.concept-card>*{position:relative;z-index:1}.concept-card span{position:absolute;right:18px;top:14px;color:#a78c62;font:800 12px NittiCond,Arial,sans-serif}.concept-card h3{margin:0 0 14px;font:900 29px/1.02 Quinn,Georgia,serif}.concept-card p{margin:0;font-size:14px;line-height:1.45}
-.concept-one{left:4%;top:25%;transform:rotate(-2.5deg)}.concept-two{left:31%;top:18%;transform:rotate(1.7deg)}.concept-three{left:9%;bottom:4%;transform:rotate(1.4deg)}.concept-four{right:5%;bottom:7%;transform:rotate(-1.6deg)}
-.my-house-card{width:35%;min-height:300px;background:#10110f;color:#f2efe5;border-color:#2f302b;padding:24px 27px}.my-house-card::before{display:none}.my-house-card>span{color:#928f75}.my-house-card .my-house-label{margin:0 0 18px;color:#b9b58c;font:700 8px/1 NittiCond,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}.my-house-card h3{margin:0 0 20px;color:#f4f1e8;font:900 47px/.76 NittiCond,Arial,sans-serif;letter-spacing:-.04em}.my-house-card>p:not([class]){margin:0 0 16px;color:#d8d4c8;font-size:13px}.my-house-card .my-house-line{margin:0 0 18px;padding-left:11px;border-left:2px solid #d6c241;color:#fff;font:700 13px/1.35 Nitti,Arial,sans-serif}.my-house-card a{color:#d6c241;font:800 10px/1 NittiCond,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
-.advisory-card{position:absolute;right:2%;top:11%;width:245px;padding:20px 21px 17px;background:#e7d6b2;color:#17130e;border:1px solid rgba(72,52,28,.35);box-shadow:0 10px 22px rgba(0,0,0,.25);transform:rotate(3deg);z-index:5}.advisory-card::before{content:"";position:absolute;left:50%;top:-12px;width:75px;height:25px;background:rgba(198,177,134,.66);transform:translateX(-50%) rotate(-2deg)}.advisory-card p{margin:0 0 11px;color:var(--red);font:800 9px/1 NittiCond,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}.advisory-card strong{display:block;margin:0 0 15px;font:700 14px/1.55 Nitti,Arial,sans-serif}.advisory-card a{color:#17130e;font:800 9px/1.25 NittiCond,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase}
-.workshop-scribble{position:absolute;left:49%;bottom:3%;width:250px;margin:0;padding:10px 14px;background:#f4df77;box-shadow:0 6px 13px rgba(0,0,0,.18);font:700 12px/1.3 Nitti,Arial,sans-serif;transform:translateX(-50%) rotate(-3deg);z-index:8}
-
-/* Feather: one compact scrap, no explanatory furniture. */
-.feather-reveal{width:min(680px,calc(100vw - 48px));padding:54px 62px 48px;background:#eee4d2;transform:rotate(-1deg);border:1px solid rgba(75,57,35,.35)}
-.feather-reveal::after{content:"";position:absolute;left:28px;right:28px;bottom:-12px;height:22px;background:#eee4d2;clip-path:polygon(0 0,4% 42%,9% 10%,14% 60%,20% 18%,27% 74%,33% 15%,40% 63%,47% 8%,54% 75%,61% 18%,68% 62%,75% 7%,82% 72%,89% 16%,95% 59%,100% 0)}
-.feather-question{margin:0;font:900 clamp(36px,5.2vw,64px)/1 Quinn,Georgia,serif}.feather-answer{margin:25px 0 0;color:var(--red);font:800 16px/1 NittiCond,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
-
 /* Boredroom: a note attached to the door, opening to a real conversation. */
 .boredroom-reveal{width:min(590px,calc(100vw - 48px));padding:52px 58px 44px;background:#f0e9dc;border:1px solid rgba(58,44,29,.38);transform:rotate(.3deg)}
 .boredroom-reveal::before{content:"";position:absolute;top:-16px;left:50%;width:120px;height:32px;background:rgba(201,181,142,.65);transform:translateX(-50%) rotate(-2deg)}
 .boredroom-kicker{margin:0 0 11px;color:var(--red);font:800 12px/1 NittiCond,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
-.boredroom-reveal h2{margin:0 0 22px;font:900 clamp(34px,5vw,53px)/1 Quinn,Georgia,serif}.boredroom-reveal>p:not([class]){margin:0 0 16px;font-size:16px;line-height:1.5}.whatsapp-cta{margin-top:7px}.boredroom-status{margin:25px 0 0;color:#62584d;font:700 12px/1.3 Nitti,Arial,sans-serif;transform:rotate(-.5deg)}
+.boredroom-reveal h2{margin:0 0 22px;font:900 clamp(34px,5vw,53px)/1 Quinn,Georgia,serif}.boredroom-reveal>p:not([class]){margin:0 0 16px;font-size:16px;line-height:1.5}.boredroom-cta{margin-top:7px}.boredroom-status{margin:25px 0 0;color:#62584d;font:700 12px/1.3 Nitti,Arial,sans-serif;transform:rotate(-.5deg)}
 
 @media(max-width:760px){
   .artifact-stage{width:calc(100vw - 20px);max-height:calc(100vh - 20px)}
-  .notebook-reveal{width:calc(100vw - 24px);padding:48px 28px 34px 54px}.notebook-reveal::before{left:38px}.notebook-reveal h2{font-size:36px}
-  .workshop-reveal{width:calc(100vw - 24px);height:calc(100vh - 24px);min-height:0;overflow:auto;padding:110px 18px 40px;background:#cbb997;box-shadow:0 20px 60px rgba(0,0,0,.4)}.workshop-heading{left:26px;top:24px}.workshop-heading h2{font-size:34px}
-  .concept-card{position:relative;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:100%;min-height:0;margin:0 0 18px;transform:none!important}.workshop-scribble{position:relative;left:auto;top:auto;width:100%;transform:rotate(-1deg);margin:6px 0 0}
-  .my-house-card{min-height:300px}.advisory-card{position:relative;left:auto;right:auto;top:auto;width:100%;margin:0 0 20px;transform:rotate(1deg)}
-  .feather-reveal,.boredroom-reveal{width:calc(100vw - 28px);padding:48px 28px 38px}.feather-question{font-size:38px}.boredroom-reveal h2{font-size:36px}
+  .boredroom-reveal{width:calc(100vw - 28px);padding:48px 28px 38px}.boredroom-reveal h2{font-size:36px}
 }
 
 @media(prefers-reduced-motion:reduce){.artifact-layer,.artifact-cta{transition:none}}
@@ -207,6 +174,72 @@ body.artifact-open{overflow:hidden}
 .perspectives-archive em{display:block;color:#62594f;font:300 13px/1.35 Nitti,Arial,sans-serif}
 .perspectives-archive a:hover strong,.perspectives-archive a:focus-visible strong{color:var(--red)}
 
+/* Notebook, Workshop, Boredroom: hover teases like the Work tiles do —
+   click still opens the same modal, unchanged. */
+.notebook-card,.workshop-note-card,.door-card{top:auto;width:300px;transform:translateX(-50%) translateY(8px) rotate(-.25deg)}
+.notebook-card{left:59.9%;bottom:30%}
+.workshop-note-card{left:77.2%;bottom:29.5%}
+.door-card{left:64.45%;bottom:19%}
+.notebook:hover~.notebook-card,.notebook:focus-visible~.notebook-card,.workshop-note:hover~.workshop-note-card,.workshop-note:focus-visible~.workshop-note-card,.door:hover~.door-card,.door:focus-visible~.door-card{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0) rotate(-.25deg)}
+
+/* Boredroom door: a real knock, using a cropped copy of the door itself so
+   it's the actual artwork shaking, not a fake box — plus a small fist. */
+.door{overflow:visible}
+.door-shake{position:absolute;inset:0;background-image:url('assets/images/northstar-homepage.webp');background-repeat:no-repeat;background-size:350.88% 862.07%;background-position:-176.14% -728.45%;pointer-events:none;z-index:1}
+.door:hover .door-shake,.door:focus-visible .door-shake{animation:doorKnockShake .5s ease-in-out 2}
+@keyframes doorKnockShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px) rotate(-.4deg)}50%{transform:translateX(0)}75%{transform:translateX(3px) rotate(.4deg)}}
+.knock-fist{position:absolute;left:56%;top:56%;width:24px;height:26px;fill:#17130e;opacity:0;pointer-events:none;transform:translate(-6px,-6px) rotate(-12deg) scale(.7);z-index:2}
+.door:hover .knock-fist,.door:focus-visible .knock-fist{animation:knockFistTap 1s ease-in-out}
+@keyframes knockFistTap{
+  0%{opacity:0;transform:translate(-8px,-8px) rotate(-12deg) scale(.7)}
+  8%{opacity:1}
+  18%{transform:translate(4px,4px) rotate(6deg) scale(1)}
+  30%{transform:translate(-6px,-6px) rotate(-10deg) scale(.85)}
+  40%{opacity:1}
+  50%{transform:translate(4px,4px) rotate(6deg) scale(1)}
+  62%{opacity:1;transform:translate(-6px,-6px) rotate(-10deg) scale(.85)}
+  80%,100%{opacity:0}
+}
+
+@media (hover:none),(pointer:coarse){.door-shake,.knock-fist{display:none}}
+@media(prefers-reduced-motion:reduce){
+  .door:hover .door-shake,.door:focus-visible .door-shake{animation:none}
+  .door:hover .knock-fist,.door:focus-visible .knock-fist{animation:none}
+}
+
+/* =========================================================
+   COOL ELEMENTS
+   ========================================================= */
+
+/* Custom cursor: the same red dot used throughout the artwork, desktop only. */
+@media (hover:hover) and (pointer:fine){
+  body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Ccircle cx='9' cy='9' r='4' fill='%23b52b24'/%3E%3C/svg%3E") 9 9,auto}
+  a,button,.hotspot,.hero-easter-egg>button,.collected-artifact{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34'%3E%3Ccircle cx='17' cy='17' r='5' fill='%23b52b24'/%3E%3Ccircle cx='17' cy='17' r='12' fill='none' stroke='%23b52b24' stroke-width='2'/%3E%3C/svg%3E") 17 17,pointer}
+}
+
+/* Work tiles: hovering lifts the piece off the page, using a cropped copy of
+   the same artwork so the "shadow" beneath is the real piece, not a fake. */
+.tile{overflow:visible}
+.tile-lift{position:absolute;inset:0;background-image:url('assets/images/northstar-homepage.webp');background-repeat:no-repeat;pointer-events:none;transition:transform .28s ease,box-shadow .28s ease;z-index:1}
+.tile:hover .tile-lift,.tile:focus-visible .tile-lift{transform:translateY(-9px) rotate(-1.4deg);box-shadow:0 20px 34px rgba(20,14,8,.38)}
+.work-1 .tile-lift{background-size:925.93% 657.89%;background-position:-122.22% -269.74%}
+.work-2 .tile-lift{background-size:892.86% 636.94%;background-position:-219.64% -259.24%}
+.work-3 .tile-lift{background-size:877.19% 632.91%;background-position:-320.18% -256.96%}
+.work-4 .tile-lift{background-size:877.19% 636.94%;background-position:-423.68% -259.87%}
+.work-5 .tile-lift{background-size:961.54% 645.16%;background-position:-580.77% -263.87%}
+.work-6 .tile-lift{background-size:980.39% 649.35%;background-position:-701.96% -266.23%}
+@media (hover:none),(pointer:coarse){.tile-lift{display:none}}
+
+/* Red Dot: a clear pulse hints at the smallest, easiest-to-miss hotspot on
+   the page, five times on first load, then never again this session. */
+.red-dot-egg::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:3px solid var(--red);opacity:0;pointer-events:none;animation:redDotPulse 1.8s ease-out .6s 5}
+@keyframes redDotPulse{0%{opacity:1;transform:scale(.5)}65%{opacity:0;transform:scale(2.2)}100%{opacity:0;transform:scale(2.2)}}
+
+@media(prefers-reduced-motion:reduce){
+  .tile:hover .tile-lift,.tile:focus-visible .tile-lift{transform:none;box-shadow:none}
+  .red-dot-egg::after{animation:none}
+}
+
 @media(max-width:760px){
   .observe-egg .ruler-card,.question-egg .ruler-card,.patterns-egg .ruler-card,.portrait-egg .hero-story-card{position:fixed;left:7%!important;right:auto!important;top:18%!important;width:78vw}
   .work-reveal{width:calc(100vw - 24px);padding:46px 27px 35px}.work-reveal h2{font-size:39px}
@@ -222,44 +255,35 @@ body.artifact-open{overflow:hidden}
 }
 
 /* =========================================================
-   FINAL EDITORIAL REVEALS
+   NOW WHAT / WORKSHOP — EDITORIAL REVEALS
    Restraint beats an imitation of the raster North Star artwork.
    ========================================================= */
-.notebook-reveal{width:min(760px,calc(100vw - 40px));max-height:calc(100vh - 40px);padding:50px 54px 42px;background:#f3ecdf;background-image:none;border:1px solid rgba(67,49,28,.28);box-shadow:0 24px 70px rgba(0,0,0,.36);transform:none}
-.notebook-reveal::before,.notebook-wire,.notebook-tape,.coffee-ring{display:none}
-.notebook-reveal .pencil-kicker{display:block;margin:0 0 8px;color:var(--red);border:0;font:800 11px/1 NittiCond,Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase;transform:none}
-.notebook-reveal .pencil-aside{margin:0 0 25px;color:#5d554b;font:700 16px/1.35 Nitti,Arial,sans-serif;transform:none}
-.notebook-reveal .pencil-aside span{display:none}
-.notebook-reveal .book-boast{max-width:620px;margin:0 0 18px;font:700 16px/1.45 Nitti,Arial,sans-serif}
+.notebook-reveal{width:min(760px,calc(100vw - 40px));max-height:calc(100vh - 40px);overflow:auto;padding:50px 54px 42px;background:#f3ecdf;border:1px solid rgba(67,49,28,.28);box-shadow:0 24px 70px rgba(0,0,0,.36)}
+.pencil-kicker{display:block;margin:0 0 8px;color:var(--red);font:800 11px/1 NittiCond,Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase}
+.pencil-aside{margin:0 0 25px;color:#5d554b;font:700 16px/1.35 Nitti,Arial,sans-serif}
+.book-boast{max-width:620px;margin:0 0 18px;font:700 16px/1.45 Nitti,Arial,sans-serif}
 .notebook-reveal h2{max-width:650px;margin:0 0 22px;font:900 clamp(42px,5vw,58px)/.98 Quinn,Georgia,serif}
 .notebook-reveal>p:not([class]){max-width:650px;margin:0 0 15px;font:300 16px/1.52 Nitti,Arial,sans-serif}
-.notebook-reveal .book-command{margin:20px 0 8px;font:700 16px/1.4 Nitti,Arial,sans-serif}
-.notebook-reveal .doodle-disclaimer{margin:25px 0 0;color:#6a6156;font:300 11px/1.35 Nitti,Arial,sans-serif;transform:none}
-.notebook-reveal .doodle-disclaimer span{display:none}
+.book-command{margin:20px 0 8px;font:700 16px/1.4 Nitti,Arial,sans-serif}
+.doodle-disclaimer{margin:25px 0 0;color:#6a6156;font:300 11px/1.35 Nitti,Arial,sans-serif}
 
-.workshop-reveal{display:block;width:min(860px,calc(100vw - 40px));height:auto;min-height:0;max-height:calc(100vh - 40px);padding:51px 56px 42px;overflow:auto;background:#f3ecdf;border:1px solid rgba(67,49,28,.28);box-shadow:0 24px 70px rgba(0,0,0,.36)}
-.workshop-heading{position:static;margin:0 0 20px;padding:0;background:transparent;box-shadow:none;transform:none}
-.workshop-heading::after{display:none}
+.workshop-reveal{width:min(860px,calc(100vw - 40px));max-height:calc(100vh - 40px);padding:51px 56px 42px;overflow:auto;background:#f3ecdf;border:1px solid rgba(67,49,28,.28);box-shadow:0 24px 70px rgba(0,0,0,.36)}
+.workshop-heading{margin:0 0 20px}
 .workshop-heading p{margin:0 0 7px;color:var(--red);font:800 11px/1 NittiCond,Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase}
 .workshop-heading h2{margin:0;font:900 clamp(42px,5vw,58px)/.98 Quinn,Georgia,serif}
-.workshop-reveal .concept-card{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:100%;min-height:0;margin:0;padding:22px 0 21px 48px;background:transparent;color:#17130e;border:0;border-top:1px solid rgba(84,68,49,.25);box-shadow:none;transform:none}
-.workshop-reveal .concept-card::before{display:none}
-.workshop-reveal .concept-card>span{position:absolute;left:0;right:auto;top:25px;color:var(--red);font:800 10px/1 NittiCond,Arial,sans-serif;letter-spacing:.08em}
-.workshop-reveal .concept-card h3,.workshop-reveal .my-house-card h3{margin:0 0 7px;color:#17130e;font:900 28px/1 Quinn,Georgia,serif;letter-spacing:0}
-.workshop-reveal .concept-card>p:not([class]){max-width:650px;margin:0;color:#29241e;font:300 14px/1.5 Nitti,Arial,sans-serif}
-.workshop-reveal .my-house-card{min-height:0;background:transparent;border-top:1px solid rgba(84,68,49,.25)}
-.workshop-reveal .my-house-label{display:none}
-.workshop-reveal .my-house-line{margin:10px 0 13px;padding:0;border:0;color:#4e473e;font:700 13px/1.4 Nitti,Arial,sans-serif}
-.workshop-reveal .my-house-card a{color:var(--red);font:800 10px/1 NittiCond,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
-.workshop-reveal .advisory-card{position:relative;left:auto;right:auto;top:auto;width:100%;margin:0;padding:22px 0 0 48px;background:transparent;color:#17130e;border:0;border-top:1px solid rgba(84,68,49,.25);box-shadow:none;transform:none}
-.workshop-reveal .advisory-card::before{display:none}
-.workshop-reveal .advisory-card p{position:static;margin:0 0 11px;color:var(--red);font:800 10px/1 NittiCond,Arial,sans-serif;letter-spacing:.08em}
-.workshop-reveal .advisory-card strong{display:block;margin:0 0 12px;font:700 14px/1.5 Nitti,Arial,sans-serif}
-.workshop-reveal .advisory-card a{color:#17130e;font:800 10px/1.3 NittiCond,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase}
-.workshop-scribble{display:none}
+.concept-card{position:relative;width:100%;margin:0;padding:22px 0 21px 48px;background:transparent;color:#17130e;border-top:1px solid rgba(84,68,49,.25)}
+.concept-card>span{position:absolute;left:0;top:25px;color:var(--red);font:800 10px/1 NittiCond,Arial,sans-serif;letter-spacing:.08em}
+.concept-card h3{margin:0 0 7px;color:#17130e;font:900 28px/1 Quinn,Georgia,serif}
+.concept-card>p:not([class]){max-width:650px;margin:0;color:#29241e;font:300 14px/1.5 Nitti,Arial,sans-serif}
+.my-house-label{display:none}
+.advisory-card{width:100%;margin:0;padding:22px 0 0 48px;background:transparent;color:#17130e;border-top:1px solid rgba(84,68,49,.25)}
+.advisory-card p{margin:0 0 11px;color:var(--red);font:800 10px/1 NittiCond,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.advisory-card strong{display:block;margin:0 0 12px;font:700 14px/1.5 Nitti,Arial,sans-serif}
+.advisory-card a{color:#17130e;font:800 10px/1.3 NittiCond,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.workshop-scribble{display:none} /* Currently hidden — flagged for Greg to confirm intentional. */
 
 @media(max-width:760px){
-  .notebook-reveal,.workshop-reveal{width:calc(100vw - 24px);height:auto;max-height:calc(100vh - 24px);padding:46px 27px 35px;background:#f3ecdf}
+  .notebook-reveal,.workshop-reveal{width:calc(100vw - 24px);max-height:calc(100vh - 24px);padding:46px 27px 35px}
   .notebook-reveal h2,.workshop-heading h2{font-size:39px}
-  .workshop-reveal .concept-card,.workshop-reveal .advisory-card{padding-left:38px}
+  .concept-card,.advisory-card{padding-left:38px}
 }
