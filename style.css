@@ -47,7 +47,7 @@ body{margin:0;background:var(--paper);color:var(--ink)}
 .collected-artifact{position:absolute;display:block;margin:0;padding:0;border:0;background:transparent;overflow:visible;cursor:pointer;z-index:18;color:#17130e;line-height:1.15;text-align:left}
 .collected-artifact:hover,.collected-artifact:focus-within,.collected-artifact.is-open{z-index:60}
 .collected-1{left:13.2%;top:58.75%;width:11.15%;height:11.05%}.collected-2{left:24.75%;top:58.75%;width:11.1%;height:11.05%}.collected-3{left:36.3%;top:58.75%;width:11.1%;height:11.05%}.collected-4{left:48%;top:58.75%;width:11.1%;height:11.05%}.collected-5{left:59.7%;top:58.75%;width:11.1%;height:11.05%}.collected-6{left:71.35%;top:58.75%;width:11.1%;height:11.05%}
-.artifact-story{position:absolute;left:50%;bottom:103%;width:280px;max-width:24vw;padding:16px 17px;background:#f5ede0;border:1px solid rgba(93,72,45,.38);box-shadow:0 12px 30px rgba(0,0,0,.25);color:#17130e;font:300 clamp(11px,.86vw,15px)/1.43 Nitti,Arial,sans-serif;white-space:normal;opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,8px) rotate(-.45deg);transition:opacity .18s ease,visibility .18s ease,transform .18s ease;z-index:200}
+.artifact-story{position:absolute;left:50%;bottom:103%;width:300px;max-width:26vw;padding:18px 19px;background:#f5ede0;border:1px solid rgba(93,72,45,.38);box-shadow:0 12px 30px rgba(0,0,0,.25);color:#17130e;font:300 clamp(14px,1.05vw,18px)/1.5 Nitti,Arial,sans-serif;white-space:normal;opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,8px) rotate(-.45deg);transition:opacity .18s ease,visibility .18s ease,transform .18s ease;z-index:200}
 .collected-artifact:hover .artifact-story,.collected-artifact:focus .artifact-story,.collected-artifact.is-open .artifact-story{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0) rotate(-.45deg)}
 .collected-artifact:focus-visible{outline:3px solid var(--red);outline-offset:3px}
 
@@ -91,7 +91,7 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
 @media(max-width:760px){
   .poster{min-width:760px;transform-origin:top left}body{overflow-x:auto}
   dialog{width:min(680px,calc(100vw - 22px))}.dialog-inner{padding:28px}
-  .artifact-story{max-width:none;width:220px;font-size:12px}
+  .artifact-story{max-width:none;width:250px;font-size:15px}
   .work-story-card{top:33%;left:8%!important;right:auto!important;width:280px;font-size:12px}.work-story-card strong{font-size:23px}
   .hero-story-card,.liir-card,.red-dot-card,.negroni-card,.dino-card,.pigeon-egg .hero-story-card,.portrait-egg .hero-story-card,.ruler-card{position:fixed;left:7%!important;right:auto!important;top:18%!important;bottom:auto!important;width:78vw;max-height:65vh;overflow-y:auto}
   /* The feather note is the one hero card that self-centers with translateX;
