@@ -93,6 +93,33 @@
     if (returnFocus) returnFocus.focus();
   };
 
+  const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Make a reveal feel like it grows out of the object you clicked: the panel
+     scales up from the trigger's position, then its contents cascade in. */
+  const enterReveal = (trigger) => {
+    const reveal = artifactStage.querySelector('.desk-reveal');
+    if (!reveal || prefersReduce || typeof reveal.animate !== 'function') return;
+    const rr = reveal.getBoundingClientRect();
+    let ox = rr.width / 2, oy = rr.height / 2;
+    if (trigger && trigger.getBoundingClientRect) {
+      const t = trigger.getBoundingClientRect();
+      ox = Math.max(-rr.width, Math.min(rr.width * 2, (t.left + t.width / 2) - rr.left));
+      oy = Math.max(-rr.height, Math.min(rr.height * 2, (t.top + t.height / 2) - rr.top));
+    }
+    reveal.style.transformOrigin = `${ox}px ${oy}px`;
+    reveal.animate(
+      [{ transform: 'scale(.9) translateY(14px)', opacity: 0 }, { transform: 'none', opacity: 1 }],
+      { duration: 520, easing: 'cubic-bezier(.16,1,.3,1)' }
+    );
+    [...reveal.children]
+      .filter(el => !el.classList.contains('artifact-close'))
+      .forEach((el, i) => el.animate(
+        [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }],
+        { duration: 460, delay: 100 + i * 70, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' }
+      ));
+  };
+
   const openArtifact = (name, trigger) => {
     artifactStage.innerHTML = artifactContent[name];
     artifactLayer.dataset.artifact = name;
@@ -100,6 +127,7 @@
     artifactLayer.setAttribute('aria-hidden', 'false');
     document.body.classList.add('artifact-open');
     returnFocus = trigger;
+    enterReveal(trigger);
     artifactStage.querySelector('.artifact-close')?.focus();
   };
 
@@ -140,6 +168,7 @@
     artifactLayer.setAttribute('aria-hidden', 'false');
     document.body.classList.add('artifact-open');
     returnFocus = link;
+    enterReveal(link);
     artifactStage.querySelector('.artifact-close')?.focus();
   };
 
@@ -192,6 +221,7 @@
       artifactLayer.setAttribute('aria-hidden', 'false');
       document.body.classList.add('artifact-open');
       returnFocus = perspectivesIndex;
+      enterReveal(perspectivesIndex);
       artifactStage.querySelector('.artifact-close')?.focus();
     });
   }
@@ -268,4 +298,38 @@
       document.querySelectorAll('.collected-artifact.is-open').forEach(item => item.classList.remove('is-open'));
     }
   });
+
+  /* First-contact discoverability. The interactive objects are invisible
+     hotspots on a photograph, so on load we surface a dismissible hint and
+     gently pulse a couple of the richest objects. This is the main cue for
+     touch visitors, who never see the hover teasers. Everything clears on the
+     first interaction (or after a few seconds) and respects reduced-motion. */
+  (() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pulsed = [];
+    if (!reduce) {
+      ['.notebook', '.tile.work-1'].forEach(sel => {
+        const el = document.querySelector(sel);
+        if (el) { el.classList.add('discover-pulse'); pulsed.push(el); }
+      });
+    }
+    const chip = document.createElement('div');
+    chip.className = 'discover-hint';
+    chip.setAttribute('role', 'note');
+    chip.innerHTML = '<span>Everything on the desk is interactive — hover or tap to explore.</span>';
+    document.body.appendChild(chip);
+    requestAnimationFrame(() => chip.classList.add('is-shown'));
+
+    let dismissed = false;
+    const dismiss = () => {
+      if (dismissed) return;
+      dismissed = true;
+      chip.classList.remove('is-shown');
+      pulsed.forEach(el => el.classList.remove('discover-pulse'));
+      setTimeout(() => chip.remove(), 600);
+    };
+    ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(evt =>
+      window.addEventListener(evt, dismiss, { once: true, passive: true }));
+    setTimeout(dismiss, 7000);
+  })();
 })();
