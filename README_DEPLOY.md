@@ -9,12 +9,13 @@ Upload this folder to GitHub or Vercel as a static site.
 - `script.js`
 - `favicon.ico`
 - `/assets/fonts`, `/assets/icons`, `/assets/images` (includes the new WebP homepage image and the `og-preview.jpg` social-share image)
-- `/assets/perspectives` — the 6 Perspective PDFs. Not included in this package; keep your existing folder, don't replace it.
+- `/assets/perspectives` — the 6 Perspective PDFs, now all included in this package (The Coordination Problem was added).
 - `/docs` — source document retained in package, not directly linked from Perspective tiles. (Not verified as part of this update — carried over from the original notes.)
 
 ## Launch checks
 - Field Note opens from the homepage.
-- Perspective tiles show a teaser on hover (title, deck line, summary). Click opens a fuller reveal card with a "Read on →" link to the actual PDF — the full document is one deliberate step away, not hidden or removed.
+- Perspective tiles show a teaser on hover (title, deck line, summary) ending in a "Click to read →" cue. On hover-capable devices a click opens the PDF directly. On touch devices (no hover) a tap opens the reveal card with a "Read on →" link, so touch users still get the teaser first.
+- The "Now What?" notebook teaser ends in a "Click to read more →" cue; clicking opens the Somebody's Unicorn reveal card as before.
 - Portrait opens a "What I see" reveal card. It does not link to the Red Dot story (see note above).
 - Notebook ("Now What?"), Workshop, and Boredroom now show a hover teaser too, matching the Work tiles. Click still opens the same modal as before.
 - Boredroom's "Come in →" now opens email (`mailto:greg@gregorypohl.com`), not WhatsApp.

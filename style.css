@@ -39,7 +39,7 @@ body{margin:0;background:var(--paper);color:var(--ink)}
 .work-story-card{position:absolute;top:34.2%;width:330px;padding:18px 21px;background:#f3ecdf;border:1px solid rgba(64,47,27,.25);box-shadow:0 13px 30px rgba(32,23,13,.22);color:#17130e;font:300 13px/1.45 Nitti,Georgia,serif;text-align:left;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(8px) rotate(-.25deg);transition:opacity .18s ease,visibility .18s ease,transform .18s ease;z-index:150;line-height:1.45}
 .work-story-card strong{display:block;margin-bottom:9px;font:900 27px/1.02 Quinn,Georgia,serif}
 .work-story-card em{display:block;margin:0 0 13px;color:#5b544d;font-style:italic}
-.work-story-card p{margin:0}.work-eyebrow{margin-bottom:10px;color:var(--red);font:700 10px/1 "Nitti Grotesk",Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase}
+.work-story-card p{margin:0}.work-story-card .work-cta-hint{margin:14px 0 0;color:var(--red);font:700 10px/1 "Nitti Grotesk",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}.work-eyebrow{margin-bottom:10px;color:var(--red);font:700 10px/1 "Nitti Grotesk",Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase}
 .work-1-card{left:12%}.work-2-card{left:24%}.work-3-card{left:36%}.work-4-card{left:47%}.work-5-card{left:58%}.work-6-card{right:3%}
 .work-1:hover~.work-1-card,.work-1:focus~.work-1-card,.work-2:hover~.work-2-card,.work-2:focus~.work-2-card,.work-3:hover~.work-3-card,.work-3:focus~.work-3-card,.work-4:hover~.work-4-card,.work-4:focus~.work-4-card,.work-5:hover~.work-5-card,.work-5:focus~.work-5-card,.work-6:hover~.work-6-card,.work-6:focus~.work-6-card{opacity:1;visibility:visible;transform:translateY(0) rotate(-.25deg)}
 
@@ -94,6 +94,11 @@ dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font
   .artifact-story{max-width:none;width:220px;font-size:12px}
   .work-story-card{top:33%;left:8%!important;right:auto!important;width:280px;font-size:12px}.work-story-card strong{font-size:23px}
   .hero-story-card,.liir-card,.red-dot-card,.negroni-card,.dino-card,.pigeon-egg .hero-story-card,.portrait-egg .hero-story-card,.ruler-card{position:fixed;left:7%!important;right:auto!important;top:18%!important;bottom:auto!important;width:78vw;max-height:65vh;overflow-y:auto}
+  /* The feather note is the one hero card that self-centers with translateX;
+     neutralize that on mobile so it sits in the same fixed panel as the rest
+     instead of being dragged left and off-screen. */
+  .feather-egg .hero-story-card{width:78vw!important;transform:translateY(8px) rotate(-.4deg)!important}
+  .feather-egg.is-open .hero-story-card,.feather-egg:focus-within .hero-story-card{transform:translateY(0) rotate(-.4deg)!important}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.work-story-card,.artifact-story,.hero-story-card,.hotspot::after{transition:none}}
 
@@ -177,10 +182,16 @@ body.artifact-open{overflow:hidden}
 /* Notebook, Workshop, Boredroom: hover teases like the Work tiles do —
    click still opens the same modal, unchanged. */
 .notebook-card,.workshop-note-card,.door-card{top:auto;width:300px;transform:translateX(-50%) translateY(8px) rotate(-.25deg)}
-.notebook-card{left:59.9%;bottom:30%}
-.workshop-note-card{left:77.2%;bottom:29.5%}
+.notebook-card{left:59.9%;bottom:26.5%}
+.workshop-note-card{left:77.2%;bottom:26.5%}
 .door-card{left:64.45%;bottom:19%}
-.notebook:hover~.notebook-card,.notebook:focus-visible~.notebook-card,.workshop-note:hover~.workshop-note-card,.workshop-note:focus-visible~.workshop-note-card,.door:hover~.door-card,.door:focus-visible~.door-card{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0) rotate(-.25deg)}
+.notebook:hover~.notebook-card,.notebook:focus-visible~.notebook-card,.workshop-note:hover~.workshop-note-card,.workshop-note:focus-visible~.workshop-note-card,.door:hover~.door-card,.door:focus-visible~.door-card,.notebook-card:hover,.workshop-note-card:hover,.door-card:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0) rotate(-.25deg)}
+/* Invisible bridge so the pointer can travel from each desk hotspot onto its
+   teaser card (to click the cue) without crossing a dead gap that hides it. */
+.notebook-card::before,.workshop-note-card::before,.door-card::before{content:"";position:absolute;left:-18px;right:-18px;top:calc(100% - 8px);height:66px}
+/* The teaser cue is a real control: clicking it opens the same reveal. */
+.desk-cta{display:inline-block;background:none;border:0;padding:0;cursor:pointer}
+.desk-cta:focus-visible{outline:2px solid var(--red);outline-offset:3px}
 
 /* Boredroom door: a real knock, using a cropped copy of the door itself so
    it's the actual artwork shaking, not a fake box — plus a small fist. */
@@ -188,7 +199,9 @@ body.artifact-open{overflow:hidden}
 .door-shake{position:absolute;inset:0;background-image:url('assets/images/northstar-homepage.webp');background-repeat:no-repeat;background-size:350.88% 862.07%;background-position:-176.14% -728.45%;pointer-events:none;z-index:1}
 .door:hover .door-shake,.door:focus-visible .door-shake{animation:doorKnockShake .5s ease-in-out 2}
 @keyframes doorKnockShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px) rotate(-.4deg)}50%{transform:translateX(0)}75%{transform:translateX(3px) rotate(.4deg)}}
-.knock-fist{position:absolute;left:56%;top:56%;width:24px;height:26px;fill:#17130e;opacity:0;pointer-events:none;transform:translate(-6px,-6px) rotate(-12deg) scale(.7);z-index:2}
+.knock-fist{position:absolute;left:55%;top:55%;width:30px;height:31px;opacity:0;pointer-events:none;transform:translate(-6px,-6px) rotate(-12deg) scale(.7);z-index:2}
+.knock-fist .glove-body{fill:#fff;stroke:#2a2018;stroke-width:2.4;stroke-linejoin:round}
+.knock-fist .glove-line{fill:none;stroke:#2a2018;stroke-width:1.7;stroke-linecap:round}
 .door:hover .knock-fist,.door:focus-visible .knock-fist{animation:knockFistTap 1s ease-in-out}
 @keyframes knockFistTap{
   0%{opacity:0;transform:translate(-8px,-8px) rotate(-12deg) scale(.7)}

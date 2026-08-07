@@ -143,12 +143,19 @@
     artifactStage.querySelector('.artifact-close')?.focus();
   };
 
-  workLinks.forEach((link, index) => {
-    link.addEventListener('click', event => {
-      event.preventDefault();
-      showWorkItem(link, index);
+  /* Perspective tiles now carry a hover teaser, so a click goes straight to
+     the article PDF (the anchor's native href / target="_blank") instead of
+     the intermediate reveal card. showWorkItem is retained for touch clients
+     that report no hover capability, so those users still get the teaser. */
+  const hasHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+  if (!hasHover) {
+    workLinks.forEach((link, index) => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        showWorkItem(link, index);
+      });
     });
-  });
+  }
 
   const perspectivesIndex = document.querySelector('.perspectives-index');
   if (perspectivesIndex) {
@@ -197,6 +204,16 @@
   bindArtifact('.notebook', 'nowwhat');
   bindArtifact('.workshop-note', 'workshop');
   bindArtifact('.door', 'boredroom');
+
+  /* The "Click to read more →" style cue inside each desk teaser is a real
+     button: clicking it opens the same reveal as its hotspot. */
+  document.querySelectorAll('.desk-cta').forEach(btn => {
+    btn.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      openArtifact(btn.dataset.open, btn);
+    });
+  });
 
   artifactLayer.addEventListener('click', event => {
     if (event.target.closest('.artifact-close') || event.target.classList.contains('artifact-backdrop')) closeArtifact();
