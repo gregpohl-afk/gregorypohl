@@ -183,3 +183,104 @@
 
 /* V8: editorial hand-drawn principle marks only. */
 .editorial-eye path,.editorial-eye ellipse,.editorial-question path,.editorial-pattern path{stroke-linecap:round;stroke-linejoin:round}
+
+
+/* V9 — mobile-only hero and portrait repair. Desktop architecture intentionally unchanged. */
+.hero-title-top,.hero-title-bottom{display:inline}
+.hero-title-bottom{white-space:nowrap}
+.dot-cue{display:none}
+
+@keyframes redDotPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(197,46,35,.28);transform:scale(1)}
+  50%{box-shadow:0 0 0 10px rgba(197,46,35,0);transform:scale(1.06)}
+}
+
+@media(max-width:690px){
+  /* Keep the hero inside the viewport and preserve the intended two-line editorial lockup. */
+  .hero-left{min-width:0;max-width:100%;padding-left:0}
+  .hero h1{
+    position:relative;
+    display:block;
+    width:100%;
+    max-width:100%;
+    margin-bottom:28px;
+    font-size:clamp(78px,22vw,104px);
+    line-height:.79;
+    letter-spacing:-.062em;
+    white-space:normal;
+    overflow:visible;
+  }
+  .hero-title-top,.hero-title-bottom{display:block;width:max-content;max-width:100%}
+  .hero-title-bottom{position:relative;white-space:nowrap}
+  .hero-dot{
+    display:inline-block;
+    vertical-align:baseline;
+    width:.17em;height:.17em;
+    min-width:14px;min-height:14px;
+    margin:0 0 .055em .055em;
+    animation:redDotPulse 2.3s ease-in-out infinite;
+  }
+  .dot-cue{
+    display:block;
+    position:absolute;
+    left:min(72vw,315px);
+    top:45%;
+    width:92px;
+    color:var(--ink);
+    font:700 italic 12px/1.05 var(--serif);
+    letter-spacing:0;
+    transform:rotate(-2deg);
+    pointer-events:none;
+  }
+  .dot-cue svg{display:block;width:72px;height:44px;margin:0 0 -2px 0;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .dot-cue em{display:block;font-style:italic;white-space:nowrap}
+
+  /* Center the two clocks as a balanced pair beneath the hero copy. */
+  .hero-clocks{
+    display:grid;
+    width:100%;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    justify-items:center;
+    align-items:start;
+    padding:30px 0 4px;
+    margin-top:28px;
+    border-top:1px solid var(--line);
+  }
+  .hero-clock-block{
+    width:100%;
+    max-width:150px;
+    display:grid;
+    grid-template-columns:1fr;
+    justify-items:center;
+    text-align:center;
+    row-gap:8px;
+  }
+  .hero-clock-block .clock-city{grid-column:auto;font-size:9px;text-align:center}
+  .hero-clock-block .clock{width:64px;height:64px}
+  .hero-clock-block .clock-read{display:grid;justify-items:center;text-align:center;gap:1px}
+  .hero-clock-block .clock-read strong{font-size:20px}
+  .hero-clock-block .clock-read span{font-size:9px}
+
+  /* Why Me becomes a deliberate vertical sequence on phone-sized layouts. */
+  .about{grid-template-columns:1fr;gap:24px;padding-left:0;padding-right:0}
+  .about-head{grid-column:auto}
+  .about-copy{order:2;padding-left:0;font-size:15px;line-height:1.5}
+  .portrait{order:3;width:100%;height:auto;min-height:0;margin:4px 0 0;overflow:visible;justify-content:center}
+  .portrait img{width:min(78vw,390px);height:auto;max-width:none;object-fit:contain;object-position:center bottom}
+  .experience-note{order:4;width:min(60vw,285px);max-width:none;justify-self:center;margin-top:-8px}
+}
+
+@media(max-width:430px){
+  .hero h1{font-size:clamp(72px,21.2vw,91px)}
+  .dot-cue{left:auto;right:0;top:43%;width:88px;font-size:11px}
+  .dot-cue svg{width:67px;height:42px}
+  .hero-clocks{gap:14px}
+  .hero-clock-block{max-width:135px}
+  .portrait img{width:82vw}
+  .experience-note{width:64vw}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-dot{animation:none}
+}
