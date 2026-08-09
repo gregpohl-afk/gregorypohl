@@ -284,3 +284,56 @@
 @media(prefers-reduced-motion:reduce){
   .hero-dot{animation:none}
 }
+
+/* V10 — Red Dot cue only. Anchored to the dot so it stays attached on desktop and mobile. */
+.hero h1{position:relative}
+.hero-title-bottom{position:relative}
+.dot-cue{
+  display:block;
+  position:absolute;
+  left:calc(100% + 10px);
+  top:34%;
+  width:104px;
+  color:var(--ink);
+  font:700 italic 13px/1.05 var(--serif);
+  letter-spacing:0;
+  text-transform:none;
+  transform:rotate(-2deg);
+  pointer-events:none;
+  z-index:2;
+}
+.dot-cue svg{
+  display:block;
+  width:82px;
+  height:48px;
+  margin:0 0 -4px -6px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2.15;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.dot-cue em{display:block;font-style:italic;white-space:nowrap}
+
+@media(max-width:900px){
+  .dot-cue{left:calc(100% + 7px);top:30%;width:94px;font-size:12px}
+  .dot-cue svg{width:74px;height:44px}
+}
+
+@media(max-width:690px){
+  .dot-cue{
+    display:block;
+    left:calc(100% + 5px);
+    right:auto;
+    top:30%;
+    width:88px;
+    font-size:11px;
+    transform:rotate(-2deg);
+  }
+  .dot-cue svg{width:70px;height:42px;margin-left:-5px}
+}
+
+@media(max-width:430px){
+  .dot-cue{left:calc(100% + 2px);right:auto;top:28%;width:78px;font-size:10.5px}
+  .dot-cue svg{width:62px;height:39px;margin-left:-4px}
+}
