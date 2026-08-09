@@ -127,3 +127,59 @@
   .portrait img{width:100%;object-position:center bottom}
   .pigeons img{width:84%;max-height:205px}
 }
+
+/* V7 — final polish: preserve architecture; adjust only agreed elements. */
+/* Bigger editorial hero, with the red period still acting as the Red Dot link. */
+.hero h1{font-size:clamp(98px,9.7vw,154px)}
+
+/* Desktop clocks are intentionally omitted; mobile keeps them as a useful location detail. */
+.hero-clocks{display:none}
+
+/* Clickable Observe / Question / Patterns with restrained inline expansion. */
+.principles{align-items:start}
+.principle{min-width:0}
+.principle-trigger{width:100%;display:grid;grid-template-columns:1fr 86px;gap:18px;align-items:center;border:0;background:transparent;padding:0;text-align:left;color:var(--ink);cursor:pointer}
+.principle-copy{display:block}
+.principle-line{display:block;max-width:270px;font:900 15px/1.3 var(--serif)}
+.principle-explore{display:block;margin-top:11px;color:var(--red);font:700 8.5px/1 var(--sans);letter-spacing:.08em}
+.principle-icon{width:78px;height:52px;justify-self:end;fill:none;stroke:var(--ink);stroke-width:2;overflow:visible}
+.principle-icon .fill{fill:var(--ink);stroke:none}
+.principle-mark{justify-self:end;font:300 70px/.85 var(--serif)}
+.principle-detail{margin-top:18px;border:1px solid var(--line);padding:20px 20px 22px}
+.principle-detail p{max-width:none;margin:0;font:300 13px/1.48 var(--serif)}
+.principle.is-open .principle-explore::before{content:'CLOSE ';}
+.principle.is-open .principle-explore{font-size:0}
+.principle.is-open .principle-explore::before{font-size:8.5px}
+
+/* The portrait stays in Why Me, simply with more presence. */
+.portrait{height:343px}
+.portrait img{width:125%}
+
+/* Jurassic Pigeons stays in its existing section, just larger. */
+.pigeons img{width:100%;max-height:222px}
+
+@media(max-width:900px){
+  .hero h1{font-size:clamp(86px,15.6vw,127px)}
+  .portrait{height:384px}
+  .portrait img{width:112%}
+  .pigeons img{width:100%;max-height:245px}
+}
+@media(max-width:690px){
+  .hero-clocks{display:grid;width:100%;grid-template-columns:1fr 1fr;justify-content:center;justify-items:center;align-items:start;padding-top:28px;border-top:1px solid var(--line);gap:24px}
+  .hero-clock-block{width:auto;grid-template-columns:48px auto;justify-content:center}
+  .principle-trigger{grid-template-columns:1fr 70px;padding:1px 0}
+  .principle-line{max-width:none;font-size:16px}
+  .principle-icon{width:62px;height:44px}
+  .principle-mark{font-size:58px}
+  .principle-detail{margin-top:12px;padding:18px}
+}
+@media(max-width:590px){
+  .hero h1{font-size:21.6vw;line-height:.84}
+  .portrait{height:395px;overflow:hidden}
+  .portrait img{width:118%;max-width:none}
+  .pigeons img{width:100%;max-height:265px;justify-self:center}
+  .hero-clock-block{grid-template-columns:46px auto;column-gap:8px}
+}
+
+/* V8: editorial hand-drawn principle marks only. */
+.editorial-eye path,.editorial-eye ellipse,.editorial-question path,.editorial-pattern path{stroke-linecap:round;stroke-linejoin:round}

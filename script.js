@@ -57,6 +57,17 @@
   });
   document.getElementById('openLiir').addEventListener('click', () => liir.showModal());
 
+  document.querySelectorAll('.principle-trigger').forEach(button => {
+    button.addEventListener('click', () => {
+      const article = button.closest('.principle');
+      const detail = article.querySelector('.principle-detail');
+      const opening = !article.classList.contains('is-open');
+      article.classList.toggle('is-open', opening);
+      button.setAttribute('aria-expanded', String(opening));
+      detail.hidden = !opening;
+    });
+  });
+
   [archive, concept, liir].forEach(dialog => dialog.addEventListener('click', e => {
     const r = dialog.getBoundingClientRect();
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
