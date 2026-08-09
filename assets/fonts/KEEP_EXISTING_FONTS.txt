@@ -1,0 +1,2 @@
+Keep the licensed Nitti and Quinn font files already present in the live GregoryPohl.com repository in this folder.
+The website CSS references those existing files by filename. Font binaries are intentionally not included in this handoff.

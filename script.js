@@ -1,335 +1,91 @@
 (() => {
-  const dialog = document.getElementById('contentDialog');
-  const eyebrow = document.getElementById('dialogEyebrow');
-  const title = document.getElementById('dialogTitle');
-  const body = document.getElementById('dialogBody');
+  const items = window.WORK_ITEMS || [];
+  const featured = items.filter(item => item.featured).slice(0, 4);
+  const featuredGrid = document.getElementById('featuredWork');
+  const archive = document.getElementById('archiveDialog');
+  const archiveGrid = document.getElementById('archiveGrid');
+  const concept = document.getElementById('conceptDialog');
+  const liir = document.getElementById('liirDialog');
 
-  if (!dialog || !eyebrow || !title || !body) return;
-
-  const show = (eyebrowText, titleText, html) => {
-    eyebrow.textContent = eyebrowText;
-    title.textContent = titleText;
-    body.innerHTML = `<div class="dialog-inner">${html}</div>`;
-    if (typeof dialog.showModal === 'function') dialog.showModal();
-    else dialog.setAttribute('open', '');
+  const artwork = item => {
+    if (item.visual === 'board') return `<div class="work-art"><div class="black-board">3 PEOPLE.<br>1 REP.<br>3 BOARDS.<br>1 WORLD LADDER.</div></div>`;
+    if (!item.image) return `<div class="work-art"><div class="coming-card">COMING<br>SOON.</div></div>`;
+    return `<div class="work-art"><img src="${item.image}" alt=""></div>`;
   };
 
-  /* Desk artifacts use their own physical forms instead of the generic dialog. */
-  const artifactLayer = document.createElement('div');
-  artifactLayer.className = 'artifact-layer';
-  artifactLayer.setAttribute('aria-hidden', 'true');
-  artifactLayer.innerHTML = '<div class="artifact-backdrop"></div><div class="artifact-stage" role="dialog" aria-modal="true" aria-labelledby="artifactTitle"></div>';
-  document.body.appendChild(artifactLayer);
-
-  const artifactStage = artifactLayer.querySelector('.artifact-stage');
-  let returnFocus = null;
-
-  const artifactContent = {
-    nowwhat: `
-      <article class="desk-reveal notebook-reveal">
-        <button class="artifact-close" type="button" aria-label="Close">×</button>
-        <p class="pencil-kicker">Now what?</p>
-        <p class="pencil-aside">The only question you always need an answer to.</p>
-        <p class="book-boast">Apparently, my answer was to write the greatest business-life field guide known to mankind.<sup>*</sup></p>
-        <h2 id="artifactTitle">The org chart ran out of language before you ran out of ability.</h2>
-        <p>Rigid job descriptions, padded timelines, and the corporate theater of belonging can make extraordinary range look like a failure to focus.</p>
-        <p><em>Somebody’s Unicorn</em> is a sharp, zero-fluff field guide for cross-domain thinkers whose intelligence, speed, and capacity keep breaking the containers they’re handed.</p>
-        <p>It gives you language for what you are, explains why the available categories have always felt too small, and helps you find—or build—the terrain where your speed is essential.</p>
-        <p class="book-command">Stop hedging. Leave the wrong dictionary behind. Go build.</p>
-        <a class="artifact-cta" href="https://www.amazon.com/dp/B0H3877HZP" target="_blank" rel="noopener noreferrer">Read Somebody’s Unicorn →</a>
-        <p class="doodle-disclaimer">*Greatest-known-to-mankind designation has not been independently verified.</p>
-      </article>`,
-    workshop: `
-      <section class="desk-reveal workshop-reveal">
-        <button class="artifact-close" type="button" aria-label="Close">×</button>
-        <header class="workshop-heading">
-          <p>The Workshop</p>
-          <h2 id="artifactTitle">Work in progress.</h2>
-        </header>
-        <article class="concept-card concept-one">
-          <span>01</span><h3>Nothing To See Here</h3>
-          <p>The postmortem of a promising idea—and the more interesting question: what would I build differently now?</p>
-        </article>
-        <article class="concept-card concept-two">
-          <span>02</span><h3>Tommy / LA28</h3>
-          <p>How competition becomes culture—and what brands miss when they mistake fandom for attention.</p>
-        </article>
-        <article class="concept-card concept-three">
-          <span>03</span><h3>City Local</h3>
-          <p>The ordinary gift bag as cultural artifact. A city archive disguised as wrapping paper.</p>
-        </article>
-<article class="concept-card concept-four my-house-card">
-  <span>04</span>
-  <p class="my-house-label">Concept · 2026</p>
-  <h3>My House</h3>
-  <p>A new system for seeing football talent before consensus catches up.</p>
-</article>          
-        <aside class="advisory-card">
-          <p>Currently in the room</p>
-          <strong>Pharmaceuticals<br>Technology<br>Individual Leadership 3rd Eye</strong>
-          <a href="https://wa.me/13235724418?text=Hi%20Greg%E2%80%94I%27d%20like%20to%20learn%20more%20about%20your%20current%20advisory%20work." target="_blank" rel="noopener noreferrer">References available when useful →</a>
-        </aside>
-        <p class="workshop-scribble">Please don’t make me put dates on these.</p>
-      </section>`,
-    boredroom: `
-      <article class="desk-reveal boredroom-reveal">
-        <button class="artifact-close" type="button" aria-label="Close">×</button>
-        <p class="boredroom-kicker">The Boredroom</p>
-        <h2 id="artifactTitle">You’re talking to the actual human whose name is on the website.</h2>
-        <p>No assistant. No intake form. No funnel.</p>
-        <p>Less “How may I help?”<br>More “Tell me what’s actually going on.”</p>
-        <p>Sometimes I’ll answer immediately. Sometimes after school pickup. Sometimes after staring out a window pretending to work.</p>
-        <p>Either way—I’ll answer.</p>
-        <a class="artifact-cta boredroom-cta" href="mailto:greg@gregorypohl.com?subject=I%20knocked&body=Here%27s%20what%27s%20actually%20going%20on%3A%0D%0A%0D%0A">Come in →</a>
-        <p class="boredroom-status">Status: meetings are exhausting. This isn’t one.</p>
-      </article>`
+  const action = (item, cls='work-link interactive') => {
+    if (item.restricted) return `<button class="${cls}" type="button" data-concept="myhouse">${item.action} →</button>`;
+    if (item.href) return `<a class="${cls}" href="${item.href}" target="_blank" rel="noopener">${item.action || 'Open'} →</a>`;
+    return `<span class="${cls}">${item.status || 'Coming soon'}</span>`;
   };
 
-  const closeArtifact = () => {
-    artifactLayer.classList.remove('is-visible');
-    artifactLayer.setAttribute('aria-hidden', 'true');
-    artifactStage.innerHTML = '';
-    document.body.classList.remove('artifact-open');
-    if (returnFocus) returnFocus.focus();
+  featuredGrid.innerHTML = featured.map((item, i) => `
+    <article class="work-card interactive" tabindex="0" role="link" data-work-id="${item.id}" aria-label="Open ${item.title}">
+      <span class="work-index">0${i + 1}</span>
+      <h3>${item.title}</h3>
+      ${artwork(item)}
+      <p class="work-dek">${item.dek}</p>
+      ${action(item)}
+    </article>`).join('');
+
+  archiveGrid.innerHTML = items.map(item => `
+    <article class="archive-item">
+      <span>${item.kind}</span>
+      <h3>${item.title}</h3>
+      <p>${item.dek}</p>
+      ${action(item, 'interactive')}
+    </article>`).join('');
+
+  document.getElementById('openArchive').addEventListener('click', () => archive.showModal());
+  document.querySelectorAll('.archive-close').forEach(btn => btn.addEventListener('click', () => btn.closest('dialog').close()));
+  document.addEventListener('click', e => { if (e.target.closest('[data-concept="myhouse"]')) concept.showModal(); });
+
+  const openWork = card => {
+    const item = items.find(x => x.id === card.dataset.workId);
+    if (!item) return;
+    if (item.restricted) { concept.showModal(); return; }
+    if (item.href) window.open(item.href, '_blank', 'noopener');
+  };
+  featuredGrid.addEventListener('click', e => {
+    const card = e.target.closest('.work-card');
+    if (!card || e.target.closest('a,button')) return;
+    openWork(card);
+  });
+  featuredGrid.addEventListener('keydown', e => {
+    const card = e.target.closest('.work-card');
+    if (card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openWork(card); }
+  });
+  document.getElementById('openLiir').addEventListener('click', () => liir.showModal());
+
+  [archive, concept, liir].forEach(dialog => dialog.addEventListener('click', e => {
+    const r = dialog.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
+  }));
+
+  const cursor = document.querySelector('.open-cursor');
+  window.addEventListener('mousemove', e => { cursor.style.left = `${e.clientX}px`; cursor.style.top = `${e.clientY}px`; });
+  document.addEventListener('mouseover', e => { if (e.target.closest('a,button,.work-card')) document.body.classList.add('cursor-on'); });
+  document.addEventListener('mouseout', e => { if (e.target.closest('a,button,.work-card')) document.body.classList.remove('cursor-on'); });
+
+  const parts = (zone) => {
+    const now = new Date();
+    const raw = new Intl.DateTimeFormat('en-GB', { timeZone: zone, hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false }).formatToParts(now);
+    const pick = t => Number(raw.find(p => p.type === t)?.value || 0);
+    return { h: pick('hour'), m: pick('minute'), s: pick('second') };
   };
 
-  const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* Make a reveal feel like it grows out of the object you clicked: the panel
-     scales up from the trigger's position, then its contents cascade in. */
-  const enterReveal = (trigger) => {
-    const reveal = artifactStage.querySelector('.desk-reveal');
-    if (!reveal || prefersReduce || typeof reveal.animate !== 'function') return;
-    const rr = reveal.getBoundingClientRect();
-    let ox = rr.width / 2, oy = rr.height / 2;
-    if (trigger && trigger.getBoundingClientRect) {
-      const t = trigger.getBoundingClientRect();
-      ox = Math.max(-rr.width, Math.min(rr.width * 2, (t.left + t.width / 2) - rr.left));
-      oy = Math.max(-rr.height, Math.min(rr.height * 2, (t.top + t.height / 2) - rr.top));
-    }
-    reveal.style.transformOrigin = `${ox}px ${oy}px`;
-    reveal.animate(
-      [{ transform: 'scale(.9) translateY(14px)', opacity: 0 }, { transform: 'none', opacity: 1 }],
-      { duration: 520, easing: 'cubic-bezier(.16,1,.3,1)' }
-    );
-    [...reveal.children]
-      .filter(el => !el.classList.contains('artifact-close'))
-      .forEach((el, i) => el.animate(
-        [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }],
-        { duration: 460, delay: 100 + i * 70, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' }
-      ));
-  };
-
-  const openArtifact = (name, trigger) => {
-    artifactStage.innerHTML = artifactContent[name];
-    artifactLayer.dataset.artifact = name;
-    artifactLayer.classList.add('is-visible');
-    artifactLayer.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('artifact-open');
-    returnFocus = trigger;
-    enterReveal(trigger);
-    artifactStage.querySelector('.artifact-close')?.focus();
-  };
-
-  const workLinks = [...document.querySelectorAll('.tile')];
-
-  const getWorkItem = (link, index) => {
-    const card = document.querySelector(`.work-${index + 1}-card`);
-    if (!card) return null;
-
-    return {
-      eyebrow: card.querySelector('.work-eyebrow')?.textContent.trim() || 'PERSPECTIVE',
-      title: card.querySelector('strong')?.textContent.trim() || link.dataset.label,
-      deck: card.querySelector('em')?.textContent.trim() || '',
-      summary: card.querySelector('p')?.textContent.trim() || '',
-      href: link.href,
-      featured: link.dataset.featured === 'true'
-    };
-  };
-
-  const showWorkItem = (link, index) => {
-    const item = getWorkItem(link, index);
-    if (!item) {
-      window.open(link.href, '_blank', 'noopener');
-      return;
-    }
-
-    artifactStage.innerHTML = `
-      <article class="desk-reveal work-reveal${item.featured ? ' featured-work-reveal' : ''}">
-        <button class="artifact-close" type="button" aria-label="Close">×</button>
-        <p class="work-reveal-kicker">${item.featured ? 'Featured Perspective · ' : ''}${item.eyebrow}</p>
-        <h2 id="artifactTitle">${item.title}</h2>
-        ${item.deck ? `<p class="work-reveal-deck">${item.deck}</p>` : ''}
-        <p>${item.summary}</p>
-        <a class="artifact-cta" href="${item.href}" target="_blank" rel="noopener noreferrer">Read on →</a>
-      </article>`;
-    artifactLayer.dataset.artifact = 'work';
-    artifactLayer.classList.add('is-visible');
-    artifactLayer.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('artifact-open');
-    returnFocus = link;
-    enterReveal(link);
-    artifactStage.querySelector('.artifact-close')?.focus();
-  };
-
-  /* Perspective tiles now carry a hover teaser, so a click goes straight to
-     the article PDF (the anchor's native href / target="_blank") instead of
-     the intermediate reveal card. showWorkItem is retained for touch clients
-     that report no hover capability, so those users still get the teaser. */
-  const hasHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
-  if (!hasHover) {
-    workLinks.forEach((link, index) => {
-      link.addEventListener('click', event => {
-        event.preventDefault();
-        showWorkItem(link, index);
-      });
+  const updateClocks = () => {
+    document.querySelectorAll('.clock').forEach(clock => {
+      const p = parts(clock.dataset.zone);
+      const hourDeg = (p.h % 12) * 30 + p.m * 0.5;
+      const minDeg = p.m * 6 + p.s * 0.1;
+      clock.querySelector('.hour').style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
+      clock.querySelector('.minute').style.transform = `translateX(-50%) rotate(${minDeg}deg)`;
     });
-  }
-
-  const perspectivesIndex = document.querySelector('.perspectives-index');
-  if (perspectivesIndex) {
-    perspectivesIndex.addEventListener('click', () => {
-      const items = workLinks.map(getWorkItem).filter(Boolean);
-      const featured = items.find(item => item.featured) || items[0];
-      const archive = items.filter(item => item !== featured);
-
-      artifactStage.innerHTML = `
-        <section class="desk-reveal perspectives-reveal">
-          <button class="artifact-close" type="button" aria-label="Close">×</button>
-          <header class="perspectives-heading">
-            <p>Perspectives</p>
-            <h2 id="artifactTitle">Six ways of looking at what everyone else has agreed to call obvious.</h2>
-          </header>
-          <article class="perspectives-feature">
-            <p class="work-reveal-kicker">Start here · ${featured.eyebrow}</p>
-            <h3>${featured.title}</h3>
-            <p class="perspectives-deck">${featured.deck}</p>
-            <p>${featured.summary}</p>
-            <a class="artifact-cta" href="${featured.href}" target="_blank" rel="noopener noreferrer">Read the Perspective →</a>
-          </article>
-          <div class="perspectives-archive" aria-label="More Perspectives">
-            ${archive.map(item => `
-              <a href="${item.href}" target="_blank" rel="noopener noreferrer">
-                <span>${item.eyebrow}</span>
-                <strong>${item.title}</strong>
-                <em>${item.deck}</em>
-              </a>`).join('')}
-          </div>
-        </section>`;
-      artifactLayer.dataset.artifact = 'perspectives';
-      artifactLayer.classList.add('is-visible');
-      artifactLayer.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('artifact-open');
-      returnFocus = perspectivesIndex;
-      enterReveal(perspectivesIndex);
-      artifactStage.querySelector('.artifact-close')?.focus();
-    });
-  }
-
-  const bindArtifact = (selector, name) => {
-    const trigger = document.querySelector(selector);
-    if (trigger) trigger.addEventListener('click', () => openArtifact(name, trigger));
+    const format = zone => new Intl.DateTimeFormat('en-GB',{timeZone:zone,hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
+    document.getElementById('amsClock').textContent = format('Europe/Amsterdam');
+    document.getElementById('laClock').textContent = format('America/Los_Angeles');
   };
-
-  bindArtifact('.notebook', 'nowwhat');
-  bindArtifact('.workshop-note', 'workshop');
-  bindArtifact('.door', 'boredroom');
-
-  /* The "Click to read more →" style cue inside each desk teaser is a real
-     button: clicking it opens the same reveal as its hotspot. */
-  document.querySelectorAll('.desk-cta').forEach(btn => {
-    btn.addEventListener('click', event => {
-      event.preventDefault();
-      event.stopPropagation();
-      openArtifact(btn.dataset.open, btn);
-    });
-  });
-
-  artifactLayer.addEventListener('click', event => {
-    if (event.target.closest('.artifact-close') || event.target.classList.contains('artifact-backdrop')) closeArtifact();
-  });
-
-  const closeButton = dialog.querySelector('.close');
-  if (closeButton) closeButton.addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') {
-      document.querySelectorAll('.hero-easter-egg.is-open').forEach(item => item.classList.remove('is-open'));
-      if (dialog.open) dialog.close();
-      if (artifactLayer.classList.contains('is-visible')) closeArtifact();
-    }
-  });
-
-  /* Hover/focus works through CSS; click adds touch-friendly persistence. */
-  document.querySelectorAll('.hero-easter-egg').forEach(egg => {
-    const trigger = egg.querySelector(':scope > button');
-    const card = egg.querySelector(':scope > .hero-story-card');
-    if (!trigger || !card) return;
-
-    trigger.addEventListener('click', event => {
-      event.preventDefault();
-      const opening = !egg.classList.contains('is-open');
-      document.querySelectorAll('.hero-easter-egg.is-open').forEach(item => item.classList.remove('is-open'));
-      egg.classList.toggle('is-open', opening);
-      card.setAttribute('aria-hidden', opening ? 'false' : 'true');
-    });
-  });
-
-  document.addEventListener('click', event => {
-    if (!event.target.closest('.hero-easter-egg')) {
-      document.querySelectorAll('.hero-easter-egg.is-open').forEach(item => item.classList.remove('is-open'));
-    }
-  });
-
-  /* Collected artifacts already reveal on hover/focus via CSS. This adds an
-     explicit tap-to-toggle so the story is guaranteed to open on touch
-     devices, regardless of a given browser's focus-on-tap behavior. */
-  document.querySelectorAll('.collected-artifact').forEach(artifact => {
-    artifact.addEventListener('click', event => {
-      event.preventDefault();
-      const opening = !artifact.classList.contains('is-open');
-      document.querySelectorAll('.collected-artifact.is-open').forEach(item => item.classList.remove('is-open'));
-      artifact.classList.toggle('is-open', opening);
-    });
-  });
-
-  document.addEventListener('click', event => {
-    if (!event.target.closest('.collected-artifact')) {
-      document.querySelectorAll('.collected-artifact.is-open').forEach(item => item.classList.remove('is-open'));
-    }
-  });
-
-  /* First-contact discoverability. The interactive objects are invisible
-     hotspots on a photograph, so on load we surface a dismissible hint and
-     gently pulse a couple of the richest objects. This is the main cue for
-     touch visitors, who never see the hover teasers. Everything clears on the
-     first interaction (or after a few seconds) and respects reduced-motion. */
-  (() => {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const pulsed = [];
-    if (!reduce) {
-      ['.notebook', '.tile.work-1'].forEach(sel => {
-        const el = document.querySelector(sel);
-        if (el) { el.classList.add('discover-pulse'); pulsed.push(el); }
-      });
-    }
-    const chip = document.createElement('div');
-    chip.className = 'discover-hint';
-    chip.setAttribute('role', 'note');
-    chip.innerHTML = '<span>Everything on the desk is interactive — hover or tap to explore.</span>';
-    document.body.appendChild(chip);
-    requestAnimationFrame(() => chip.classList.add('is-shown'));
-
-    let dismissed = false;
-    const dismiss = () => {
-      if (dismissed) return;
-      dismissed = true;
-      chip.classList.remove('is-shown');
-      pulsed.forEach(el => el.classList.remove('discover-pulse'));
-      setTimeout(() => chip.remove(), 600);
-    };
-    ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(evt =>
-      window.addEventListener(evt, dismiss, { once: true, passive: true }));
-    setTimeout(dismiss, 7000);
-  })();
+  updateClocks();
+  setInterval(updateClocks, 1000);
 })();

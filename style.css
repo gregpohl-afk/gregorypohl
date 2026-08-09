@@ -1,316 +1,61 @@
-@font-face{font-family:Quinn;src:url('assets/fonts/QuinnDisplay-Black.otf') format('opentype');font-weight:900;font-display:swap}
-@font-face{font-family:Quinn;src:url('assets/fonts/QuinnDisplay-BoldItalic.otf') format('opentype');font-weight:700;font-style:italic;font-display:swap}
+/* GregoryPohl.com — approved editorial direction, production build. */
 @font-face{font-family:Nitti;src:url('assets/fonts/NittiGrotesk-Light.otf') format('opentype');font-weight:300;font-display:swap}
 @font-face{font-family:Nitti;src:url('assets/fonts/NittiGrotesk-Bold.otf') format('opentype');font-weight:700;font-display:swap}
-@font-face{font-family:NittiCond;src:url('assets/fonts/NittiGroteskCondensed-ExtraBold.otf') format('opentype');font-weight:800;font-display:swap}
 @font-face{font-family:NittiCond;src:url('assets/fonts/NittiGroteskCondensed-ExtraBlack.otf') format('opentype');font-weight:900;font-display:swap}
+@font-face{font-family:Quinn;src:url('assets/fonts/QuinnDisplay-Black.otf') format('opentype');font-weight:900;font-display:swap}
+@font-face{font-family:Quinn;src:url('assets/fonts/QuinnDisplay-BoldItalic.otf') format('opentype');font-weight:700;font-style:italic;font-display:swap}
+:root{--paper:#f4efe5;--ink:#11100d;--red:#c52e23;--line:rgba(17,16,13,.22);--sans:Nitti,Arial,sans-serif;--cond:NittiCond,'Arial Narrow',Arial,sans-serif;--serif:Quinn,Georgia,serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--paper)}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300}.shell{width:min(1220px,calc(100% - 72px));margin:0 auto}.section-rule{border-top:1px solid var(--line)}a{color:inherit}.red{color:var(--red)}
+.mast{height:86px;display:flex;align-items:flex-start;justify-content:space-between;padding-top:25px}.brand{text-decoration:none;display:block}.brand strong{display:block;font:700 17px/1 var(--sans);letter-spacing:.08em}.brand span{display:block;margin-top:5px;font:700 9px/1 var(--sans);letter-spacing:.08em}.mast nav{display:flex;gap:30px;padding-top:5px}.mast nav a{position:relative;text-decoration:none;font:700 9px/1 var(--sans);letter-spacing:.06em}.mast nav a.active:after{content:"";position:absolute;height:2px;background:var(--red);left:0;right:0;bottom:-9px}
+.hero{min-height:485px;display:grid;grid-template-columns:67% 33%;align-items:center;padding:12px 0 44px}.hero-left{padding-left:6px;max-width:870px}.hero h1{display:flex;align-items:flex-end;gap:14px;margin:0 0 22px;font:900 clamp(90px,9.3vw,148px)/.78 var(--cond);letter-spacing:-.048em;text-transform:uppercase;white-space:nowrap}.hero-dot{display:inline-grid;width:.19em;height:.19em;min-width:19px;min-height:19px;margin-bottom:.07em;border-radius:50%;background:var(--red);text-decoration:none;transition:transform .2s ease}.hero-dot span{display:none}.hero-dot:hover,.hero-dot:focus-visible{transform:scale(1.13);outline:0;box-shadow:0 0 0 5px rgba(197,46,35,.1)}.hero-lede{margin:0;max-width:665px;font:900 clamp(25px,2.25vw,34px)/1.12 var(--serif);letter-spacing:-.012em}.short-rule{width:44px;height:3px;background:var(--red);margin:21px 0 25px}.hero-copy{max-width:475px;margin:0 0 14px;font:300 14px/1.43 var(--serif)}.hero-strong{font-weight:900}.hero-meta{font:700 8.5px/1.2 var(--sans);letter-spacing:.045em}.hero-meta b{color:var(--red);margin:0 9px}.hero-space{min-height:100%}
+.section-kicker{font:700 9px/1 var(--sans);letter-spacing:.1em;color:var(--red);text-transform:uppercase}.section-kicker.black{color:var(--ink)}
+.work{padding:24px 0 25px}.work>.section-kicker{margin-bottom:18px}.work-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:42px}.work-card{min-width:0}.work-index{display:block;margin-bottom:7px;font:700 9px/1 var(--sans);color:var(--red)}.work-card h3{min-height:38px;margin:0 0 14px;font:900 17px/.98 var(--cond);text-transform:uppercase}.work-art{height:255px;display:flex;align-items:flex-end;margin-bottom:16px}.work-art img{display:block;max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 7px 6px rgba(26,20,12,.13));transition:transform .24s ease}.work-card:hover .work-art img{transform:translateY(-3px) rotate(-.25deg)}.black-board,.coming-card{width:100%;height:245px;border-radius:7px;background:#151515;color:#f4efe5;box-shadow:0 9px 18px rgba(0,0,0,.17);padding:30px 25px;position:relative;font:900 28px/1.41 var(--cond)}.black-board:after{content:"";position:absolute;width:78px;height:4px;background:var(--red);left:26px;bottom:27px}.work-dek{min-height:64px;margin:0 0 12px;font:300 12.5px/1.4 var(--serif)}.work-link,.plain-button{border:0;background:none;padding:0;color:var(--red);font:700 9px/1 var(--sans);letter-spacing:.065em;text-transform:uppercase;text-decoration:none;cursor:pointer}.work-archive-link{margin-top:22px;text-align:right}
+.what{display:grid;grid-template-columns:1.03fr .98fr .8fr;gap:38px;padding:33px 25px 37px}.what-head{font:900 clamp(31px,2.85vw,44px)/.92 var(--cond)}.what-copy{border-left:1px solid var(--line);padding-left:32px;font:300 12.5px/1.44 var(--serif)}.what-copy p{margin:0 0 14px}.what-actions{border-left:1px solid var(--line);padding-left:30px}.what-actions article{display:grid;grid-template-columns:36px 1fr;gap:12px;margin-bottom:15px}.what-actions h3{margin:0 0 2px;font:900 15px/1 var(--cond)}.what-actions p{margin:0;font:300 11px/1.32 var(--serif)}.glyph{display:flex;width:25px;height:25px;align-items:center;justify-content:center;font-size:25px}.glyph-search{position:relative;border:1.7px solid var(--ink);border-radius:50%;width:22px;height:22px}.glyph-search:after{content:"";position:absolute;width:10px;height:1.7px;background:var(--ink);right:-7px;bottom:-3px;transform:rotate(45deg)}.glyph-compass{font-size:27px}.engagement{margin-top:18px!important}
+.about{display:grid;grid-template-columns:.75fr .8fr 1.15fr .78fr;gap:25px;align-items:center;padding:28px 10px 15px}.about-head .section-kicker{display:block;margin-bottom:16px}.about-head h2{margin:0;font:900 clamp(32px,2.95vw,44px)/.92 var(--cond)}.portrait{height:235px;margin:0;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}.portrait img{width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:contrast(1.02)}.about-copy{font:300 12px/1.48 var(--serif)}.about-copy p{margin:0 0 13px}.experience-note{width:100%;max-width:245px;justify-self:end;filter:drop-shadow(0 6px 5px rgba(25,19,11,.11));transform:rotate(.35deg)}
+.lower{display:grid;grid-template-columns:.72fr .82fr 2.05fr;gap:24px;padding:24px 0 18px}.currently{font:300 10.8px/1.3 var(--serif)}.currently .section-kicker{display:block;margin-bottom:11px}.currently p{margin:0 0 6px}.canal{margin:0;display:flex;align-items:center;justify-content:center}.canal img{width:165px;max-width:100%;filter:drop-shadow(0 6px 5px rgba(25,19,11,.11))}.pigeons{display:grid;grid-template-columns:1.3fr .7fr;border-left:1px solid var(--line);padding-left:28px;align-items:center}.pigeons h2{margin:6px 0 10px;font:900 clamp(31px,3vw,44px)/.9 var(--cond)}.pigeons p{max-width:355px;margin:0 0 15px;font:700 15.5px/1.22 var(--serif);font-style:italic}.stay{font:700 8.5px/1 var(--sans);letter-spacing:.09em}.pigeons img{width:100%;max-height:205px;object-fit:contain;align-self:end}
+.footer{display:grid;grid-template-columns:1.22fr .72fr 1.12fr;gap:28px;align-items:end;padding:16px 0 25px}.footer-thought{font:900 clamp(24px,2.15vw,34px)/.91 var(--cond)}.footer-thought span{color:var(--red)}.reach .section-kicker{display:block;margin-bottom:7px}.reach-email{display:block;margin-bottom:5px;text-decoration:none;font:700 11px/1.2 var(--sans);letter-spacing:.035em}.reach div{font:700 8.5px/1.4 var(--sans);letter-spacing:.035em}.reach div a{text-decoration:none}.reach div a:last-child{text-decoration:underline}.clock-pair{display:grid;grid-template-columns:1fr 1fr;gap:19px}.clock-block{display:grid;grid-template-columns:55px 1fr;grid-template-areas:'city city' 'clock read';align-items:center;column-gap:8px}.clock-city{grid-area:city;margin-bottom:5px;font:700 7.5px/1 var(--sans);letter-spacing:.06em}.clock{grid-area:clock;position:relative;width:49px;height:49px;border:1px solid rgba(17,16,13,.4);border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(17,16,13,.65) 0deg .65deg,transparent .65deg 30deg)}.clock:after{content:"";position:absolute;inset:4px;background:var(--paper);border-radius:50%}.clock i{position:absolute;z-index:2;left:50%;bottom:50%;transform-origin:50% 100%;display:block}.clock .hour{height:14px;width:2px;background:var(--ink)}.clock .minute{height:19px;width:1px;background:var(--red)}.clock .center{width:4px;height:4px;background:var(--red);border-radius:50%;bottom:calc(50% - 2px);left:calc(50% - 2px);transform:none}.clock-read{grid-area:read}.clock-read strong{display:block;font:300 14.5px/1 var(--serif);font-variant-numeric:tabular-nums}.clock-read span{display:block;margin-top:3px;font:700 7.5px/1 var(--sans)}
+.archive-dialog,.concept-dialog{width:min(1040px,calc(100vw - 34px));max-height:calc(100vh - 34px);overflow:auto;border:0;background:var(--paper);padding:45px;color:var(--ink);box-shadow:0 28px 90px rgba(0,0,0,.32)}dialog::backdrop{background:rgba(16,13,9,.63);backdrop-filter:blur(4px)}.archive-close{position:absolute;right:16px;top:8px;border:0;background:none;font:300 38px/1 var(--sans);cursor:pointer}.archive-dialog h2,.concept-dialog h2{margin:10px 0 9px;font:900 clamp(48px,6vw,82px)/.85 var(--cond)}.archive-intro{font:300 14px/1.4 var(--serif);margin:0 0 28px}.archive-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.archive-item{border-top:1px solid var(--line);padding:17px 0}.archive-item>span{font:700 9px/1 var(--sans);text-transform:uppercase;color:var(--red);letter-spacing:.07em}.archive-item h3{margin:7px 0;font:900 22px/1 var(--cond);text-transform:uppercase}.archive-item p{font:300 12px/1.4 var(--serif)}.archive-item a,.archive-item button,.archive-item>span.interactive{border:0;background:none;padding:0;color:var(--red);font:700 9px/1 var(--sans);text-transform:uppercase;text-decoration:none}.concept-dialog{max-width:720px}.concept-lead{font:900 25px/1.15 var(--serif)}.concept-board{background:#151515;color:#f4efe5;padding:30px 34px;margin:20px 0;font:900 41px/1.35 var(--cond)}.concept-dialog>p:not(.concept-lead){font:300 15px/1.5 var(--serif)}.concept-stop{color:var(--red);font-style:italic!important}
+.open-cursor{position:fixed;left:0;top:0;width:70px;height:70px;border:1.8px solid var(--red);border-radius:50%;background:rgba(197,46,35,.07);display:grid;place-items:center;pointer-events:none;z-index:9999;opacity:0;transform:translate(-50%,-50%) scale(.25);transition:opacity .12s,transform .16s cubic-bezier(.2,.8,.2,1);mix-blend-mode:multiply}.open-cursor span{font:700 8px/1 var(--sans);letter-spacing:.18em;color:var(--red)}body.cursor-on .open-cursor{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.red-page{padding-top:55px;padding-bottom:80px}.red-page .back{display:inline-block;margin-bottom:65px;text-decoration:none;font:700 10px/1 var(--sans);letter-spacing:.08em}.red-page>h1{margin:0 0 34px;font:900 clamp(70px,11vw,145px)/.78 var(--cond)}.red-page>h1 span{color:var(--red)}.red-story{max-width:790px;font:300 22px/1.5 var(--serif)}.red-story .lead{font-size:27px}
+@media (hover:none),(pointer:coarse){.open-cursor{display:none}}
+@media(max-width:900px){.shell{width:min(760px,calc(100% - 34px))}.mast{height:auto;padding-bottom:22px}.mast nav{gap:14px}.hero{grid-template-columns:1fr;min-height:0;padding:46px 0 42px}.hero-space{display:none}.hero h1{font-size:clamp(68px,16.5vw,116px)}.hero-lede{font-size:clamp(24px,5vw,31px)}.work-grid{grid-template-columns:1fr 1fr;gap:34px}.what{grid-template-columns:1fr;padding-left:0;padding-right:0}.what-copy,.what-actions{border-left:0;border-top:1px solid var(--line);padding:24px 0 0}.about{grid-template-columns:1fr 1fr}.about-head{grid-column:1/-1}.experience-note{justify-self:start}.lower{grid-template-columns:1fr 1fr}.pigeons{grid-column:1/-1}.footer{grid-template-columns:1fr 1fr}.clock-pair{grid-column:1/-1}.archive-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:590px){.shell{width:calc(100% - 26px)}.mast{display:block;padding-top:20px}.brand strong{font-size:15px}.mast nav{margin-top:18px;gap:17px;flex-wrap:wrap}.mast nav a{font-size:8px}.hero{padding-top:31px;padding-bottom:36px}.hero h1{font-size:17.4vw;gap:7px;margin-bottom:19px;white-space:nowrap}.hero-dot{min-width:12px;min-height:12px}.hero-lede{font-size:24px}.hero-copy{font-size:13.5px}.hero-meta{font-size:7.4px;line-height:1.6}.hero-meta b{margin:0 5px}.work{padding-top:22px}.work-grid{grid-template-columns:1fr;gap:38px}.work-art{height:auto;min-height:245px;justify-content:flex-start}.work-art img{max-height:285px}.black-board,.coming-card{height:270px;max-width:330px}.work-card h3,.work-dek{min-height:0}.what{padding-top:31px;padding-bottom:33px}.what-head{font-size:36px}.about{grid-template-columns:1fr;gap:18px;padding-left:0;padding-right:0}.about-head h2{font-size:38px}.portrait{height:300px}.about-copy{font-size:13px}.experience-note{max-width:260px}.lower{grid-template-columns:1fr;gap:22px}.currently{font-size:12px}.canal{justify-content:flex-start}.pigeons{grid-column:auto;grid-template-columns:1fr;border-left:0;border-top:1px solid var(--line);padding:23px 0 0}.pigeons h2{font-size:41px}.pigeons p{font-size:17px}.pigeons img{max-height:220px;justify-self:end}.footer{grid-template-columns:1fr;gap:23px}.footer-thought{font-size:31px}.reach-email{font-size:12px}.clock-pair{grid-column:auto;max-width:360px}.archive-dialog,.concept-dialog{padding:35px 22px}.archive-grid{grid-template-columns:1fr}}
 
-:root{--paper:#f3eee5;--ink:#111;--red:#b52b24;--dur:.4s;--ease-out:cubic-bezier(.16,1,.3,1);--ease-settle:cubic-bezier(.33,1.2,.5,1)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;background:var(--paper)}
-body{margin:0;background:var(--paper);color:var(--ink)}
-.poster{position:relative;width:min(100%,1536px);margin:0 auto;line-height:0;overflow:hidden;background:var(--paper)}
-.poster-image{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+/* V5 refinements: top clocks, clickable work objects, LIIR, typographic polish. */
+.red{color:var(--red);font-family:var(--serif);font-weight:700;font-style:italic}
+.hero{grid-template-columns:minmax(0,1fr) 260px;column-gap:72px}
+.hero-clocks{align-self:start;justify-self:end;display:grid;gap:32px;padding-top:28px;width:220px}
+.hero-clock-block{grid-template-columns:64px 1fr;column-gap:12px}
+.hero-clock-block .clock{width:58px;height:58px}.hero-clock-block .clock-city{font-size:8px}.hero-clock-block .clock-read strong{font-size:18px}.hero-clock-block .clock-read span{font-size:8px}
+.liir-line{margin:13px 0 0;font:300 10.5px/1.35 var(--serif)}
+.liir-trigger{border:0;background:none;padding:0;color:var(--ink);font:900 11px/1 var(--serif);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px;cursor:pointer}
+.work-card{position:relative;cursor:pointer;border-radius:2px;transition:background .18s ease,transform .18s ease}
+.work-card:focus-visible{outline:2px solid var(--red);outline-offset:7px}
+.work-card:hover{transform:translateY(-2px)}
+.work-card .work-link{position:relative;z-index:2}
+.work-card::after{content:"";position:absolute;inset:-8px;pointer-events:none;border:1px solid transparent;transition:border-color .18s ease}
+.work-card:hover::after,.work-card:focus-visible::after{border-color:rgba(197,46,35,.18)}
+.liir-dialog{width:min(760px,calc(100vw - 34px));max-height:calc(100vh - 34px);overflow:auto;border:0;background:var(--paper);padding:46px;color:var(--ink);box-shadow:0 28px 90px rgba(0,0,0,.32)}
+.liir-dialog h2{margin:10px 0 24px;font:900 clamp(54px,7vw,92px)/.82 var(--serif)}
+.liir-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px 36px}
+.liir-grid article{border-top:1px solid var(--line);padding-top:16px}
+.liir-grid h3{margin:0 0 7px;font:900 20px/1 var(--serif)}
+.liir-grid p{margin:0;font:300 15px/1.5 var(--sans)}
+.footer{grid-template-columns:1.32fr .68fr}
+.reach{justify-self:end;align-self:end}
 
-/* Accessible invisible controls over the North Star poster. */
-.hotspot,.hero-easter-egg{position:absolute}
-.hotspot{display:block;margin:0;padding:0;border:0;background:transparent;color:transparent;text-decoration:none;line-height:1;cursor:pointer;z-index:20}
-.hotspot>span,.hero-easter-egg>button>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
-.hotspot:focus-visible,.hero-easter-egg>button:focus-visible{outline:3px solid var(--red);outline-offset:2px;background:rgba(181,43,36,.08)}
-
-/* Navigation and scroll anchors. */
-.work-nav{left:29.7%;top:1.2%;width:5.5%;height:2.2%}
-.collected-nav{left:35.6%;top:1.2%;width:7.2%;height:2.2%}
-.desk-nav{left:44.1%;top:1.2%;width:6.2%;height:2.2%}
-.workshop-nav{left:52%;top:1.2%;width:7.6%;height:2.2%}
-.boredroom-nav{left:60.8%;top:1.2%;width:7.6%;height:2.2%}
-.anchor{position:absolute;top:39.4%;left:0;width:1px;height:1px}
-.anchor-collected{top:57.4%}.anchor-desk{top:71.8%}.anchor-workshop{top:73%;left:70%}.anchor-boredroom{top:84.4%}
-
-/* Work artifacts. */
-.work-1{left:13.2%;top:41%;width:10.8%;height:15.2%}
-.work-2{left:24.6%;top:40.7%;width:11.2%;height:15.7%}
-.work-3{left:36.5%;top:40.6%;width:11.4%;height:15.8%}
-.work-4{left:48.3%;top:40.8%;width:11.4%;height:15.7%}
-.work-5{left:60.4%;top:40.9%;width:10.4%;height:15.5%}
-.work-6{left:71.6%;top:41%;width:10.2%;height:15.4%}
-.perspectives-index{left:1.05%;top:53.25%;width:8.6%;height:2.1%}
-.work-1::before{content:"START HERE";position:absolute;left:7%;top:-13%;padding:6px 8px 5px;background:var(--red);color:#f6efe3;font:800 10px/1 NittiCond,Arial,sans-serif;letter-spacing:.1em;white-space:nowrap;transform:rotate(-2deg);box-shadow:2px 3px 0 rgba(40,27,17,.22)}
-.work-story-card{position:absolute;top:34.2%;width:330px;padding:18px 21px;background:#f3ecdf;border:1px solid rgba(64,47,27,.25);box-shadow:0 13px 30px rgba(32,23,13,.22);color:#17130e;font:300 13px/1.45 Nitti,Georgia,serif;text-align:left;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(8px) rotate(-.25deg);transition:opacity var(--dur) var(--ease-out),visibility var(--dur) var(--ease-out),transform var(--dur) var(--ease-settle);z-index:150;line-height:1.45}
-.work-story-card strong{display:block;margin-bottom:9px;font:900 27px/1.02 Quinn,Georgia,serif}
-.work-story-card em{display:block;margin:0 0 13px;color:#5b544d;font-style:italic}
-.work-story-card p{margin:0}.work-story-card .work-cta-hint{margin:14px 0 0;color:var(--red);font:700 10px/1 "Nitti Grotesk",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}.work-eyebrow{margin-bottom:10px;color:var(--red);font:700 10px/1 "Nitti Grotesk",Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase}
-.work-1-card{left:12%}.work-2-card{left:24%}.work-3-card{left:36%}.work-4-card{left:47%}.work-5-card{left:58%}.work-6-card{right:3%}
-.work-1:hover~.work-1-card,.work-1:focus~.work-1-card,.work-2:hover~.work-2-card,.work-2:focus~.work-2-card,.work-3:hover~.work-3-card,.work-3:focus~.work-3-card,.work-4:hover~.work-4-card,.work-4:focus~.work-4-card,.work-5:hover~.work-5-card,.work-5:focus~.work-5-card,.work-6:hover~.work-6-card,.work-6:focus~.work-6-card{opacity:1;visibility:visible;transform:translateY(0) rotate(-.25deg)}
-
-/* Collected artifacts: artwork stays in the poster; only the story floats above. */
-.collected-artifact{position:absolute;display:block;margin:0;padding:0;border:0;background:transparent;overflow:visible;cursor:pointer;z-index:18;color:#17130e;line-height:1.15;text-align:left}
-.collected-artifact:hover,.collected-artifact:focus-within,.collected-artifact.is-open{z-index:60}
-.collected-1{left:13.2%;top:58.75%;width:11.15%;height:11.05%}.collected-2{left:24.75%;top:58.75%;width:11.1%;height:11.05%}.collected-3{left:36.3%;top:58.75%;width:11.1%;height:11.05%}.collected-4{left:48%;top:58.75%;width:11.1%;height:11.05%}.collected-5{left:59.7%;top:58.75%;width:11.1%;height:11.05%}.collected-6{left:71.35%;top:58.75%;width:11.1%;height:11.05%}
-.artifact-story{position:absolute;left:50%;bottom:103%;width:300px;max-width:26vw;padding:18px 19px;background:#f5ede0;border:1px solid rgba(93,72,45,.38);box-shadow:0 12px 30px rgba(0,0,0,.25);color:#17130e;font:300 clamp(14px,1.05vw,18px)/1.5 Nitti,Arial,sans-serif;white-space:normal;opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,8px) rotate(-.45deg);transition:opacity var(--dur) var(--ease-out),visibility var(--dur) var(--ease-out),transform var(--dur) var(--ease-settle);z-index:200}
-.collected-artifact:hover .artifact-story,.collected-artifact:focus .artifact-story,.collected-artifact.is-open .artifact-story{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0) rotate(-.45deg)}
-.collected-artifact:focus-visible{outline:3px solid var(--red);outline-offset:3px}
-
-/* Dialog-only hotspots. */
-.notebook{left:51.2%;top:72.7%;width:17.4%;height:14.2%}.workshop-note{left:69.1%;top:73.2%;width:16.2%;height:13%}
-.door{left:50.2%;top:84.5%;width:28.5%;height:11.6%}
-.say-hello{left:1.2%;top:95.2%;width:19%;height:3.2%}.linkedin{left:29.5%;top:95.4%;width:10%;height:2.8%}
-
-/* Embedded editorial discovery cards. */
-.hero-easter-egg{z-index:30;line-height:1.45}
-.hero-easter-egg>button{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;border:0;background:transparent;cursor:pointer;color:transparent;z-index:2}
-.hero-story-card{position:absolute;width:330px;padding:19px 21px;background:#f3ecdf;border:1px solid rgba(64,47,27,.25);box-shadow:0 14px 32px rgba(32,23,13,.24);color:#17130e;font:300 13px/1.48 Nitti,Georgia,serif;text-align:left;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(8px) rotate(-.25deg);transition:opacity var(--dur) var(--ease-out),visibility var(--dur) var(--ease-out),transform var(--dur) var(--ease-settle);z-index:250}
-.hero-story-card strong{display:block;margin-bottom:11px;font:900 29px/1 Quinn,Georgia,serif}.hero-story-card p{margin:0 0 13px}.hero-story-card p:last-child{margin-bottom:0}
-.hero-easter-egg:hover .hero-story-card,.hero-easter-egg:focus-within .hero-story-card,.hero-easter-egg.is-open .hero-story-card{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) rotate(-.25deg)}
-.liir-egg{left:84.8%;top:41.7%;width:12.8%;height:14.3%}.liir-card{right:0;bottom:102%;width:390px}
-.red-dot-egg{left:.15%;top:18%;width:4%;height:4%}.red-dot-card{left:105%;top:-20px;width:390px}
-.negroni-egg{left:10.5%;top:73.1%;width:13.4%;height:12.9%}.negroni-card{left:5%;bottom:95%}
-.dino-egg{left:86.1%;top:73.1%;width:11.2%;height:14.2%}.dino-card{right:0;bottom:95%}
-.pigeon-egg{left:76.3%;top:8.3%;width:21%;height:27%}.pigeon-egg .hero-story-card{right:2%;top:72%;width:340px}
-.portrait-egg{left:1.5%;top:5.2%;width:31%;height:31%}.portrait-egg .hero-story-card{left:72%;top:42%;width:355px}
-.observe-egg{left:5.2%;top:31.5%;width:10.2%;height:5.6%}.question-egg{left:15.5%;top:31.5%;width:10.2%;height:5.6%}.patterns-egg{left:25.8%;top:31.5%;width:10.2%;height:5.6%}
-.ruler-card{left:0;top:108%;width:325px}.question-card{left:-60px}.patterns-card{left:-120px}
-
-/* A note left behind: the feather, revealed on hover/focus like the other
-   discovery cards instead of requiring a click into the big modal. */
-.feather-egg{left:45.8%;top:95.4%;width:16%;height:3.2%}
-.feather-egg .hero-story-card{left:50%;bottom:135%;width:320px;transform:translateX(-50%) translateY(8px) rotate(-.4deg)}
-.feather-egg:hover .hero-story-card,.feather-egg:focus-within .hero-story-card,.feather-egg.is-open .hero-story-card{transform:translateX(-50%) translateY(0) rotate(-.4deg)}
-.feather-card .feather-question{margin:0 0 12px;font:900 24px/1.15 Quinn,Georgia,serif}
-.feather-card .feather-answer{margin:0;color:var(--red);font:800 12px/1 NittiCond,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
-
-/* Modal stories for Desk, Feather, and Boredroom. */
-dialog{width:min(780px,calc(100vw - 30px));border:0;padding:0;background:#f7f0e5;color:#111;box-shadow:0 24px 80px rgba(0,0,0,.32);font-family:Nitti,Arial,sans-serif;line-height:1.45;overflow:visible}
-dialog::backdrop{background:rgba(15,12,8,.62);backdrop-filter:blur(5px)}
-dialog .close{position:absolute;right:14px;top:6px;border:0;background:none;font:300 38px/1 Nitti,Arial,sans-serif;cursor:pointer;z-index:3}
-#dialogEyebrow{margin:0;color:var(--red);font:800 14px/1.2 NittiCond,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
-#dialogTitle{font:900 clamp(34px,6vw,66px)/.98 Quinn,Georgia,serif;margin:.16em 0 .35em}
-#dialogBody{font:300 18px/1.5 Nitti,Arial,sans-serif}.dialog-inner{padding:42px}#dialogBody p{margin:.75em 0}#dialogBody a{color:var(--red);font-weight:700}
-.note{background:#f6e58f;padding:20px;transform:rotate(-1deg);box-shadow:0 8px 22px rgba(0,0,0,.14);font:700 21px/1.35 Nitti,Arial,sans-serif}.small{font-size:15px;color:#5d554a}
-
-@media(max-width:760px){
-  .poster{min-width:760px;transform-origin:top left}body{overflow-x:auto}
-  dialog{width:min(680px,calc(100vw - 22px))}.dialog-inner{padding:28px}
-  .artifact-story{max-width:none;width:250px;font-size:15px}
-  .work-story-card{top:33%;left:8%!important;right:auto!important;width:280px;font-size:12px}.work-story-card strong{font-size:23px}
-  .hero-story-card,.liir-card,.red-dot-card,.negroni-card,.dino-card,.pigeon-egg .hero-story-card,.ruler-card{position:fixed;left:7%!important;right:auto!important;top:18%!important;bottom:auto!important;width:78vw;max-height:65vh;overflow-y:auto}
-  /* The feather note is the one hero card that self-centers with translateX;
-     neutralize that on mobile so it sits in the same fixed panel as the rest
-     instead of being dragged left and off-screen. */
-  .feather-egg .hero-story-card{width:78vw!important;transform:translateY(8px) rotate(-.4deg)!important}
-  .feather-egg.is-open .hero-story-card,.feather-egg:focus-within .hero-story-card{transform:translateY(0) rotate(-.4deg)!important}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr 180px;column-gap:28px}
+  .hero-clocks{display:grid;width:170px;padding-top:10px;gap:20px}
+  .hero-clock-block{grid-template-columns:50px 1fr}.hero-clock-block .clock{width:46px;height:46px}.hero-clock-block .clock-read strong{font-size:15px}
+  .footer{grid-template-columns:1fr 1fr}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.work-story-card,.artifact-story,.hero-story-card,.hotspot::after{transition:none}}
-
-/* =========================================================
-   THE DESK / FEATHER / BOREDROOM — PHYSICAL REVEALS
-   ========================================================= */
-/* First-contact discoverability cues (added on load, cleared on interaction). */
-.discover-hint{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(12px);z-index:1200;max-width:min(92vw,540px);padding:11px 20px;background:rgba(23,19,14,.9);color:#f3eee5;border:1px solid rgba(243,238,229,.14);border-radius:999px;box-shadow:0 14px 34px rgba(0,0,0,.34);font:600 13px/1.35 "Nitti Grotesk",Arial,sans-serif;text-align:center;opacity:0;pointer-events:none;transition:opacity .5s var(--ease-out),transform .5s var(--ease-out)}
-.discover-hint.is-shown{opacity:1;transform:translateX(-50%) translateY(0)}
-@keyframes discoverPulse{0%{box-shadow:0 0 0 0 rgba(181,43,36,.42)}70%{box-shadow:0 0 0 15px rgba(181,43,36,0)}100%{box-shadow:0 0 0 0 rgba(181,43,36,0)}}
-.discover-pulse{border-radius:10px;animation:discoverPulse 2.1s ease-out .8s 3}
-@media(prefers-reduced-motion:reduce){.discover-hint{transition:none}.discover-pulse{animation:none}}
-
-body.artifact-open{overflow:hidden}
-.artifact-layer{position:fixed;inset:0;display:grid;place-items:center;z-index:1000;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility .2s ease}
-.artifact-layer.is-visible{opacity:1;visibility:visible;pointer-events:auto}
-.artifact-backdrop{position:absolute;inset:0;background:rgba(22,17,11,.64);backdrop-filter:blur(3px)}
-.artifact-stage{position:relative;width:min(1120px,calc(100vw - 40px));max-height:calc(100vh - 40px);display:grid;place-items:center;z-index:1}
-.desk-reveal{position:relative;color:#17130e;font-family:Nitti,Arial,sans-serif;line-height:1.45;box-shadow:0 26px 80px rgba(0,0,0,.38)}
-.artifact-close{position:absolute;right:16px;top:12px;width:42px;height:42px;margin:0;padding:0;border:0;border-radius:50%;background:rgba(243,238,229,.88);color:#17130e;font:300 34px/1 Nitti,Arial,sans-serif;cursor:pointer;z-index:20}
-.artifact-close:focus-visible{outline:2px solid var(--red);outline-offset:3px}
-.artifact-cta{display:inline-block;margin-top:10px;padding:12px 17px;background:#17130e;color:#f6efe3;text-decoration:none;font:800 13px/1 NittiCond,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;box-shadow:4px 4px 0 var(--red);transition:transform .15s ease,box-shadow .15s ease}
-.artifact-cta:hover,.artifact-cta:focus-visible{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--red)}
-
-/* Boredroom: a note attached to the door, opening to a real conversation. */
-.boredroom-reveal{width:min(590px,calc(100vw - 48px));padding:52px 58px 44px;background:#f0e9dc;border:1px solid rgba(58,44,29,.38);transform:rotate(.3deg)}
-.boredroom-reveal::before{content:"";position:absolute;top:-16px;left:50%;width:120px;height:32px;background:rgba(201,181,142,.65);transform:translateX(-50%) rotate(-2deg)}
-.boredroom-kicker{margin:0 0 11px;color:var(--red);font:800 12px/1 NittiCond,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
-.boredroom-reveal h2{margin:0 0 22px;font:900 clamp(34px,5vw,53px)/1 Quinn,Georgia,serif}.boredroom-reveal>p:not([class]){margin:0 0 16px;font-size:16px;line-height:1.5}.boredroom-cta{margin-top:7px}.boredroom-status{margin:25px 0 0;color:#62584d;font:700 12px/1.3 Nitti,Arial,sans-serif;transform:rotate(-.5deg)}
-
-@media(max-width:760px){
-  .artifact-stage{width:calc(100vw - 20px);max-height:calc(100vh - 20px)}
-  .boredroom-reveal{width:calc(100vw - 28px);padding:48px 28px 38px}.boredroom-reveal h2{font-size:36px}
+@media(max-width:690px){
+  .hero{grid-template-columns:1fr}.hero-clocks{width:100%;grid-template-columns:1fr 1fr;justify-self:start;padding-top:28px;border-top:1px solid var(--line)}
+  .hero-clock-block{width:max-content}.liir-grid{grid-template-columns:1fr}
 }
-
-@media(prefers-reduced-motion:reduce){.artifact-layer,.artifact-cta{transition:none}}
-
-/* =========================================================
-   HOTSPOT GEOMETRY — MATCH THE NORTH STAR ARTWORK
-   ========================================================= */
-
-/* Exact ruler coordinates from the original North Star interaction layer. */
-.observe-egg,.question-egg,.patterns-egg{left:0;width:4.4%;z-index:105;pointer-events:auto}
-.observe-egg{top:.5%;height:14.5%}
-.question-egg{top:22.6%;height:10.2%;z-index:110}
-.patterns-egg{top:32.8%;height:11.8%}
-
-/* Cards enter beside the ruler and remain inside the hero. */
-.observe-egg .ruler-card,.question-egg .ruler-card,.patterns-egg .ruler-card{left:112%;width:310px}
-.observe-egg .ruler-card{top:20%}
-.question-egg .ruler-card{top:-55%}
-.patterns-egg .ruler-card{top:-35%}
-
-/* Portrait trigger lives on Gregory—not across the headline and margins. */
-.portrait-egg{left:27.5%;top:10.5%;width:22%;height:29%}
-.portrait-egg .hero-story-card{left:-94%;top:49%;width:355px}
-
-/* Correct the two footer targets to the printed artwork. */
-.say-hello{left:10.25%;top:95.38%;width:17.2%;height:2.1%}
-.linkedin{left:29.45%;top:95.42%;width:10%;height:2.1%}
-
-/* Mobile Work flow: summary first, paper second. */
-.work-reveal{width:min(620px,calc(100vw - 32px));padding:50px 54px 44px;background:#f1eadf;border:1px solid rgba(67,49,28,.32);transform:rotate(-.25deg)}
-.work-reveal-kicker{margin:0 0 10px;color:var(--red);font:800 12px/1 NittiCond,Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
-.work-reveal h2{margin:0 0 15px;font:900 clamp(38px,6vw,59px)/.98 Quinn,Georgia,serif}
-.work-reveal-deck{margin:0 0 19px;color:#5d554b;font:700 18px/1.35 Nitti,Arial,sans-serif;font-style:italic}
-.work-reveal>p:not([class]){margin:0 0 18px;font-size:16px;line-height:1.52}
-.featured-work-reveal{border-top:5px solid var(--red)}
-
-/* Perspectives: one editorial lead, followed by the existing archive. */
-.perspectives-reveal{width:min(900px,calc(100vw - 40px));max-height:calc(100vh - 40px);overflow:auto;padding:52px 58px 46px;background:#f3ecdf;border:1px solid rgba(67,49,28,.32);box-shadow:0 24px 70px rgba(0,0,0,.38)}
-.perspectives-heading{max-width:720px;margin:0 0 30px;padding-bottom:24px;border-bottom:1px solid rgba(84,68,49,.26)}
-.perspectives-heading>p{margin:0 0 8px;color:var(--red);font:800 11px/1 NittiCond,Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase}
-.perspectives-heading h2{margin:0;font:900 clamp(36px,4.8vw,56px)/1 Quinn,Georgia,serif}
-.perspectives-feature{position:relative;margin:0 0 31px;padding:26px 30px 28px;background:#ece1ce;border-left:5px solid var(--red);transform:rotate(-.25deg)}
-.perspectives-feature h3{max-width:700px;margin:0 0 10px;font:900 clamp(34px,4.5vw,52px)/1 Quinn,Georgia,serif}
-.perspectives-feature>p:not([class]){max-width:690px;margin:0 0 17px;font:300 15px/1.5 Nitti,Arial,sans-serif}
-.perspectives-deck{margin:0 0 16px;color:#554d43;font:700 17px/1.35 Nitti,Arial,sans-serif;font-style:italic}
-.perspectives-archive{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(84,68,49,.26)}
-.perspectives-archive a{display:block;min-height:138px;padding:23px 25px 22px 0;color:#17130e;text-decoration:none;border-bottom:1px solid rgba(84,68,49,.22)}
-.perspectives-archive a:nth-child(odd){padding-right:28px;border-right:1px solid rgba(84,68,49,.22)}
-.perspectives-archive a:nth-child(even){padding-left:28px}
-.perspectives-archive span{display:block;margin-bottom:8px;color:var(--red);font:800 9px/1 NittiCond,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
-.perspectives-archive strong{display:block;margin-bottom:8px;font:900 24px/1.04 Quinn,Georgia,serif}
-.perspectives-archive em{display:block;color:#62594f;font:300 13px/1.35 Nitti,Arial,sans-serif}
-.perspectives-archive a:hover strong,.perspectives-archive a:focus-visible strong{color:var(--red)}
-
-/* Notebook, Workshop, Boredroom: hover teases like the Work tiles do —
-   click still opens the same modal, unchanged. */
-.notebook-card,.workshop-note-card,.door-card{top:auto;width:300px;transform:translateX(-50%) translateY(8px) rotate(-.25deg)}
-/* A strip of washi tape so the desk notes read as taped-up notes, not identical cards. */
-.notebook-card::after,.workshop-note-card::after,.door-card::after{content:"";position:absolute;top:-9px;left:50%;width:64px;height:19px;transform:translateX(-50%) rotate(-2.4deg);background:linear-gradient(180deg,rgba(210,193,156,.62),rgba(198,178,138,.52));border:1px solid rgba(120,96,54,.16);box-shadow:0 1px 2px rgba(0,0,0,.08)}
-.workshop-note-card::after{transform:translateX(-50%) rotate(2deg)}
-.door-card::after{transform:translateX(-50%) rotate(-1.2deg)}
-.notebook-card{left:59.9%;bottom:26.5%}
-.workshop-note-card{left:77.2%;bottom:26.5%}
-.door-card{left:64.45%;bottom:19%}
-.notebook:hover~.notebook-card,.notebook:focus-visible~.notebook-card,.workshop-note:hover~.workshop-note-card,.workshop-note:focus-visible~.workshop-note-card,.door:hover~.door-card,.door:focus-visible~.door-card,.notebook-card:hover,.workshop-note-card:hover,.door-card:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0) rotate(-.25deg)}
-/* Invisible bridge so the pointer can travel from each desk hotspot onto its
-   teaser card (to click the cue) without crossing a dead gap that hides it. */
-.notebook-card::before,.workshop-note-card::before,.door-card::before{content:"";position:absolute;left:-18px;right:-18px;top:calc(100% - 8px);height:66px}
-/* The teaser cue is a real control: clicking it opens the same reveal. */
-.desk-cta{display:inline-block;background:none;border:0;padding:0;cursor:pointer}
-.desk-cta:focus-visible{outline:2px solid var(--red);outline-offset:3px}
-
-/* Boredroom door: a real knock, using a cropped copy of the door itself so
-   it's the actual artwork shaking, not a fake box — plus a small fist. */
-.door{overflow:visible}
-.door-shake{position:absolute;inset:0;background-image:url('assets/images/northstar-homepage.webp');background-repeat:no-repeat;background-size:350.88% 862.07%;background-position:-176.14% -728.45%;pointer-events:none;z-index:1}
-.door:hover .door-shake,.door:focus-visible .door-shake{animation:doorKnockShake .5s ease-in-out 2}
-@keyframes doorKnockShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px) rotate(-.4deg)}50%{transform:translateX(0)}75%{transform:translateX(3px) rotate(.4deg)}}
-.knock-fist{position:absolute;left:55%;top:55%;width:30px;height:31px;opacity:0;pointer-events:none;transform:translate(-6px,-6px) rotate(-12deg) scale(.7);z-index:2}
-.knock-fist .glove-body{fill:#fff;stroke:#2a2018;stroke-width:2.4;stroke-linejoin:round}
-.knock-fist .glove-line{fill:none;stroke:#2a2018;stroke-width:1.7;stroke-linecap:round}
-.door:hover .knock-fist,.door:focus-visible .knock-fist{animation:knockFistTap 1s ease-in-out}
-@keyframes knockFistTap{
-  0%{opacity:0;transform:translate(-8px,-8px) rotate(-12deg) scale(.7)}
-  8%{opacity:1}
-  18%{transform:translate(4px,4px) rotate(6deg) scale(1)}
-  30%{transform:translate(-6px,-6px) rotate(-10deg) scale(.85)}
-  40%{opacity:1}
-  50%{transform:translate(4px,4px) rotate(6deg) scale(1)}
-  62%{opacity:1;transform:translate(-6px,-6px) rotate(-10deg) scale(.85)}
-  80%,100%{opacity:0}
-}
-
-@media (hover:none),(pointer:coarse){.door-shake,.knock-fist{display:none}}
-@media(prefers-reduced-motion:reduce){
-  .door:hover .door-shake,.door:focus-visible .door-shake{animation:none}
-  .door:hover .knock-fist,.door:focus-visible .knock-fist{animation:none}
-}
-
-/* =========================================================
-   COOL ELEMENTS
-   ========================================================= */
-
-/* Custom cursor: the same red dot used throughout the artwork, desktop only. */
-@media (hover:hover) and (pointer:fine){
-  body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Ccircle cx='9' cy='9' r='4' fill='%23b52b24'/%3E%3C/svg%3E") 9 9,auto}
-  a,button,.hotspot,.hero-easter-egg>button,.collected-artifact{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34'%3E%3Ccircle cx='17' cy='17' r='5' fill='%23b52b24'/%3E%3Ccircle cx='17' cy='17' r='12' fill='none' stroke='%23b52b24' stroke-width='2'/%3E%3C/svg%3E") 17 17,auto}
-}
-
-/* Work tiles: hovering lifts the piece off the page, using a cropped copy of
-   the same artwork so the "shadow" beneath is the real piece, not a fake. */
-.tile{overflow:visible}
-.tile-lift{position:absolute;inset:0;background-image:url('assets/images/northstar-homepage.webp');background-repeat:no-repeat;pointer-events:none;transition:transform .28s ease,box-shadow .28s ease;z-index:1}
-.tile:hover .tile-lift,.tile:focus-visible .tile-lift{transform:translateY(-9px) rotate(-1.4deg);box-shadow:0 20px 34px rgba(20,14,8,.38)}
-.work-1 .tile-lift{background-size:925.93% 657.89%;background-position:-122.22% -269.74%}
-.work-2 .tile-lift{background-size:892.86% 636.94%;background-position:-219.64% -259.24%}
-.work-3 .tile-lift{background-size:877.19% 632.91%;background-position:-320.18% -256.96%}
-.work-4 .tile-lift{background-size:877.19% 636.94%;background-position:-423.68% -259.87%}
-.work-5 .tile-lift{background-size:961.54% 645.16%;background-position:-580.77% -263.87%}
-.work-6 .tile-lift{background-size:980.39% 649.35%;background-position:-701.96% -266.23%}
-@media (hover:none),(pointer:coarse){.tile-lift{display:none}}
-
-/* Red Dot: a clear pulse hints at the smallest, easiest-to-miss hotspot on
-   the page, five times on first load, then never again this session. */
-.red-dot-egg::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:3px solid var(--red);opacity:0;pointer-events:none;animation:redDotPulse 1.8s ease-out .6s 5}
-@keyframes redDotPulse{0%{opacity:1;transform:scale(.5)}65%{opacity:0;transform:scale(2.2)}100%{opacity:0;transform:scale(2.2)}}
-
-@media(prefers-reduced-motion:reduce){
-  .tile:hover .tile-lift,.tile:focus-visible .tile-lift{transform:none;box-shadow:none}
-  .red-dot-egg::after{animation:none}
-}
-
-@media(max-width:760px){
-  .observe-egg .ruler-card,.question-egg .ruler-card,.patterns-egg .ruler-card{position:fixed;left:7%!important;right:auto!important;top:18%!important;width:78vw}
-  /* Keep the "What I see" portrait card in its desktop placement on mobile too
-     (Greg prefers the laptop layout) rather than pinning it to the top. */
-  .portrait-egg .hero-story-card{position:absolute!important;left:-94%!important;right:auto!important;top:49%!important;bottom:auto!important;width:355px!important;max-height:none!important;overflow:visible!important}
-  .work-reveal{width:calc(100vw - 24px);padding:46px 27px 35px}.work-reveal h2{font-size:39px}
-  .perspectives-reveal{width:calc(100vw - 24px);max-height:calc(100vh - 24px);padding:46px 27px 35px}
-  .perspectives-heading h2{font-size:39px}.perspectives-feature{padding:23px 22px 25px}.perspectives-feature h3{font-size:36px}
-  .perspectives-archive{grid-template-columns:1fr}.perspectives-archive a,.perspectives-archive a:nth-child(odd),.perspectives-archive a:nth-child(even){min-height:0;padding:21px 0;border-right:0}
-}
-
-/* Touch devices use the click summary only. */
-@media (hover:none),(pointer:coarse){
-  .work-story-card,.tile::after{display:none!important}
-  .work-1::before{top:-10%;font-size:9px}
-}
-
-/* =========================================================
-   NOW WHAT / WORKSHOP — EDITORIAL REVEALS
-   Restraint beats an imitation of the raster North Star artwork.
-   ========================================================= */
-.notebook-reveal{width:min(760px,calc(100vw - 40px));max-height:calc(100vh - 40px);overflow:auto;padding:50px 54px 42px;background:#f3ecdf;border:1px solid rgba(67,49,28,.28);box-shadow:0 24px 70px rgba(0,0,0,.36)}
-.pencil-kicker{display:block;margin:0 0 8px;color:var(--red);font:800 11px/1 NittiCond,Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase}
-.pencil-aside{margin:0 0 25px;color:#5d554b;font:700 16px/1.35 Nitti,Arial,sans-serif}
-.book-boast{max-width:620px;margin:0 0 18px;font:700 16px/1.45 Nitti,Arial,sans-serif}
-.notebook-reveal h2{max-width:650px;margin:0 0 22px;font:900 clamp(42px,5vw,58px)/.98 Quinn,Georgia,serif}
-.notebook-reveal>p:not([class]){max-width:650px;margin:0 0 15px;font:300 16px/1.52 Nitti,Arial,sans-serif}
-.book-command{margin:20px 0 8px;font:700 16px/1.4 Nitti,Arial,sans-serif}
-.doodle-disclaimer{margin:25px 0 0;color:#6a6156;font:300 11px/1.35 Nitti,Arial,sans-serif}
-
-.workshop-reveal{width:min(860px,calc(100vw - 40px));max-height:calc(100vh - 40px);padding:51px 56px 42px;overflow:auto;background:#f3ecdf;border:1px solid rgba(67,49,28,.28);box-shadow:0 24px 70px rgba(0,0,0,.36)}
-.workshop-heading{margin:0 0 20px}
-.workshop-heading p{margin:0 0 7px;color:var(--red);font:800 11px/1 NittiCond,Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase}
-.workshop-heading h2{margin:0;font:900 clamp(42px,5vw,58px)/.98 Quinn,Georgia,serif}
-.concept-card{position:relative;width:100%;margin:0;padding:22px 0 21px 48px;background:transparent;color:#17130e;border-top:1px solid rgba(84,68,49,.25)}
-.concept-card>span{position:absolute;left:0;top:25px;color:var(--red);font:800 10px/1 NittiCond,Arial,sans-serif;letter-spacing:.08em}
-.concept-card h3{margin:0 0 7px;color:#17130e;font:900 28px/1 Quinn,Georgia,serif}
-.concept-card>p:not([class]){max-width:650px;margin:0;color:#29241e;font:300 14px/1.5 Nitti,Arial,sans-serif}
-.my-house-label{display:none}
-.advisory-card{width:100%;margin:0;padding:22px 0 0 48px;background:transparent;color:#17130e;border-top:1px solid rgba(84,68,49,.25)}
-.advisory-card p{margin:0 0 11px;color:var(--red);font:800 10px/1 NittiCond,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
-.advisory-card strong{display:block;margin:0 0 12px;font:700 14px/1.5 Nitti,Arial,sans-serif}
-.advisory-card a{color:#17130e;font:800 10px/1.3 NittiCond,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase}
-.workshop-scribble{display:none} /* Currently hidden — flagged for Greg to confirm intentional. */
-
-@media(max-width:760px){
-  .notebook-reveal,.workshop-reveal{width:calc(100vw - 24px);max-height:calc(100vh - 24px);padding:46px 27px 35px}
-  .notebook-reveal h2,.workshop-heading h2{font-size:39px}
-  .concept-card,.advisory-card{padding-left:38px}
+@media(max-width:590px){
+  .hero-clocks{gap:12px}.hero-clock-block{grid-template-columns:44px 1fr;column-gap:7px}.hero-clock-block .clock{width:40px;height:40px}.hero-clock-block .clock-read strong{font-size:13px}
+  .liir-line{font-size:10px}.liir-dialog{padding:34px 22px}.liir-dialog h2{font-size:56px}.liir-grid p{font-size:14px}
+  .footer{grid-template-columns:1fr}.reach{justify-self:start}
 }
