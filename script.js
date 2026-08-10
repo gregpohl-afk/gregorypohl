@@ -36,8 +36,24 @@
       ${action(item, 'interactive')}
     </article>`).join('');
 
-  document.getElementById('openArchive')?.addEventListener('click', () => archive?.showModal());
-  document.querySelectorAll('.archive-close').forEach(btn => btn.addEventListener('click', () => btn.closest('dialog').close()));
+  const cursor = document.querySelector('.open-cursor');
+  const parkCursorInDialog = dialog => {
+    if (cursor && dialog) dialog.appendChild(cursor);
+  };
+  const returnCursorToBody = () => {
+    if (cursor && cursor.parentElement !== document.body) document.body.appendChild(cursor);
+    document.body.classList.remove('cursor-on');
+  };
+
+  document.getElementById('openArchive')?.addEventListener('click', () => {
+    if (!archive) return;
+    archive.showModal();
+    parkCursorInDialog(archive);
+  });
+  document.querySelectorAll('.archive-close').forEach(btn => btn.addEventListener('click', () => {
+    btn.closest('dialog').close();
+    returnCursorToBody();
+  }));
   document.addEventListener('click', e => { if (e.target.closest('[data-concept="myhouse"]')) concept.showModal(); });
 
   const openWork = card => {
@@ -70,10 +86,12 @@
 
   [archive, concept, liir].filter(Boolean).forEach(dialog => dialog.addEventListener('click', e => {
     const r = dialog.getBoundingClientRect();
-    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) {
+      dialog.close();
+      returnCursorToBody();
+    }
   }));
 
-  const cursor = document.querySelector('.open-cursor');
   window.addEventListener('mousemove', e => { if (!cursor) return; cursor.style.left = `${e.clientX}px`; cursor.style.top = `${e.clientY}px`; });
   document.addEventListener('mouseover', e => { if (e.target.closest('a,button,.work-card')) document.body.classList.add('cursor-on'); });
   document.addEventListener('mouseout', e => { if (e.target.closest('a,button,.work-card')) document.body.classList.remove('cursor-on'); });
