@@ -877,3 +877,65 @@ body{font-family:var(--body);font-weight:300}
 }
 
 @media(prefers-reduced-motion:reduce){.hero-dot{animation:none}}
+
+/* 2026-08-10 structural correction only:
+   restore positioning/LIIR beneath manifesto; contact + clocks return to page bottom. */
+.hero-positioning{padding:0 0 31px}
+.hero-positioning .hero-meta{display:flex;align-items:center;flex-wrap:wrap;gap:0;font-family:var(--body);font-style:normal;font-weight:700;font-size:11px;line-height:1.45;letter-spacing:.055em;text-transform:uppercase}
+.hero-positioning .hero-meta b{margin:0 17px;color:var(--red);font:700 11px/1 var(--body)}
+.hero-positioning .liir-line{margin:18px 0 0;font-family:var(--serif);font-size:17px;font-weight:300;line-height:1.35}
+.hero-positioning .liir-trigger{font-family:var(--serif);font-size:18px;font-weight:900}
+
+@media(max-width:900px){
+  .hero-positioning{padding-bottom:28px}
+  .hero-positioning .hero-meta{font-size:10px}
+  .hero-positioning .hero-meta b{margin:0 12px}
+  .hero-positioning .liir-line{font-size:15px}
+  .hero-positioning .liir-trigger{font-size:16px}
+}
+@media(max-width:690px){
+  .hero-positioning{padding-bottom:27px}
+  .hero-positioning .hero-meta{font-size:9px;line-height:1.65;letter-spacing:.04em}
+  .hero-positioning .hero-meta b{margin:0 8px}
+  .hero-positioning .liir-line{margin-top:14px;font-size:13.5px;line-height:1.4}
+  .hero-positioning .liir-trigger{font-size:14px}
+}
+
+/* 2026-08-10 — WHY ME composition only.
+   Approved mockup: tighten the four existing elements into one editorial composition.
+   No copy, typography, assets, hero, archive, footer, or interaction changes. */
+@media (min-width:901px){
+  .about{
+    grid-template-columns:1.08fr 1.08fr 1.22fr .78fr;
+    gap:12px;
+    align-items:center;
+    padding:22px 10px 10px;
+  }
+  .about-head{padding-right:0}
+  .about-head .section-kicker{margin-bottom:15px}
+  .about-head h2{font-size:clamp(36px,3.15vw,49px);line-height:.90}
+  .portrait{
+    height:326px;
+    margin-left:-24px;
+    margin-right:-10px;
+    justify-content:flex-start;
+  }
+  .portrait img{
+    width:118%;
+    max-width:none;
+    object-position:left bottom;
+  }
+  .about-copy{
+    padding-left:0;
+    margin-left:-4px;
+    font-size:12px;
+    line-height:1.48;
+  }
+  .experience-note{
+    width:108%;
+    max-width:248px;
+    justify-self:start;
+    margin-left:8px;
+    margin-top:16px;
+  }
+}
