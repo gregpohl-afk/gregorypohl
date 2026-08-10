@@ -337,3 +337,543 @@
   .dot-cue{left:calc(100% + 2px);right:auto;top:28%;width:78px;font-size:10.5px}
   .dot-cue svg{width:62px;height:39px;margin-left:-4px}
 }
+
+/* V11 — manifesto hero + clocks moved to footer + larger contact details. */
+.hero-manifesto{
+  display:block;
+  min-height:0;
+  padding:34px 0 62px;
+}
+.hero-manifesto .hero-left{max-width:1120px;padding-left:6px}
+.hero-manifesto h1{
+  width:max-content;
+  max-width:100%;
+  margin-bottom:34px;
+  font-size:clamp(108px,10.4vw,164px);
+}
+.manifesto-copy{
+  max-width:1060px;
+  font:300 15px/1.43 var(--sans);
+  letter-spacing:.002em;
+}
+.manifesto-copy p{margin:0}
+.manifesto-copy strong{font-weight:700}
+.manifesto-copy .manifesto-close{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:1.18em;
+  color:var(--red);
+  white-space:nowrap;
+}
+.footer{
+  grid-template-columns:1.15fr .95fr .8fr;
+  align-items:center;
+}
+.footer-clocks{justify-self:center;width:100%;max-width:300px}
+.reach{justify-self:end;align-self:center}
+.reach .section-kicker{font-size:10px;margin-bottom:10px}
+.reach-email{font-size:15px;line-height:1.25;margin-bottom:8px}
+.reach div{font-size:11px;line-height:1.5}
+
+@media(max-width:900px){
+  .hero-manifesto h1{font-size:clamp(92px,12.5vw,126px)}
+  .manifesto-copy{max-width:900px;font-size:14.5px}
+  .footer{grid-template-columns:1fr 1fr}
+  .footer-thought{grid-column:1/-1}
+  .footer-clocks{justify-self:start}
+}
+@media(max-width:690px){
+  .hero-manifesto{padding:34px 0 45px}
+  .hero-manifesto h1{
+    display:block;
+    width:min-content;
+    font-size:clamp(76px,21vw,96px);
+    line-height:.79;
+    margin-bottom:30px;
+    white-space:normal;
+  }
+  .hero-manifesto .hero-title-top,.hero-manifesto .hero-title-bottom{display:block;width:max-content}
+  .manifesto-copy{max-width:none;font-size:13.5px;line-height:1.4}
+  .manifesto-copy .manifesto-close{display:inline;font-size:1.14em}
+  .footer{grid-template-columns:1fr;gap:28px}
+  .footer-thought{grid-column:auto}
+  .footer-clocks{justify-self:center;max-width:360px}
+  .reach{justify-self:start}
+  .reach-email{font-size:16px}
+  .reach div{font-size:12px}
+}
+
+/* V12 — approved mockup lock. Do not reinterpret. */
+/* Header */
+.mast{height:86px;padding-top:29px;align-items:flex-start}
+.brand{gap:0}
+.brand strong{font-size:13px;letter-spacing:.105em}
+.mast nav{padding-top:1px;gap:45px}
+.mast nav a{font-size:10px;letter-spacing:.06em}
+.mast nav a.active:after{bottom:-11px;height:2px}
+
+/* Hero: one oversized Quinn line, then compact Chuck-Lorre-style vanity-card copy. */
+.hero-manifesto{padding:23px 0 48px}
+.hero-manifesto .hero-left{max-width:none;width:100%;padding-left:0}
+.hero-manifesto h1{
+  display:block;
+  width:100%;
+  max-width:none;
+  margin:0 0 27px;
+  font:900 clamp(116px,10.65vw,171px)/.78 var(--serif);
+  letter-spacing:-.058em;
+  text-transform:none;
+  white-space:nowrap;
+  overflow:visible;
+}
+.hero-manifesto .hero-title-top,.hero-manifesto .hero-title-bottom{display:inline;width:auto;max-width:none;white-space:nowrap}
+.hero-manifesto .hero-title-top:after{content:' '}
+.hero-manifesto .hero-title-bottom{position:relative}
+.hero-dot{
+  width:.13em;height:.13em;min-width:18px;min-height:18px;
+  margin-left:.055em;margin-bottom:.07em;
+  vertical-align:baseline;
+}
+.dot-cue{
+  left:calc(100% + 54px);
+  top:38%;
+  width:132px;
+  font:700 italic 15px/1.05 var(--serif);
+  transform:rotate(-3deg);
+}
+.dot-cue svg{width:96px;height:52px;margin:0 0 -3px -9px;stroke-width:2}
+
+.manifesto-copy{
+  max-width:1190px;
+  margin:0;
+  font:300 15px/1.37 var(--sans);
+  letter-spacing:-.006em;
+}
+.manifesto-copy p:first-child{margin:0}
+.manifesto-copy strong{
+  font-family:var(--serif);
+  font-size:1.18em;
+  font-style:italic;
+  font-weight:700;
+  line-height:1;
+  letter-spacing:-.015em;
+  white-space:nowrap;
+}
+.manifesto-copy .manifesto-close{
+  display:block;
+  margin:27px 0 0;
+  color:var(--ink);
+  font:700 italic clamp(37px,3.4vw,54px)/1 var(--serif);
+  letter-spacing:-.025em;
+  white-space:nowrap;
+}
+.manifesto-copy .manifesto-close span{color:var(--red);font-family:var(--serif)}
+
+/* Approved footer: contact left, Amsterdam and Los Angeles clocks right. */
+.footer{
+  display:grid;
+  grid-template-columns:1.02fr 1.15fr;
+  gap:54px;
+  align-items:center;
+  padding:27px 0 35px;
+}
+.reach{justify-self:start;align-self:center;display:flex;flex-direction:column;align-items:flex-start}
+.reach .section-kicker{margin:0 0 10px;font-size:10px;letter-spacing:.1em}
+.reach-email,.reach-phone,.reach-linkedin{
+  display:block;
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-thickness:1.5px;
+  text-underline-offset:3px;
+  font:900 clamp(23px,2.05vw,32px)/1.16 var(--cond);
+  letter-spacing:-.015em;
+  margin:0 0 4px;
+}
+.reach-linkedin{margin-bottom:0}
+.footer-clocks{
+  width:100%;max-width:none;justify-self:stretch;
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+}
+.clock-block{
+  min-height:150px;
+  grid-template-columns:112px 1fr;
+  grid-template-areas:'city city' 'clock read';
+  align-items:center;
+  column-gap:22px;
+  padding:7px 30px 7px 64px;
+  border-left:1px solid var(--line);
+}
+.clock-block:first-child{border-left:1px solid var(--line)}
+.clock-city{margin-bottom:10px;font-size:10px;letter-spacing:.07em}
+.clock{width:92px;height:92px}
+.clock .hour{height:26px;width:4px}
+.clock .minute{height:36px;width:2px}
+.clock .center{width:7px;height:7px;bottom:calc(50% - 3.5px);left:calc(50% - 3.5px)}
+.clock-read strong{font:900 28px/1 var(--serif);font-variant-numeric:tabular-nums}
+.clock-read span{margin-top:5px;font-size:10px;letter-spacing:.06em}
+
+@media(max-width:1100px){
+  .hero-manifesto h1{font-size:clamp(102px,12vw,142px)}
+  .manifesto-copy{font-size:14px;max-width:980px}
+  .dot-cue{left:calc(100% + 34px);width:112px}
+  .footer{grid-template-columns:.9fr 1.1fr;gap:30px}
+  .clock-block{padding-left:34px;grid-template-columns:90px 1fr}
+  .clock{width:78px;height:78px}
+}
+
+@media(max-width:900px){
+  .mast nav{gap:22px}
+  .hero-manifesto h1{font-size:clamp(92px,14vw,124px)}
+  .manifesto-copy{max-width:none;font-size:13.8px}
+  .footer{grid-template-columns:1fr;gap:26px}
+  .footer-clocks{order:2}
+  .reach{order:1}
+  .clock-block{border-left:0;padding:14px 18px;justify-content:center}
+  .clock-block+ .clock-block{border-left:1px solid var(--line)}
+}
+
+@media(max-width:690px){
+  .mast{height:auto;padding-top:22px;padding-bottom:26px}
+  .mast nav{gap:17px;flex-wrap:wrap;justify-content:flex-start}
+  .hero-manifesto{padding:24px 0 38px}
+  .hero-manifesto h1{
+    width:100%;
+    font-size:clamp(72px,22vw,98px);
+    line-height:.78;
+    letter-spacing:-.06em;
+    white-space:normal;
+    margin-bottom:27px;
+  }
+  .hero-manifesto .hero-title-top,.hero-manifesto .hero-title-bottom{display:block;width:max-content;max-width:100%}
+  .hero-manifesto .hero-title-top:after{content:''}
+  .hero-dot{min-width:12px;min-height:12px}
+  .dot-cue{left:calc(100% + 11px);top:26%;width:92px;font-size:11px}
+  .dot-cue svg{width:69px;height:41px;margin-left:-5px}
+  .manifesto-copy{font-size:13.2px;line-height:1.36;letter-spacing:-.005em}
+  .manifesto-copy strong{font-size:1.12em;white-space:normal}
+  .manifesto-copy .manifesto-close{margin-top:23px;font-size:clamp(31px,9vw,43px);white-space:normal}
+  .footer{padding:24px 0 34px}
+  .reach-email,.reach-phone,.reach-linkedin{font-size:clamp(22px,7vw,29px)}
+  .footer-clocks{grid-template-columns:1fr 1fr;gap:0}
+  .clock-block{min-height:128px;display:grid;grid-template-columns:1fr;grid-template-areas:'city' 'clock' 'read';justify-items:center;text-align:center;padding:8px 12px;row-gap:6px}
+  .clock-block+ .clock-block{border-left:1px solid var(--line)}
+  .clock-city{margin:0;font-size:9px}
+  .clock{width:68px;height:68px}
+  .clock .hour{height:19px;width:3px}
+  .clock .minute{height:26px;width:1.5px}
+  .clock-read strong{font-size:20px}
+  .clock-read span{font-size:8.5px}
+}
+
+@media(max-width:430px){
+  .hero-manifesto h1{font-size:clamp(68px,21vw,88px)}
+  .dot-cue{left:calc(100% + 3px);top:28%;width:76px;font-size:10px}
+  .dot-cue svg{width:60px;height:37px}
+  .manifesto-copy{font-size:12.8px}
+}
+
+/* V13 — exact approved header/interactions/working footer clocks. */
+.brand{display:flex;flex-direction:column;align-items:flex-start;text-decoration:none;gap:6px}
+.brand-line{display:flex;align-items:center;gap:11px}
+.brand-dot{display:block;width:12px;height:12px;border-radius:50%;background:var(--red);flex:0 0 auto}
+.brand strong{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:700;
+  font-size:23px;
+  line-height:.92;
+  letter-spacing:-.015em;
+  text-transform:none;
+}
+.brand-role{
+  display:block;
+  margin-left:23px;
+  font:700 10px/1 var(--sans);
+  letter-spacing:.075em;
+  text-transform:uppercase;
+  position:relative;
+  padding-bottom:10px;
+}
+.brand-role:after{content:"";position:absolute;left:0;bottom:0;width:142px;height:1.5px;background:var(--ink);transform:rotate(-1deg);transform-origin:left center}
+
+/* The red period should unmistakably read as interactive without becoming a gimmick. */
+.hero-dot{animation:redDotPulse 2.25s ease-in-out infinite;will-change:transform,box-shadow}
+@keyframes redDotPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(197,46,35,.30);transform:scale(1)}
+  50%{box-shadow:0 0 0 13px rgba(197,46,35,0);transform:scale(1.055)}
+}
+
+/* Large OPEN cursor: desktop pointer devices only. */
+@media (hover:hover) and (pointer:fine){
+  a,button,.work-card{cursor:none}
+  .open-cursor{width:82px;height:82px;border-width:2px;background:rgba(197,46,35,.055)}
+  .open-cursor span{font-size:9px;letter-spacing:.18em}
+}
+
+/* Exact clock typography from the approved mockup. */
+.clock-read{min-width:135px}
+.clock-read strong{font-size:27px;white-space:nowrap}
+.clock-read span{font:700 10px/1 var(--sans);letter-spacing:.07em;text-transform:uppercase}
+.clock-read small{display:block;margin-top:10px;font:700 9px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+
+@media(max-width:900px){
+  .brand strong{font-size:21px}
+  .brand-role{margin-left:22px;font-size:9.5px}
+  .brand-role:after{width:132px}
+}
+@media(max-width:690px){
+  .brand-line{gap:9px}
+  .brand-dot{width:10px;height:10px}
+  .brand strong{font-size:20px}
+  .brand-role{margin-left:19px;font-size:9px;padding-bottom:8px}
+  .brand-role:after{width:126px}
+  .clock-read{min-width:0}
+  .clock-read strong{font-size:18px}
+  .clock-read span{font-size:8px}
+  .clock-read small{margin-top:5px;font-size:7px;letter-spacing:.06em}
+}
+@media(prefers-reduced-motion:reduce){.hero-dot{animation:none}}
+
+/* V14 — desktop visual lock to the approved 1536×1024 mockup.
+   Deliberately uses Mac/iOS system faces first so the downloaded HTML preview
+   retains the approved hierarchy even before the site's licensed font folder is present. */
+:root{
+  --display: Didot, "Bodoni 72", Quinn, Georgia, serif;
+  --hand: "Bradley Hand", "Bradley Hand ITC", "Segoe Print", "Marker Felt", cursive;
+  --body-ui: Nitti, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@media(min-width:901px){
+  .shell{width:min(1392px,calc(100% - 88px));margin-inline:auto}
+
+  .mast{height:104px;padding-top:34px}
+  .brand{gap:6px}
+  .brand-line{gap:12px}
+  .brand-dot{width:13px;height:13px}
+  .brand strong{
+    font-family:var(--hand);
+    font-style:normal;
+    font-weight:600;
+    font-size:27px;
+    line-height:1;
+    letter-spacing:.015em;
+  }
+  .brand-role{margin-left:25px;font:700 11px/1 var(--body-ui);letter-spacing:.075em;padding-bottom:10px}
+  .brand-role:after{width:178px;height:1.5px}
+  .mast nav{gap:57px;padding-top:5px}
+  .mast nav a{font:700 11px/1 var(--body-ui);letter-spacing:.055em}
+  .mast nav a.active:after{bottom:-12px;height:3px}
+
+  .hero-manifesto{min-height:0;padding:14px 0 31px;display:block}
+  .hero-manifesto .hero-left{width:100%;max-width:none;padding:0}
+  .hero-manifesto h1{
+    width:auto;
+    margin:0 0 39px;
+    font-family:var(--display);
+    font-style:normal;
+    font-weight:700;
+    font-size:clamp(132px,10.4vw,160px);
+    line-height:.78;
+    letter-spacing:-.07em;
+    text-transform:none;
+    white-space:nowrap;
+  }
+  .hero-manifesto .hero-title-top,
+  .hero-manifesto .hero-title-bottom{display:inline;white-space:nowrap}
+  .hero-dot{width:.135em;height:.135em;min-width:20px;min-height:20px;margin-left:.055em;margin-bottom:.055em}
+  .dot-cue{
+    left:calc(100% + 51px);
+    top:27%;
+    width:158px;
+    font-family:var(--hand);
+    font-size:20px;
+    font-style:normal;
+    font-weight:600;
+    line-height:1;
+    transform:rotate(-2deg)
+  }
+  .dot-cue svg{width:118px;height:58px;margin:0 0 -2px -20px;stroke-width:2.15}
+
+  .manifesto-copy{
+    max-width:1260px;
+    margin:0;
+    font-family:var(--body-ui);
+    font-size:15.5px;
+    font-weight:400;
+    line-height:1.47;
+    letter-spacing:-.008em;
+  }
+  .manifesto-copy strong{
+    font-family:var(--hand);
+    font-style:normal;
+    font-weight:600;
+    font-size:1.22em;
+    line-height:1;
+    letter-spacing:0;
+    white-space:nowrap;
+  }
+  .manifesto-copy .manifesto-close{
+    margin-top:27px;
+    font-family:var(--hand);
+    font-style:normal;
+    font-weight:600;
+    font-size:48px;
+    line-height:1;
+    letter-spacing:.005em;
+  }
+
+  .footer{grid-template-columns:.92fr 1.08fr;gap:38px;padding:31px 0 35px}
+  .reach .section-kicker{font-size:11px;margin-bottom:11px}
+  .reach-email,.reach-phone,.reach-linkedin{
+    font-family:var(--body-ui);
+    font-weight:800;
+    font-size:30px;
+    line-height:1.12;
+    letter-spacing:-.02em;
+    text-decoration-thickness:1.5px;
+    text-underline-offset:4px;
+  }
+  .clock-block{min-height:166px;grid-template-columns:112px 1fr;column-gap:23px;padding:7px 30px 7px 72px}
+  .clock-city{font-size:11px;margin-bottom:12px}
+  .clock{width:92px;height:92px}
+  .clock-read strong{font-family:var(--display);font-weight:700;font-size:30px}
+  .clock-read span{font-size:10px}
+  .clock-read small{font-size:9px;margin-top:10px}
+}
+
+/* Keep the approved handwritten identity on tablet/mobile too. */
+.brand strong{font-family:var(--hand);font-style:normal;font-weight:600}
+.dot-cue,.manifesto-copy strong,.manifesto-copy .manifesto-close{font-family:var(--hand);font-style:normal;font-weight:600}
+.hero-manifesto h1{font-family:var(--display)}
+
+/* FINAL MOCKUP LOCK — 2026-08-10
+   This block intentionally overrides earlier iterations. Keep it last. */
+:root{
+  --paper:#f4efe5;
+  --ink:#11100d;
+  --red:#c92f24;
+  --line:rgba(17,16,13,.28);
+  --body:Nitti,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display:Quinn,Didot,"Bodoni 72",Georgia,serif;
+  --hand:"Bradley Hand","Bradley Hand ITC","Segoe Print","Marker Felt",cursive;
+}
+body{font-family:var(--body);font-weight:300}
+.shell{width:min(1400px,calc(100% - 88px));margin-inline:auto}
+
+/* Header — exact approved lockup */
+.mast{height:106px;padding-top:34px;align-items:flex-start}
+.brand{gap:5px}
+.brand-line{display:flex;align-items:center;gap:12px;min-height:30px}
+.brand-dot{width:13px;height:13px;flex:0 0 13px;margin:0}
+.brand strong{font-family:var(--hand);font-style:normal;font-weight:600;font-size:29px;line-height:1;letter-spacing:.015em;text-transform:none}
+.brand-role{margin:0 0 0 25px;padding:0 0 10px;font:700 11px/1 var(--body);letter-spacing:.075em;text-transform:uppercase}
+.brand-role:after{width:180px;height:1.5px;background:var(--ink);bottom:0;transform:rotate(-1deg)}
+.mast nav{gap:58px;padding-top:4px}
+.mast nav a{font:700 11px/1 var(--body);letter-spacing:.05em}
+.mast nav a.active:after{height:3px;bottom:-12px}
+
+/* Hero — one paragraph, deliberately broad and tight like the approved vanity-card reference */
+.hero-manifesto{display:block;min-height:0;padding:14px 0 30px}
+.hero-manifesto .hero-left{width:100%;max-width:none;padding:0}
+.hero-manifesto h1{display:block;position:relative;width:max-content;max-width:100%;margin:0 0 38px;font-family:var(--display);font-style:normal;font-weight:900;font-size:clamp(130px,10.25vw,158px);line-height:.79;letter-spacing:-.066em;text-transform:none;white-space:nowrap}
+.hero-manifesto .hero-title-top,.hero-manifesto .hero-title-bottom{display:inline;white-space:nowrap}
+.hero-dot{display:inline-grid;vertical-align:baseline;width:.14em;height:.14em;min-width:20px;min-height:20px;margin:0 0 .055em .055em;border-radius:50%;background:var(--red);animation:redDotPulse 2.25s ease-in-out infinite}
+.dot-cue{display:block;position:absolute;left:calc(100% + 48px);top:26%;width:165px;color:var(--ink);font:600 20px/1 var(--hand);letter-spacing:0;text-transform:none;transform:rotate(-2deg);pointer-events:none;z-index:2}
+.dot-cue svg{display:block;width:120px;height:59px;margin:0 0 -1px -19px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.dot-cue em{font-style:normal;white-space:nowrap}
+.manifesto-copy{max-width:1270px;margin:0;font-family:var(--body);font-size:15.4px;font-weight:300;line-height:1.48;letter-spacing:.002em}
+.manifesto-copy p:first-child{margin:0}
+.manifesto-copy strong{font-family:var(--hand);font-style:normal;font-weight:600;font-size:1.2em;line-height:1;letter-spacing:0;white-space:nowrap}
+.manifesto-copy .manifesto-close{margin:28px 0 0;font-family:var(--hand);font-style:normal;font-weight:600;font-size:49px;line-height:1;letter-spacing:.005em;white-space:nowrap}
+.manifesto-copy .manifesto-close span{color:var(--red);font-family:inherit}
+
+/* Footer — directly under the manifesto, matching approved composition */
+.footer{display:grid;grid-template-columns:.88fr 1.12fr;gap:42px;align-items:stretch;padding:30px 0 36px}
+.reach{justify-self:start;align-self:start}
+.reach .section-kicker{display:block;margin-bottom:11px;font:700 11px/1 var(--body);letter-spacing:.08em;color:var(--red)}
+.reach-email,.reach-phone,.reach-linkedin{display:block;width:max-content;max-width:100%;margin:0 0 3px;font-family:var(--body);font-style:normal;font-weight:700;font-size:29px;line-height:1.12;letter-spacing:-.015em;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px}
+.footer-clocks{display:grid;grid-template-columns:1fr 1fr;gap:0;height:100%}
+.clock-block{min-height:168px;display:grid;grid-template-columns:112px 1fr;grid-template-areas:'city city' 'clock read';align-items:center;column-gap:24px;padding:7px 30px 7px 72px;border-left:1px solid var(--line)}
+.clock-block+ .clock-block{border-left:1px solid var(--line)}
+.clock-city{grid-area:city;margin:0 0 12px;font:700 11px/1 var(--body);letter-spacing:.065em}
+.clock{grid-area:clock;width:92px;height:92px}
+.clock-read{grid-area:read;min-width:150px}
+.clock-read strong{display:block;font-family:var(--display);font-weight:900;font-size:30px;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.clock-read span{display:block;margin-top:7px;font:700 10px/1 var(--body);letter-spacing:.07em;text-transform:uppercase}
+.clock-read small{display:block;margin-top:10px;font:700 9px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+
+/* Tablet — same visual hierarchy, single-line hero while there is room. */
+@media(max-width:1100px){
+  .shell{width:min(100% - 56px,980px)}
+  .mast nav{gap:34px}
+  .hero-manifesto h1{font-size:clamp(104px,11.6vw,128px)}
+  .dot-cue{left:calc(100% + 25px);width:125px;font-size:16px}
+  .dot-cue svg{width:92px;height:50px}
+  .manifesto-copy{max-width:100%;font-size:14.3px;line-height:1.47}
+  .manifesto-copy .manifesto-close{font-size:43px}
+  .footer{grid-template-columns:.82fr 1.18fr}
+  .reach-email,.reach-phone,.reach-linkedin{font-size:23px}
+  .clock-block{grid-template-columns:82px 1fr;padding:6px 18px 6px 34px;column-gap:14px}
+  .clock{width:72px;height:72px}
+  .clock-read strong{font-size:23px}
+}
+
+/* iPad / compact tablet */
+@media(max-width:900px){
+  .shell{width:calc(100% - 44px)}
+  .mast{height:auto;padding-top:25px;padding-bottom:28px}
+  .brand strong{font-size:24px}.brand-dot{width:11px;height:11px;flex-basis:11px}.brand-line{gap:10px}
+  .brand-role{margin-left:21px;font-size:9.5px}.brand-role:after{width:148px}
+  .mast nav{gap:24px}.mast nav a{font-size:9.5px}
+  .hero-manifesto{padding-top:14px}
+  .hero-manifesto h1{font-size:clamp(92px,11.8vw,112px);margin-bottom:30px}
+  .dot-cue{left:auto;right:-2px;top:72%;width:104px;font-size:13px}
+  .dot-cue svg{width:75px;height:42px;margin-left:-7px}
+  .manifesto-copy{font-size:13.7px;line-height:1.45}
+  .manifesto-copy strong{font-size:1.14em;white-space:normal}
+  .manifesto-copy .manifesto-close{font-size:39px;margin-top:25px}
+  .footer{grid-template-columns:1fr;gap:25px}
+  .reach-email,.reach-phone,.reach-linkedin{font-size:27px}
+  .footer-clocks{border-top:1px solid var(--line);padding-top:20px}
+  .clock-block{padding:8px 28px;justify-content:center}
+  .clock-block:first-child{border-left:0}
+}
+
+/* Phone — purposeful two-line title and touch-safe cue. */
+@media(max-width:690px){
+  .shell{width:calc(100% - 40px)}
+  .mast{display:flex;align-items:flex-start;gap:18px;padding-top:22px;padding-bottom:22px}
+  .mast nav{display:none}
+  .brand strong{font-size:22px}.brand-role{font-size:9px;margin-left:19px}.brand-role:after{width:135px}
+  .hero-manifesto{padding:20px 0 30px}
+  .hero-manifesto h1{width:100%;font-size:clamp(74px,22vw,100px);line-height:.78;letter-spacing:-.065em;margin-bottom:31px;white-space:normal}
+  .hero-manifesto .hero-title-top,.hero-manifesto .hero-title-bottom{display:block;width:max-content;max-width:100%}
+  .hero-title-bottom{position:relative}
+  .hero-dot{min-width:13px;min-height:13px}
+  .dot-cue{left:auto;right:0;top:86%;width:90px;font-size:11px;transform:rotate(-2deg)}
+  .dot-cue svg{width:64px;height:38px;margin-left:-4px}
+  .manifesto-copy{font-size:13.4px;line-height:1.42;letter-spacing:0}
+  .manifesto-copy strong{font-size:1.12em;white-space:normal}
+  .manifesto-copy .manifesto-close{margin-top:24px;font-size:clamp(34px,9vw,43px);white-space:normal}
+  .footer{padding:24px 0 34px;gap:24px}
+  .reach-email,.reach-phone,.reach-linkedin{font-size:clamp(22px,7vw,28px)}
+  .footer-clocks{grid-template-columns:1fr;gap:0;padding-top:10px}
+  .clock-block,.clock-block+ .clock-block{min-height:118px;grid-template-columns:72px 1fr;grid-template-areas:'clock city' 'clock read';align-items:center;border-left:0;border-top:1px solid var(--line);padding:15px 8px;column-gap:14px}
+  .clock-block:first-child{border-top:0}
+  .clock-city{align-self:end;margin:0 0 5px;font-size:9px}
+  .clock{width:66px;height:66px}
+  .clock-read{align-self:start;min-width:0}
+  .clock-read strong{font-size:20px}
+  .clock-read span{font-size:8px;margin-top:4px}
+  .clock-read small{font-size:7px;margin-top:5px;letter-spacing:.06em}
+}
+
+@media(max-width:390px){
+  .shell{width:calc(100% - 30px)}
+  .hero-manifesto h1{font-size:clamp(68px,21.2vw,84px)}
+  .manifesto-copy{font-size:13px}
+  .dot-cue{right:-2px;width:78px;font-size:10px}
+  .dot-cue svg{width:58px}
+}
+
+@media(prefers-reduced-motion:reduce){.hero-dot{animation:none}}

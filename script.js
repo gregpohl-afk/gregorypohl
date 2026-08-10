@@ -19,7 +19,7 @@
     return `<span class="${cls}">${item.status || 'Coming soon'}</span>`;
   };
 
-  featuredGrid.innerHTML = featured.map((item, i) => `
+  if (featuredGrid) featuredGrid.innerHTML = featured.map((item, i) => `
     <article class="work-card interactive" tabindex="0" role="link" data-work-id="${item.id}" aria-label="Open ${item.title}">
       <span class="work-index">0${i + 1}</span>
       <h3>${item.title}</h3>
@@ -28,7 +28,7 @@
       ${action(item)}
     </article>`).join('');
 
-  archiveGrid.innerHTML = items.map(item => `
+  if (archiveGrid) archiveGrid.innerHTML = items.map(item => `
     <article class="archive-item">
       <span>${item.kind}</span>
       <h3>${item.title}</h3>
@@ -36,7 +36,7 @@
       ${action(item, 'interactive')}
     </article>`).join('');
 
-  document.getElementById('openArchive').addEventListener('click', () => archive.showModal());
+  document.getElementById('openArchive')?.addEventListener('click', () => archive?.showModal());
   document.querySelectorAll('.archive-close').forEach(btn => btn.addEventListener('click', () => btn.closest('dialog').close()));
   document.addEventListener('click', e => { if (e.target.closest('[data-concept="myhouse"]')) concept.showModal(); });
 
@@ -46,16 +46,16 @@
     if (item.restricted) { concept.showModal(); return; }
     if (item.href) window.open(item.href, '_blank', 'noopener');
   };
-  featuredGrid.addEventListener('click', e => {
+  featuredGrid?.addEventListener('click', e => {
     const card = e.target.closest('.work-card');
     if (!card || e.target.closest('a,button')) return;
     openWork(card);
   });
-  featuredGrid.addEventListener('keydown', e => {
+  featuredGrid?.addEventListener('keydown', e => {
     const card = e.target.closest('.work-card');
     if (card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openWork(card); }
   });
-  document.getElementById('openLiir').addEventListener('click', () => liir.showModal());
+  document.getElementById('openLiir')?.addEventListener('click', () => liir?.showModal());
 
   document.querySelectorAll('.principle-trigger').forEach(button => {
     button.addEventListener('click', () => {
@@ -68,35 +68,72 @@
     });
   });
 
-  [archive, concept, liir].forEach(dialog => dialog.addEventListener('click', e => {
+  [archive, concept, liir].filter(Boolean).forEach(dialog => dialog.addEventListener('click', e => {
     const r = dialog.getBoundingClientRect();
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
   }));
 
   const cursor = document.querySelector('.open-cursor');
-  window.addEventListener('mousemove', e => { cursor.style.left = `${e.clientX}px`; cursor.style.top = `${e.clientY}px`; });
+  window.addEventListener('mousemove', e => { if (!cursor) return; cursor.style.left = `${e.clientX}px`; cursor.style.top = `${e.clientY}px`; });
   document.addEventListener('mouseover', e => { if (e.target.closest('a,button,.work-card')) document.body.classList.add('cursor-on'); });
   document.addEventListener('mouseout', e => { if (e.target.closest('a,button,.work-card')) document.body.classList.remove('cursor-on'); });
 
-  const parts = (zone) => {
+  const timeParts = (zone) => {
     const now = new Date();
-    const raw = new Intl.DateTimeFormat('en-GB', { timeZone: zone, hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false }).formatToParts(now);
+    const raw = new Intl.DateTimeFormat('en-GB', {
+      timeZone: zone,
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hour12: false
+    }).formatToParts(now);
     const pick = t => Number(raw.find(p => p.type === t)?.value || 0);
     return { h: pick('hour'), m: pick('minute'), s: pick('second') };
   };
 
+  const timeString = zone => new Intl.DateTimeFormat('en-GB', {
+    timeZone: zone,
+    hour: '2-digit', minute: '2-digit', second: '2-digit',
+    hour12: false
+  }).format(new Date());
+
+  const dateString = zone => new Intl.DateTimeFormat('en-US', {
+    timeZone: zone,
+    weekday: 'short', month: 'short', day: 'numeric'
+  }).format(new Date()).toUpperCase();
+
+  const zoneString = zone => {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: zone,
+      timeZoneName: 'short'
+    }).formatToParts(new Date());
+    return parts.find(p => p.type === 'timeZoneName')?.value || '';
+  };
+
   const updateClocks = () => {
     document.querySelectorAll('.clock').forEach(clock => {
-      const p = parts(clock.dataset.zone);
-      const hourDeg = (p.h % 12) * 30 + p.m * 0.5;
+      const p = timeParts(clock.dataset.zone);
+      const hourDeg = (p.h % 12) * 30 + p.m * 0.5 + p.s / 120;
       const minDeg = p.m * 6 + p.s * 0.1;
-      clock.querySelector('.hour').style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
-      clock.querySelector('.minute').style.transform = `translateX(-50%) rotate(${minDeg}deg)`;
+      const hour = clock.querySelector('.hour');
+      const minute = clock.querySelector('.minute');
+      if (hour) hour.style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
+      if (minute) minute.style.transform = `translateX(-50%) rotate(${minDeg}deg)`;
     });
-    const format = zone => new Intl.DateTimeFormat('en-GB',{timeZone:zone,hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
-    document.getElementById('amsClock').textContent = format('Europe/Amsterdam');
-    document.getElementById('laClock').textContent = format('America/Los_Angeles');
+
+    const amsClock = document.getElementById('amsClock');
+    const laClock = document.getElementById('laClock');
+    const amsZone = document.getElementById('amsZone');
+    const laZone = document.getElementById('laZone');
+    const amsDate = document.getElementById('amsDate');
+    const laDate = document.getElementById('laDate');
+
+    if (amsClock) amsClock.textContent = timeString('Europe/Amsterdam');
+    if (laClock) laClock.textContent = timeString('America/Los_Angeles');
+    if (amsZone) amsZone.textContent = zoneString('Europe/Amsterdam');
+    if (laZone) laZone.textContent = zoneString('America/Los_Angeles');
+    if (amsDate) amsDate.textContent = dateString('Europe/Amsterdam');
+    if (laDate) laDate.textContent = dateString('America/Los_Angeles');
   };
+
   updateClocks();
   setInterval(updateClocks, 1000);
 })();
