@@ -939,3 +939,33 @@ body{font-family:var(--body);font-weight:300}
     margin-top:16px;
   }
 }
+
+/* 2026-08-10 — mobile Red Dot cue only.
+   Keep the approved mobile hero unchanged; move only the handwritten cue
+   into the open space to the right of the period so it points back to the dot. */
+@media(max-width:690px){
+  .hero-manifesto .hero-title-bottom{position:relative;overflow:visible}
+  .hero-manifesto .dot-cue{
+    left:calc(100% + 12px);
+    right:auto;
+    top:42%;
+    width:86px;
+    font-size:11px;
+    transform:rotate(-2deg);
+  }
+  .hero-manifesto .dot-cue svg{
+    width:66px;
+    height:40px;
+    margin:0 0 -2px -8px;
+  }
+}
+@media(max-width:390px){
+  .hero-manifesto .dot-cue{
+    left:calc(100% + 8px);
+    right:auto;
+    top:44%;
+    width:72px;
+    font-size:10px;
+  }
+  .hero-manifesto .dot-cue svg{width:56px;height:36px;margin-left:-7px}
+}
