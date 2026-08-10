@@ -14,9 +14,9 @@
   <div class="open-cursor" aria-hidden="true"><span>OPEN</span></div>
 
   <header class="mast shell">
-    <a href="#top" class="brand">
-      <strong>GREGORY POHL</strong>
-      <span>AMSTERDAM&nbsp;&nbsp;/&nbsp;&nbsp;LOS ANGELES</span>
+    <a href="#top" class="brand" aria-label="Gregory Pohl — Strategic Advisor">
+      <span class="brand-line"><i class="brand-dot" aria-hidden="true"></i><strong>GREGORY POHL</strong></span>
+      <span class="brand-role">STRATEGIC ADVISOR</span>
     </a>
     <nav aria-label="Primary">
       <a href="#work" class="active">WORK</a>
@@ -27,30 +27,37 @@
   </header>
 
   <main id="top">
-    <section class="hero shell">
+    <section class="hero shell hero-manifesto">
       <div class="hero-left">
         <h1><span class="hero-title-top">I see</span> <span class="hero-title-bottom">things<a class="hero-dot interactive" href="red-dot.html" aria-label="Open The Red Dot story"><span aria-hidden="true"></span></a><span class="dot-cue" aria-hidden="true"><svg viewBox="0 0 92 54"><path d="M84 12C66 6 45 11 28 27C21 33 15 38 8 40"/><path d="M18 28L8 40L24 42"/></svg><em>tap the dot</em></span></span></h1>
-        <p class="hero-lede">Usually the thing everyone else<br>has gotten used to looking at.</p>
-        <div class="short-rule"></div>
-        <p class="hero-see">I see what is. What could be. What everyone is stepping around. The story people are telling themselves — and the one they’re actually living.</p>
-        <p class="hero-copy">25 years inside complicated organizations taught me something useful: the most expensive problems rarely announce themselves as problems.</p>
-        <p class="hero-copy hero-strong">I help leaders find the thing underneath the thing.</p>
-        <p class="hero-meta">STRATEGIC ADVISOR <b>•</b> ORGANIZATIONAL DIAGNOSIS <b>•</b> FUTURE SHAPING</p>
-        <p class="liir-line"><button type="button" class="liir-trigger interactive" id="openLiir">LIIR</button> <span>(Listen, Investigate, Identify, Resolve) is the methodology behind my work.</span></p>
+        <div class="manifesto-copy">
+          <p>Is what I say when I want to stop the scroll. I imagine saying it in conversation, but it sounds awkward in my ears, and I realize that it’s performative, which I hate, but I can’t quite figure out how to get my point across without a list of recognizable logos and benchmarks. I’ve spent 25 years navigating the gray areas in hyper-regulated industries, winning awards, coaching other people to win awards, and learning to play with the narrative, all from inside the machine. <strong>I study.</strong> I study psychology, business, kinesics, economics, politics, philosophy, pop culture. I write movies. I write books. I enjoy the exploration, but I’m only really functioning at full capacity when I’m searching for the patterns. Everything at its root is a system of human dynamics and interconnectedness. Connections simply are. They exist whether or not anyone perceives them. <strong>I merely… refuse to look away.</strong> Where some see two unrelated facts, I feel the tension between them — like a chord that hasn’t resolved. It itches at me until I find the note that makes it whole. <strong>I love crisis.</strong> I love the stakes. Had I redirected younger, I would have been an amazing hostage negotiator. <strong>I don’t panic, and I always find the thread.</strong> I’ve been described as indispensable, a big thinker, even an oracle, and offered substantial stakes and sums to stop seeking the horizon. But that leaves me unsettled. I’ve seen the damage an echo chamber creates, so I function beyond it. I have no ambition to outshine the master. I just want to be challenged and to meet that challenge. And I believe with every ounce of my being that I can help you get where you want to go.</p>
+          <p class="manifesto-close">To see things together<span>.</span></p>
+        </div>
       </div>
-      <aside class="hero-clocks" aria-label="Current time in Amsterdam and Los Angeles">
-        <div class="clock-block hero-clock-block">
+    </section>
+
+    <footer id="contact" class="footer shell section-rule">
+      <div class="reach">
+        <span class="section-kicker">REACH OUT</span>
+        <a class="interactive reach-email" href="mailto:greg@gregorypohl.com?subject=Something%20doesn%27t%20quite%20add%20up">GREG@GREGORYPOHL.COM</a>
+        <a class="interactive reach-phone" href="tel:+31613003260">+31 6 1300 3260</a>
+        <a class="interactive reach-phone" href="tel:+13235724418">+1.323.572.4418</a>
+        <a class="interactive reach-linkedin" href="https://www.linkedin.com/in/gregory-pohl-63a86926/" target="_blank" rel="noopener">LINKEDIN</a>
+      </div>
+      <div class="clock-pair footer-clocks" aria-label="Current time in Amsterdam and Los Angeles">
+        <div class="clock-block">
           <span class="clock-city">AMSTERDAM</span>
           <div class="clock" data-zone="Europe/Amsterdam"><i class="hour"></i><i class="minute"></i><i class="center"></i></div>
-          <div class="clock-read"><strong id="amsClock">--:--</strong><span>CET</span></div>
+          <div class="clock-read"><strong id="amsClock">--:--:--</strong><span id="amsZone">CEST</span><small id="amsDate">—</small></div>
         </div>
-        <div class="clock-block hero-clock-block">
+        <div class="clock-block">
           <span class="clock-city">LOS ANGELES</span>
           <div class="clock" data-zone="America/Los_Angeles"><i class="hour"></i><i class="minute"></i><i class="center"></i></div>
-          <div class="clock-read"><strong id="laClock">--:--</strong><span>PST</span></div>
+          <div class="clock-read"><strong id="laClock">--:--:--</strong><span id="laZone">PDT</span><small id="laDate">—</small></div>
         </div>
-      </aside>
-    </section>
+      </div>
+    </footer>
 
     <section id="work" class="work shell section-rule">
       <div class="section-kicker">A FEW THINGS I’VE NOTICED.</div>
@@ -153,14 +160,7 @@
       </section>
     </section>
 
-    <footer id="contact" class="footer shell section-rule">
-      <div class="footer-thought">IF SOMETHING IMPORTANT<br>DOESN’T QUITE ADD UP,<br>THAT’S USUALLY WHERE I START<span>.</span></div>
-      <div class="reach">
-        <span class="section-kicker">REACH OUT</span>
-        <a class="interactive reach-email" href="mailto:greg@gregorypohl.com?subject=Something%20doesn%27t%20quite%20add%20up">greg@gregorypohl.com</a>
-        <div><a class="interactive" href="tel:+31613003260">+31 6 1300 3260</a> <b>·</b> <a class="interactive" href="https://www.linkedin.com/in/gregory-pohl-63a86926/" target="_blank" rel="noopener">LinkedIn</a></div>
-      </div>
-    </footer>
+
   </main>
 
   <dialog id="archiveDialog" class="archive-dialog">
