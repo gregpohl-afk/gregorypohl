@@ -969,3 +969,82 @@ body{font-family:var(--body);font-weight:300}
   }
   .hero-manifesto .dot-cue svg{width:56px;height:36px;margin-left:-7px}
 }
+
+/* 2026-08-11 — iPad-only composition repair.
+   Scope is intentionally limited to: (1) Red Dot annotation placement,
+   (2) Why Me spacing/composition. Phone (<=690px) and desktop (>1100px) are untouched. */
+@media (min-width:691px) and (max-width:1100px){
+  /* Keep the handwritten cue in its own pocket to the right of the red period. */
+  .hero-manifesto .hero-title-bottom{
+    position:relative;
+    overflow:visible;
+  }
+  .hero-manifesto .dot-cue{
+    left:calc(100% + 14px);
+    right:auto;
+    top:31%;
+    width:102px;
+    font-size:13px;
+    transform:rotate(-2deg);
+  }
+  .hero-manifesto .dot-cue svg{
+    width:76px;
+    height:43px;
+    margin:0 0 -2px -9px;
+  }
+}
+
+/* iPad portrait / compact-tablet Why Me: remove the empty vertical field created
+   by the two-column breakpoint without changing any content or typography. */
+@media (min-width:691px) and (max-width:900px){
+  .about{
+    grid-template-columns:.94fr 1.06fr;
+    column-gap:32px;
+    row-gap:14px;
+    align-items:start;
+    padding:26px 12px 18px;
+  }
+  .about-head{
+    grid-column:1 / -1;
+    margin:0 0 2px;
+  }
+  .about-head h2{
+    font-size:clamp(39px,5.7vw,46px);
+    line-height:.91;
+  }
+  .portrait{
+    grid-column:1;
+    grid-row:2;
+    width:100%;
+    height:286px;
+    margin:0;
+    overflow:visible;
+    justify-content:center;
+    align-items:flex-end;
+  }
+  .portrait img{
+    width:100%;
+    height:auto;
+    max-height:286px;
+    max-width:none;
+    object-fit:contain;
+    object-position:center bottom;
+  }
+  .about-copy{
+    grid-column:2;
+    grid-row:2 / span 2;
+    align-self:center;
+    margin:0;
+    padding:0;
+    font-size:12.5px;
+    line-height:1.48;
+  }
+  .experience-note{
+    grid-column:1;
+    grid-row:3;
+    width:72%;
+    max-width:225px;
+    justify-self:center;
+    margin:-8px 0 0;
+  }
+}
