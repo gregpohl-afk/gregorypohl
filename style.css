@@ -1077,3 +1077,57 @@ body{font-family:var(--body);font-weight:300}
     font-size: 17px;
   }
 }
+/* WHY ME copy hierarchy only */
+
+.about-copy .about-intro {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 300;
+  margin: 0 0 18px;
+}
+
+.about-copy p {
+  margin: 0 0 16px;
+}
+
+.about-copy strong {
+  font-weight: 700;
+}
+
+@media (min-width: 901px) {
+  .about-copy {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+
+  .about-copy .about-intro {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+}
+
+@media (min-width: 691px) and (max-width: 900px) {
+  .about-copy {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+
+  .about-copy .about-intro {
+    font-size: 13.5px;
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 690px) {
+  .about-copy {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .about-copy .about-intro {
+    font-size: 17px;
+    line-height: 1.5;
+    margin-bottom: 22px;
+  }
+}
