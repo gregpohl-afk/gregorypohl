@@ -27,7 +27,7 @@
 .hero-clocks{align-self:start;justify-self:end;display:grid;gap:32px;padding-top:28px;width:220px}
 .hero-clock-block{grid-template-columns:64px 1fr;column-gap:12px}
 .hero-clock-block .clock{width:58px;height:58px}.hero-clock-block .clock-city{font-size:8px}.hero-clock-block .clock-read strong{font-size:18px}.hero-clock-block .clock-read span{font-size:8px}
-.liir-line{margin:13px 0 0;font:300 10.5px/1.35 var(--serif)}
+.liir-line{margin:13px 0 10px;font:300 10.5px/1.35 var(--serif)}
 .liir-trigger{border:0;background:none;padding:0;color:var(--ink);font:900 11px/1 var(--serif);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px;cursor:pointer}
 .work-card{position:relative;cursor:pointer;border-radius:2px;transition:background .18s ease,transform .18s ease}
 .work-card:focus-visible{outline:2px solid var(--red);outline-offset:7px}
