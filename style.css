@@ -27,32 +27,42 @@ a{color:inherit}
 .doctrine-copy .doctrine-thesis{max-width:850px;margin-bottom:35px;font-size:27px;line-height:1.42;letter-spacing:-.016em}
 .doctrine-copy strong{font-weight:700}
 .doctrine-copy p:last-child{margin-bottom:0}
-.proof-statement{max-width:830px;margin-top:39px}
-.proof-statement p{margin:0 0 9px;font-size:25px;font-weight:700;line-height:1.42;letter-spacing:-.012em}
-.proof-statement p:last-child{color:var(--muted);font-size:18px;font-weight:300;letter-spacing:0}
+.proof-statement{max-width:none;margin-top:39px;padding:42px 46px;background:var(--ink);color:var(--canvas)}
+.proof-statement p{max-width:820px;margin:0 0 10px;font-size:29px;font-weight:700;line-height:1.35;letter-spacing:-.018em}
+.proof-statement p:last-child{color:var(--canvas);font-size:18px;font-weight:300;letter-spacing:0;opacity:.76}
 .capability-list{margin-top:56px}
 .capability-list article{display:grid;grid-template-columns:330px 1fr;gap:44px;padding:26px 0;border-top:1px solid var(--rule)}
+.capability-list article:nth-child(2){grid-template-columns:370px 1fr;padding-left:38px}
 .capability-list article:last-child{border-bottom:1px solid var(--rule)}
 .capability-list h2,.domain-list h2,.publication h2{margin:0;font-size:16px;font-weight:700;line-height:1.4;letter-spacing:.045em;text-transform:uppercase}
 .capability-list p,.domain-list p{margin:0;color:#292929}
 .domain-list{margin-top:38px;border-bottom:1px solid var(--rule)}
-.domain-list article{display:grid;grid-template-columns:64px 1fr;gap:24px;padding:29px 0;border-top:1px solid var(--rule)}
+.domain-list article{display:grid;grid-template-columns:120px 1fr;gap:28px;align-items:start;padding:35px 0;border-top:1px solid var(--rule)}
+.domain-list article:nth-child(2){padding-left:52px}
 .index{color:var(--muted);font-size:11px;line-height:1.45;letter-spacing:.14em}
+.domain-list .index{color:var(--rule);font-size:76px;font-weight:700;line-height:.8;letter-spacing:-.06em}
 .domain-list p{max-width:710px;margin-top:9px;font-size:17px}
 .publication-list{margin-top:38px;border-bottom:1px solid var(--rule)}
-.publication{display:grid;grid-template-columns:64px 1fr;gap:24px;padding:32px 0;border-top:1px solid var(--rule)}
+.publication{display:grid;grid-template-columns:64px 1fr;gap:24px;margin-inline:-22px;padding:34px 22px;border-top:1px solid var(--rule);transition:none}
+.publication:hover,.publication:focus-within{background:var(--ink);color:var(--canvas)}
+.publication:hover>.index,.publication:hover .publication-type,.publication:hover .publication-copy>p:not(.publication-type),.publication:focus-within>.index,.publication:focus-within .publication-type,.publication:focus-within .publication-copy>p:not(.publication-type){color:var(--canvas);opacity:.78}
+.publication:hover a,.publication:focus-within a{color:var(--canvas)}
 .publication-type{margin:0 0 8px;color:var(--muted);font-size:11px;font-weight:300;line-height:1.3;letter-spacing:.17em;text-transform:uppercase}
 .publication-copy>p:not(.publication-type){max-width:710px;margin:10px 0 17px;color:#292929;font-size:16px}
+.publication h2{font-size:22px;letter-spacing:.035em}
 .publication a{display:inline-block;padding:2px 0;font-size:12px;font-weight:300;line-height:1.4;letter-spacing:.1em;text-underline-offset:4px;text-transform:uppercase}
 .publication a:hover,.publication a:focus-visible,.access-details a:hover,.access-details a:focus-visible{background:var(--ink);color:var(--canvas);outline:none;text-decoration:none}
 .access-condition{max-width:760px;margin:38px 0 43px;font-size:24px;font-weight:700;line-height:1.4;letter-spacing:-.01em}
 .access-details p,.access-details a{display:block;margin:0 0 8px;font-size:12px;line-height:1.5;letter-spacing:.1em;text-transform:uppercase}
-.access-details a{width:max-content;text-underline-offset:4px}
-.site-footer{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:end;padding-block:46px 64px}
+.access-details a{width:max-content;font-size:clamp(22px,3vw,31px);font-weight:700;letter-spacing:.025em;text-underline-offset:7px}
+.site-footer{display:grid;grid-template-columns:1fr auto 1fr;gap:42px;align-items:end;padding-block:46px 64px}
 .footer-identity{display:flex;flex-direction:column;text-transform:uppercase}
 .footer-identity strong{font-size:12px;line-height:1.4;letter-spacing:.13em}
 .footer-identity span{margin-top:3px;color:var(--muted);font-size:10px;line-height:1.4;letter-spacing:.11em}
-.clocks{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.clocks{display:contents}
+.clock-block:first-child{grid-column:1;grid-row:1}
+.footer-identity{grid-column:2;grid-row:1;text-align:center}
+.clock-block:last-child{grid-column:3;grid-row:1;justify-self:end}
 .clock-block{display:grid;grid-template-columns:58px 1fr;gap:13px;align-items:center}
 .clock-read p,.clock-read>span{display:block;margin:0;color:var(--muted);font-size:9px;font-weight:700;line-height:1.35;letter-spacing:.13em;text-transform:uppercase}
 .clock-read time{display:block;margin:3px 0 2px;font-size:18px;line-height:1.25;letter-spacing:.06em;font-variant-numeric:tabular-nums}
@@ -81,12 +91,18 @@ a{color:inherit}
   .doctrine-copy .doctrine-thesis{font-size:22px}
   .proof-statement p{font-size:21px}
   .proof-statement p:last-child{font-size:16px}
+  .proof-statement{margin-inline:-24px;padding:34px 24px}
   .capability-list{margin-top:52px}
-  .capability-list article{grid-template-columns:1fr;gap:12px;padding:27px 0}
-  .domain-list article,.publication{grid-template-columns:38px 1fr;gap:14px;padding:29px 0}
+  .capability-list article,.capability-list article:nth-child(2){grid-template-columns:1fr;gap:12px;padding:27px 0}
+  .domain-list article,.domain-list article:nth-child(2){grid-template-columns:58px 1fr;gap:14px;padding:29px 0}
+  .domain-list .index{font-size:46px}
+  .publication{grid-template-columns:38px 1fr;gap:14px;margin-inline:-12px;padding:29px 12px}
+  .publication h2{font-size:18px}
   .access-condition{font-size:16px}
-  .site-footer{grid-template-columns:1fr;gap:34px}
-  .clocks{gap:22px}
+  .site-footer{grid-template-columns:1fr 1fr;gap:30px}
+  .footer-identity{grid-column:1/-1;grid-row:1;text-align:left}
+  .clock-block:first-child{grid-column:1;grid-row:2}
+  .clock-block:last-child{grid-column:2;grid-row:2;justify-self:end}
   .clock-block{grid-template-columns:46px 1fr;gap:10px}
   .analog-clock{width:44px;height:44px}
   .clock-hand.hour{height:12px}.clock-hand.minute{height:17px}
