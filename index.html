@@ -27,8 +27,9 @@
     <section class="hero shell ruled" id="top" aria-labelledby="doctrine-title">
       <p class="section-label" id="doctrine-title">[ The Doctrine ]</p>
       <div class="doctrine-copy">
-        <p>Complex systems fail in the quiet, unresolved friction between human dynamics, institutional behavior, and structural alignment.</p>
-        <p>When narrative breaks, standard PR playbooks and reactionary crisis management only accelerate resource burn.</p>
+        <p class="doctrine-lead">Complex systems, high-value assets, and market leaders rarely collapse from external pressure alone.</p>
+        <p class="doctrine-thesis">They fail in the <strong>quiet, unresolved friction</strong> between human dynamics, institutional behavior, and structural alignment.</p>
+        <p>When narrative breaks, standard PR playbooks and reactionary crisis management only <strong>accelerate resource burn.</strong></p>
         <p>We intervene inside high-complexity, hyper-regulated, and contested environments—diagnosing underlying human and structural mechanics, realigning narrative infrastructure, and restoring leverage before friction compounds into existential loss.</p>
       </div>
     </section>
@@ -145,12 +146,26 @@
     </div>
     <div class="clocks" aria-label="Local times in Amsterdam and Los Angeles">
       <div class="clock-block">
-        <p>Amsterdam</p>
-        <time id="amsClock">--:--:--</time>
+        <div class="analog-clock" data-zone="Europe/Amsterdam" aria-hidden="true">
+          <span class="clock-tick tick-12"></span><span class="clock-tick tick-3"></span><span class="clock-tick tick-6"></span><span class="clock-tick tick-9"></span>
+          <span class="clock-hand hour"></span><span class="clock-hand minute"></span><span class="clock-pin"></span>
+        </div>
+        <div class="clock-read">
+          <p>Amsterdam</p>
+          <time id="amsClock">--:--:--</time>
+          <span><span id="amsDate">—</span> · <span id="amsZone">—</span></span>
+        </div>
       </div>
       <div class="clock-block">
-        <p>Los Angeles</p>
-        <time id="laClock">--:--:--</time>
+        <div class="analog-clock" data-zone="America/Los_Angeles" aria-hidden="true">
+          <span class="clock-tick tick-12"></span><span class="clock-tick tick-3"></span><span class="clock-tick tick-6"></span><span class="clock-tick tick-9"></span>
+          <span class="clock-hand hour"></span><span class="clock-hand minute"></span><span class="clock-pin"></span>
+        </div>
+        <div class="clock-read">
+          <p>Los Angeles</p>
+          <time id="laClock">--:--:--</time>
+          <span><span id="laDate">—</span> · <span id="laZone">—</span></span>
+        </div>
       </div>
     </div>
   </footer>
