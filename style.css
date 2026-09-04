@@ -29,6 +29,7 @@ a{color:inherit}
 .doctrine-copy p:last-child{margin-bottom:0}
 .proof-statement{max-width:850px;margin-top:39px;padding:0}
 .proof-statement p{max-width:820px;margin:0 0 10px;font-size:29px;font-weight:700;line-height:1.35;letter-spacing:-.018em}
+.proof-statement p:nth-child(2){font-size:23px;line-height:1.42;letter-spacing:-.008em}
 .proof-statement p:last-child{color:var(--muted);font-size:18px;font-weight:300;letter-spacing:0}
 .capability-list{margin-top:56px}
 .capability-list article{display:grid;grid-template-columns:330px 1fr;gap:44px;padding:26px 0;border-top:1px solid var(--rule)}
